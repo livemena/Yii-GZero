@@ -1,9 +1,6 @@
-Yii Ground-Zero App 
+Yii Ground-Zero App Project (alpha)
 =========
 Yii Grand-Zero Ready-to-code application template
-(Dev version)
-
-
 
 ### Ready configurations:
 - URL manager.
