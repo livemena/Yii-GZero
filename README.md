@@ -26,4 +26,4 @@ Features:
 To do:
 - mailer
 - geoLocator
-- .. Give us Idea !
+- [What's missing ?!: https://github.com/livemena/Yii-GZero/issues/new]
