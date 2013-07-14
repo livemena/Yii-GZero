@@ -1,19 +1,19 @@
 Yii Ground-Zero App 
 =========
-[UNDER DEVELOPMENT]
+#### [UNDER DEVELOPMENT]
 
 Yii Grand-Zero Ready-to-code application template
 
 
 
-Ready configurations:
+### Ready configurations:
 - URL manager.
 - SQL database.
 - Local config file.
 - rbac system.
 - multi-language.
 
-Features:
+### Features:
 - Image helper (Docs: http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/).
 - Bootstrap (Docs: http://www.cniska.net/yii-bootstrap/).
 - site settings, admins, Google analytics.
@@ -23,7 +23,7 @@ Features:
 - Yii debug toolbar.
 - Google analytics.
 
-To do:
+### To do:
 - mailer
 - geoLocator
 - [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
