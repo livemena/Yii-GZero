@@ -16,7 +16,6 @@ Yii Grand-Zero Ready-to-code application template
 ### Features:
 - Image helper (Docs: http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/).
 - Bootstrap (Docs: http://www.cniska.net/yii-bootstrap/).
-- site settings, admins, Google analytics.
 - Text helper.
 - mobile detector.
 - CSS/JS Compressor (Docs: http://www.yiiframework.com/extension/eclientscript/).
