@@ -10,12 +10,12 @@ Yii Grand-Zero Ready-to-code application template
 - multi-language.
 
 ### Features:
-- Image helper (Docs: http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/).
 - Bootstrap (Docs: http://www.cniska.net/yii-bootstrap/).
+- Image helper (Docs: http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/).
+- CSS/JS Compressor (Docs: http://www.yiiframework.com/extension/eclientscript/).
 - Text helper.
 - Clear assets and cache commands.
 - mobile detector.
-- CSS/JS Compressor (Docs: http://www.yiiframework.com/extension/eclientscript/).
 - Yii debug toolbar.
 - Google analytics.
 
