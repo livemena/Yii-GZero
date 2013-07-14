@@ -26,6 +26,8 @@ Yii Grand-Zero Ready-to-code application template
 ### To do:
 - mailer
 - geoLocator
+- multi-language urls.
+- rtl support.
 - [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
 
 Powred by [LiveMena](https://livemena.com/)
