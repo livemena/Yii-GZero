@@ -4,7 +4,7 @@ Yii Ground-Zero App
 
 Yii Grand-Zero Ready-to-code application template
 
-Powred by LiveMena
+
 
 Ready configurations:
 - URL manager.
@@ -26,4 +26,8 @@ Features:
 To do:
 - mailer
 - geoLocator
-- [What's missing ?!: https://github.com/livemena/Yii-GZero/issues/new]
+- [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
+
+Powred by [LiveMena](https://livemena.com/)
+![](http://www.livemena.com/img/LIVEmena_logo_new.png)
+
