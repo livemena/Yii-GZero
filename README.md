@@ -1,4 +1,4 @@
-Yii Ground-Zero App Project (alpha)
+Yii Ground-Zero App (alpha)
 =========
 Yii Grand-Zero Ready-to-code application template
 
