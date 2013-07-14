@@ -6,18 +6,23 @@ Yii Grand-Zero Ready-to-code application template
 
 Powred by LiveMena
 
+Ready configurations:
+- URL manager.
+- SQL database.
+- Local config file.
+- rbac system.
+- multi-language.
+
 Features:
-- Image helper (check this: http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/)
-- bac system
-- Bootstrap
-- ysql-database
-- multi-language
-- URL manager
-- local config file
-- site settings, admins, Google analytics
-- Text helper
-- mobile detector
-- Compressor (Minifier)
-- Yii debug toolbar
+- Image helper (Docs: http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/).
+- Bootstrap (Docs: http://www.cniska.net/yii-bootstrap/).
+- site settings, admins, Google analytics.
+- Text helper.
+- mobile detector.
+- CSS/JS Compressor (Docs: http://www.yiiframework.com/extension/eclientscript/).
+- Yii debug toolbar.
+- Google analytics.
 
 To do:
+- mailer
+- geoLocator
