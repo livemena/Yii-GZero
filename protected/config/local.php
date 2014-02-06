@@ -5,7 +5,7 @@ return array(
 		// Gii is enabled locally
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'1234',
+			'password'=>'123456',
 			'ipFilters'=>array('127.0.0.1','::1'),
             'generatorPaths'=>array(
                 'bootstrap.gii',
