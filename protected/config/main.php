@@ -1,7 +1,5 @@
 <?php
 // uncomment the following to define a path alias
-Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
-
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return CMap::mergeArray(
@@ -9,7 +7,6 @@ return CMap::mergeArray(
 		'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 		'name'=>'Yii Grand-Zero Application',
 		'language'=>'en',
-		'theme'=>'bootstrap',
 		
 		// mobile detector
 		'onBeginRequest'=>array('Mobile', 'BeginRequest'),
@@ -49,20 +46,15 @@ return CMap::mergeArray(
 				),
 			),
 
+			// Local database connection
 			'db'=>array(
-				'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+				'connectionString' => 'mysql:host=localhost;dbname=gzero',
 				'emulatePrepare' => true,
 				'username' => 'root',
 				'password' => '',
 				'charset' => 'utf8',
-				'schemaCachingDuration' => 3600,
 			),
-			
-			// Bootstrap
-			'bootstrap'=>array(
-				'class'=>'bootstrap.components.Bootstrap',
-			),
-			
+
 			// Language handler
 			'ELangHandler' => array (
 				'class' => 'ext.langhandler.ELangHandler',
@@ -82,16 +74,7 @@ return CMap::mergeArray(
 			'errorHandler'=>array(
 				// use 'site/error' action to display errors
 				'errorAction'=>'site/error',
-			),
-			'log'=>array(
-				'class'=>'CLogRouter',
-				'routes'=>array(
-					array(
-						'class'=>'CFileLogRoute',
-						'levels'=>'error, warning',
-					),
-				),
-			),
+			)
 		),
 
 		// application-level parameters that can be accessed

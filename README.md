@@ -1,4 +1,4 @@
-Yii Ground-Zero App (alpha)
+Yii Ground-Zero App (alpha 2)
 =========
 Yii Grand-Zero Ready-to-code application template
 
@@ -10,7 +10,7 @@ Yii Grand-Zero Ready-to-code application template
 - multi-language.
 
 ### Features:
-- Bootstrap (Docs: http://www.cniska.net/yii-bootstrap/).
+- Bootstrap 3.1.0 http://getbootstrap.com/
 - Image helper (Docs: http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/).
 - CSS/JS Compressor (Docs: http://www.yiiframework.com/extension/eclientscript/).
 - Text helper.

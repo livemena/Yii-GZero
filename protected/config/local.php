@@ -7,22 +7,10 @@ return array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'123456',
 			'ipFilters'=>array('127.0.0.1','::1'),
-            'generatorPaths'=>array(
-                'bootstrap.gii',
-            ),
 		),
 	),
 
 	'components'=>array(
-
-		// Local database connection
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=gzero',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-		),
 
 		// Scripts & CSS optimzation is off
 		'clientScript' => array(
@@ -37,9 +25,9 @@ return array(
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
-				array(
-					'class'=>'CWebLogRoute',
-				),
+				// array(
+					// 'class'=>'CWebLogRoute',
+				// ),
 				array(
 					'class' => 'CWebLogRoute',
 					'enabled' =>true ,
