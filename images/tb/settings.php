@@ -9,6 +9,7 @@ class Conf {
   public static $sizes = array(
   
 	// small
+	"80x80"=>true,
 	"120x120"=>true,
 	"200x200"=>true,
 	"250x250"=>true,

@@ -1,0 +1,25 @@
+# run git "rm --cached FILES" if you already have those files
+
+assets/*
+!assets/.gitignore
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/data/*.db
+themes/classic/views/
+
+# netbeans
+nbproject/
+
+# ignore backups and OS/IDE generated files
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+
+
