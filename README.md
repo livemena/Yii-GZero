@@ -29,4 +29,3 @@ Yii Grand-Zero Ready-to-code application template
 Powred by [LiveMena](https://livemena.com/)
 
 ![](http://livemena.com/img/logo-b1.png)
-

@@ -32,7 +32,6 @@ return CMap::mergeArray(
 			
 			'authManager'=>array(
 				'class'=>'CDbAuthManager',
-				'defaultRoles'=>array('guest'),
 			),
 			
 			'urlManager'=>array(
@@ -40,6 +39,7 @@ return CMap::mergeArray(
 				'showScriptName'=>false,
 				'caseSensitive'=>false,
 				'rules'=>array(
+					'/p/<slug:\w+>'=>'page/view',
 					'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 					'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 					'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
