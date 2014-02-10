@@ -26,6 +26,6 @@ Yii Grand-Zero Ready-to-code application template
 - rtl support.
 - [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
 
-Powred by [LiveMena](https://livemena.com/)
+Powred by [LiveMena](http://livemena.com/)
 
 ![](http://livemena.com/img/logo-b1.png)
