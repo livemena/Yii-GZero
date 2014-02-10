@@ -28,4 +28,5 @@ Yii Grand-Zero Ready-to-code application template
 - [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
 
 Powred by [LiveMena](http://livemena.com/)
+
 ![](http://livemena.com/img/logo-b1.png)
