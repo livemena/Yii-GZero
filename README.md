@@ -18,6 +18,7 @@ Yii Grand-Zero Ready-to-code application template
 - mobile detector.
 - Yii debug toolbar.
 - Google analytics.
+- Pages manager
 
 ### To do:
 - mailer
