@@ -6,7 +6,7 @@
 <div class="view">
 
 	<b>Page:</b>
-	<?php echo CHtml::link(CHtml::encode($data->title), array('view', 'slug'=>$data->slug)); ?>
+	<?php echo CHtml::link(CHtml::encode($data->title_en), array('view', 'slug'=>$data->slug)); ?>
 	<br />
 
 	<b>Page URL:</b>
@@ -20,6 +20,5 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('created_at')); ?>:</b>
 	<?php echo CHtml::encode($data->created_at); ?>
 	<br />
-
 
 </div>

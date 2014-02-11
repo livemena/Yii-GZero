@@ -17,18 +17,28 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'title'); ?>
-		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>128)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'slug'); ?>
 		<?php echo $form->textField($model,'slug',array('size'=>60,'maxlength'=>128)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'body'); ?>
-		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'title_en'); ?>
+		<?php echo $form->textField($model,'title_en',array('size'=>60,'maxlength'=>128)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'title_ar'); ?>
+		<?php echo $form->textField($model,'title_ar',array('size'=>60,'maxlength'=>128)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'body_en'); ?>
+		<?php echo $form->textArea($model,'body_en',array('rows'=>6, 'cols'=>50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'body_ar'); ?>
+		<?php echo $form->textArea($model,'body_ar',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">

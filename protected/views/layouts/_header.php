@@ -14,6 +14,7 @@
 			'htmlOptions'=>array('class'=>'nav navbar-nav'),
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
+				array('label'=>'Pages', 'url'=>array('/page/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

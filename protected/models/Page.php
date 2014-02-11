@@ -5,9 +5,11 @@
  *
  * The followings are the available columns in table 'page':
  * @property integer $id
- * @property string $title
  * @property string $slug
- * @property string $body
+ * @property string $title_en
+ * @property string $title_ar
+ * @property string $body_en
+ * @property string $body_ar
  * @property string $created_at
  */
 class Page extends CActiveRecord
@@ -15,6 +17,10 @@ class Page extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 
+	public $title;
+	public $body;
+	 
 	public function tableName()
 	{
 		return 'page';
@@ -28,11 +34,13 @@ class Page extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, body', 'required'),
-			array('title, slug', 'length', 'max'=>128),
+			array('title_en', 'required'),
+			array('slug, title_en, title_ar', 'length', 'max'=>128),
+			array('body_ar, body_en', 'length', 'max'=>512),
+			array('slug','unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, slug, body, created_at', 'safe', 'on'=>'search'),
+			array('id, slug, title_en, title_ar, body_en, body_ar, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,13 +62,27 @@ class Page extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
 			'slug' => 'Slug',
-			'body' => 'Body',
+			'title_en' => 'Title En',
+			'title_ar' => 'Title Ar',
+			'body_en' => 'Body En',
+			'body_ar' => 'Body Ar',
 			'created_at' => 'Created At',
 		);
 	}
-
+	
+	public function afterFind()
+	{
+		parent::afterFind();
+		
+		$this->title = $this->title_en;
+		$this->body = $this->body_en;
+		
+		if(Yii::app()->language=='ar'){
+			$this->title = $this->title_ar;
+			$this->body = $this->body_ar;
+		}
+	}
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -80,9 +102,11 @@ class Page extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
 		$criteria->compare('slug',$this->slug,true);
-		$criteria->compare('body',$this->body,true);
+		$criteria->compare('title_en',$this->title_en,true);
+		$criteria->compare('title_ar',$this->title_ar,true);
+		$criteria->compare('body_en',$this->body_en,true);
+		$criteria->compare('body_ar',$this->body_ar,true);
 		$criteria->compare('created_at',$this->created_at,true);
 
 		return new CActiveDataProvider($this, array(
@@ -100,6 +124,4 @@ class Page extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-	
-	
 }

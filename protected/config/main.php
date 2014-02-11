@@ -19,6 +19,8 @@ return CMap::mergeArray(
 			'application.models.*',
 			'application.components.*',
 			'application.commands.*',
+			'application.extensions.redactor.ImperaviRedactorWidget',
+			
 		),
 
 		// application components

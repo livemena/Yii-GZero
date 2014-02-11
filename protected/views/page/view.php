@@ -22,6 +22,8 @@ $this->menu=array(
 
 <p>
 	<?php echo $model->body; ?>
-	<br>
+	
+	<br><br>
+	
 	<?php echo $model->created_at; ?>
 </p>

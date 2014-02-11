@@ -82,7 +82,7 @@ class Controller extends CController
             $cs->registerPackage('bootstrap');
         }
 
-		$cs->registerCSSFile(Yii::app()->baseUrl . '/res/lib/'.Yii::app()->language.'/main.css');
+		$cs->registerCSSFile(Yii::app()->baseUrl . '/res/style/main_'.Yii::app()->language.'.css');
         $cs->registerScriptFile(Yii::app()->baseUrl . '/res/js/main.js');
     }
 
@@ -128,7 +128,7 @@ class Controller extends CController
             $cs->packages = array(
                 'fontAwesome' => array(
                     'basePath' => 'application.res',
-                    'baseUrl' => '//netdna.bootstrapcdn.com/font-awesome/3.2.1/',
+                    'baseUrl' => '//netdna.bootstrapcdn.com/font-awesome/4.0.0/',
                     'css' => array('css/font-awesome.min.css'),
                 )
             );

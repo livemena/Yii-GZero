@@ -72,9 +72,13 @@ class PageController extends Controller
 		if(isset($_POST['Page']))
 		{
 			$model->attributes=$_POST['Page'];
-			$model->slug = Text::slug($model->title);
-			if($model->save())
-				$this->redirect('page',array('slug'=>$model->slug));
+			$model->slug = Text::slug($model->title_en);
+			if($model->save()){
+				$this->redirect(array('page/view','slug'=>$model->slug));
+			}else{
+				$model->getErrors();
+			}
+				
 		}
 
 		$this->render('create',array(
@@ -90,15 +94,17 @@ class PageController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Page']))
 		{
 			$model->attributes=$_POST['Page'];
-			if($model->save())
-				$this->redirect('page',array('slug'=>$model->slug));
+			if($model->save()){
+				$this->redirect(array('page/view','slug'=>$model->slug));
+			}else{
+				$model->getErrors();
+			}
 		}
 
 		$this->render('update',array(
