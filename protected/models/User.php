@@ -45,7 +45,7 @@ class User extends CActiveRecord
 			array('email, password', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, email, password', 'safe', 'on'=>'search'),
+			array('id, email', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,7 +57,7 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'authitems' => array(self::MANY_MANY, 'Authitem', 'authassignment(user_id, itemname)'),
+			// 'authitems' => array(self::MANY_MANY, 'Authitem', 'authassignment(user_id, itemname)'),
 		);
 	}
 
@@ -86,7 +86,6 @@ class User extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('email',$this->email,true);
-		$criteria->compare('password',$this->password,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
