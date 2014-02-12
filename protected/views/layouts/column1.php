@@ -17,7 +17,7 @@
 	<hr>
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		<a href="https://github.com/livemena/Yii-GZero" title="Yii Grand-Zero Ready-to-code application template">Yii-GZero</a> <?php echo Yii::powered(); ?>
 	<br>
 	<br>
 	</div><!-- footer -->
