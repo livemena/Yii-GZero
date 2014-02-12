@@ -21,10 +21,12 @@ Yii Grand-Zero Ready-to-code application template
 - Pages manager
 
 ### To do
-- mailer
-- geoLocator
+- users.
+- mailer.
+- geoLocator.
 - multi-language urls.
 - rtl support.
+- facebook, twitter and google connect.
 - [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
 
 Powred by [LiveMena](http://livemena.com/)
