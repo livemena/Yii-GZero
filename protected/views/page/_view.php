@@ -22,7 +22,7 @@
 	<div class="form-group">
 		<label for="htmllink" class="col-sm-2 control-label">HTML Link</label>
 		<div class="col-sm-10">
-		  <input type="text" class="form-control" name="htmllink" value="&lt;a href='<?php echo $this->createUrl('page/view',array('slug'=>$data->slug)); ?>'&gt;<?php echo CHtml::encode($data->title); ?></a>">
+		  <input type="text" class="form-control" name="htmllink" value="&lt;a title='<?php echo CHtml::encode($data->title); ?>' href='<?php echo $this->createUrl('page/view',array('slug'=>$data->slug)); ?>'&gt;<?php echo CHtml::encode($data->title); ?></a>">
 		</div>
     </div>
 	
