@@ -1,3 +1,5 @@
 span.required{
 	color:red
 }
+.form-group .error{}
+.form-group .error .help-block{}

@@ -3,13 +3,17 @@
 /* @var $model ContactForm */
 /* @var $form CActiveForm */
 
+$this->layout='//layouts/column2';
+
 $this->pageTitle=Yii::app()->name . ' - Contact Us';
 $this->breadcrumbs=array(
 	'Contact',
 );
 ?>
 
-<h1>Contact Us</h1>
+<div class="page-header">
+	<h1>Contact Us</h1>
+</div>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
@@ -30,52 +34,60 @@ If you have business inquiries or other questions, please fill out the following
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
+		'errorCssClass'=>'has-error',
 	),
+	// 'errorMessageCssClass'=>'alert alert-danger',
+	'htmlOptions'=>array('class'=>'form-horizontal')
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
+	
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name'); ?>
-		<?php echo $form->error($model,'name'); ?>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'name',array('class'=>'col-sm-2 control-label')); ?>
+		<div class="col-sm-10">
+			<?php echo $form->textField($model,'name',array('class'=>'form-control')); ?>
+			<?php echo $form->error($model,'name',array('class'=>'help-block')); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email'); ?>
-		<?php echo $form->error($model,'email'); ?>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'subject',array('class'=>'col-sm-2 control-label')); ?>
+		<div class="col-sm-10">
+			<?php echo $form->textField($model,'subject',array('class'=>'form-control')); ?>
+			<?php echo $form->error($model,'subject',array('class'=>'help-block')); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'subject'); ?>
-		<?php echo $form->textField($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'subject'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'body'); ?>
-		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'body'); ?>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'body',array('class'=>'col-sm-2 control-label')); ?>
+		<div class="col-sm-10">
+			<?php echo $form->textArea($model,'body',array('class'=>'form-control')); ?>
+			<?php echo $form->error($model,'body',array('class'=>'help-block')); ?>
+		</div>
 	</div>
 
 	<?php if(CCaptcha::checkRequirements()): ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'verifyCode'); ?>
-		<div>
-		<?php $this->widget('CCaptcha'); ?>
-		<?php echo $form->textField($model,'verifyCode'); ?>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<?php echo $form->labelEx($model,'verifyCode'); ?>
+			<div>
+			<?php $this->widget('CCaptcha'); ?>
+			<?php echo $form->textField($model,'verifyCode',array('class'=>'form-control')); ?>
+			<?php echo $form->error($model,'verifyCode',array('class'=>'help-block')); ?>
+			</div>
+			<div class="hint">Please enter the letters as they are shown in the image above.
+			<br/>Letters are not case-sensitive.</div>
+			
 		</div>
-		<div class="hint">Please enter the letters as they are shown in the image above.
-		<br/>Letters are not case-sensitive.</div>
-		<?php echo $form->error($model,'verifyCode'); ?>
 	</div>
 	<?php endif; ?>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn-primary')); ?>
+		</div>
 	</div>
 
 <?php $this->endWidget(); ?>

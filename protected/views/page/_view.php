@@ -15,7 +15,7 @@
 	<div class="form-group">
 		<label for="url" class="col-sm-2 control-label">Page URL</label>
 		<div class="col-sm-10">
-		  <input type="text" class="form-control" name="url" value="<?php echo $this->createUrl('page/view',array('slug'=>$data->slug)); ?>">
+		  <input type="text" onclick="selectText()" class="form-control" name="url" value="<?php echo $this->createUrl('page/view',array('slug'=>$data->slug)); ?>">
 		</div>
     </div>
 	

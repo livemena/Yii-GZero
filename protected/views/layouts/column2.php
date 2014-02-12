@@ -36,6 +36,7 @@
 		All Rights Reserved.<br/>
 		<?php echo Yii::powered(); ?>
 	<br>
+	<br>
 	</div><!-- footer -->
 	
 </div><!-- content -->
