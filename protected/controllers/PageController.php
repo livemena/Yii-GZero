@@ -45,10 +45,13 @@ class PageController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($slug=null)
+	public function actionView($slug=null,$id=null)
 	{
 		if($slug){
 			$model = Page::model()->findByAttributes(array('slug'=>$slug));
+		}
+		if($id){
+			$model = Page::model()->findByPk($id);
 		}
 		if(!$model){
 			throw new CHttpException(404,'x The specified page cannot be found.');

@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Page', 'url'=>array('index')),
-	array('label'=>'Manage Page', 'url'=>array('admin')),
+	array('label'=>'<span class="glyphicon glyphicon-list"></span> List Page', 'url'=>array('index')),
+	array('label'=>'<span class="glyphicon glyphicon-list-alt"></span> Manage Page', 'url'=>array('admin')),
 );
 ?>
 

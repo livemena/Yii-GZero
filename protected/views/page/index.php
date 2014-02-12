@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Page', 'url'=>array('create')),
-	array('label'=>'Manage Page', 'url'=>array('admin')),
+	array('label'=>'<span class="glyphicon glyphicon-plus-sign"></span> Create Page', 'url'=>array('create')),
+	array('label'=>'<span class="glyphicon glyphicon-list-alt"></span> Manage Page', 'url'=>array('admin')),
 );
 ?>
 

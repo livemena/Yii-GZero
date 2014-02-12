@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Page', 'url'=>array('index')),
-	array('label'=>'Create Page', 'url'=>array('create')),
+	array('label'=>'<span class="glyphicon glyphicon-list"></span> List Page', 'url'=>array('index')),
+	array('label'=>'<span class="glyphicon glyphicon-plus-sign"></span> Create Page', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
