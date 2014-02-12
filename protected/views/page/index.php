@@ -18,10 +18,3 @@ $this->menu=array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>
-<script>
-$(document).ready(function() {
-	$('input[type=text]').click(function() {
-		$(this).select();
-	});
-});
-</script>

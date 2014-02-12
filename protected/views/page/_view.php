@@ -8,7 +8,7 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Page</label>
 		<div class="col-sm-10">
-		  <div><?php echo CHtml::link(CHtml::encode($data->title_en), array('view', 'slug'=>$data->slug)); ?></div>
+		  <h5><?php echo CHtml::link(CHtml::encode($data->title_en), array('view', 'slug'=>$data->slug)); ?></h5>
 		</div>
     </div>
 
@@ -29,7 +29,7 @@
 	<div class="form-group">
 		<label for="htmllink" class="col-sm-2 control-label">Created</label>
 		<div class="col-sm-10">
-			<?php echo CHtml::encode($data->created_at); ?>
+			<h5><?php echo CHtml::encode($data->created_at); ?></h5>
 		</div>
     </div>
 </div>

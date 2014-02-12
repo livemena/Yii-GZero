@@ -1,6 +1,6 @@
 <?php 
 	/* @var $this Controller */ 
-	$pageId = $this->id.'/'.$this->action->id;
+	$pageId = $this->id.'-'.$this->action->id;
 	
 	// Default scripts ( jQuery , Bootstrap , default.css )
 	Yii::app()->getController()->registerDefaults();
