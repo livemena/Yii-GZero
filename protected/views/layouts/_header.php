@@ -14,11 +14,12 @@
 			'htmlOptions'=>array('class'=>'nav navbar-nav'),
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Pages', 'url'=>array('/page/index')),
 				array('label'=>'About', 'url'=>array('/p/about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->email.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Pages', 'url'=>array('/page/index')),
+				array('label'=>'SimpleMailer', 'url'=>array('/SimpleMailer'), 'visible'=>Yii::app()->user->isAdmin()),
+				array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!--/.nav-collapse -->

@@ -9,21 +9,29 @@ return array(
 	// preloading 'log' component
 	'preload'=>array('log'),
 
+	'import' => array(
+		'application.modules.SimpleMailer.components.*',
+		'application.modules.SimpleMailer.models.*',
+	),
+		
+	'modules' => array(
+		'SimpleMailer' => array(
+			'attachImages' => true, // This is the default value, for attaching the images used into the emails.
+			'sendEmailLimit'=> 500, // Also the default value, how much emails should be sent when calling yiic mailer
+		),
+	),
+	
 	// application components
 	'components'=>array(
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
 		// uncomment the following to use a MySQL database
-		/*
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=localhost;dbname=gzero',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
 		),
-		*/
+		
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(

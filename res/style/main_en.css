@@ -1,5 +1,8 @@
 span.required{
 	color:red
 }
-.form-group .error{}
-.form-group .error .help-block{}
+.btn-facebook{background-color:#3b5998;color:#fff}
+.btn-facebook:hover,.btn-facebook:active{background-color:#6d84b4;color:#fff}
+.btn-twitter{background-color:#00aced;color:#fff}
+.btn-twitter:hover,.btn-twitter:active{background-color:#1dcaff;color:#fff}
+

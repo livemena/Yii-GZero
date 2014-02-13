@@ -36,7 +36,6 @@ If you have business inquiries or other questions, please fill out the following
 		'validateOnSubmit'=>true,
 		'errorCssClass'=>'has-error',
 	),
-	// 'errorMessageCssClass'=>'alert alert-danger',
 	'htmlOptions'=>array('class'=>'form-horizontal')
 )); ?>
 
