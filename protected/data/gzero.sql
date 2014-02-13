@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2014 at 03:51 PM
+-- Generation Time: Feb 13, 2014 at 05:28 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -39,7 +39,56 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 --
 
 INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
-('admin', '1', NULL, 'N;');
+('admin', '1', NULL, 'N;'),
+('user', '10', NULL, 'N;'),
+('user', '11', NULL, 'N;'),
+('user', '12', NULL, 'N;'),
+('user', '13', NULL, 'N;'),
+('user', '14', NULL, 'N;'),
+('user', '15', NULL, 'N;'),
+('user', '16', NULL, 'N;'),
+('user', '17', NULL, 'N;'),
+('user', '18', NULL, 'N;'),
+('user', '19', NULL, 'N;'),
+('user', '20', NULL, 'N;'),
+('user', '21', NULL, 'N;'),
+('user', '22', NULL, 'N;'),
+('user', '23', NULL, 'N;'),
+('user', '25', NULL, 'N;'),
+('user', '26', NULL, 'N;'),
+('user', '27', NULL, 'N;'),
+('user', '28', NULL, 'N;'),
+('user', '3', NULL, 'N;'),
+('user', '30', NULL, 'N;'),
+('user', '32', NULL, 'N;'),
+('user', '33', NULL, 'N;'),
+('user', '34', NULL, 'N;'),
+('user', '35', NULL, 'N;'),
+('user', '37', NULL, 'N;'),
+('user', '38', NULL, 'N;'),
+('user', '4', NULL, 'N;'),
+('user', '40', NULL, 'N;'),
+('user', '42', NULL, 'N;'),
+('user', '43', NULL, 'N;'),
+('user', '45', NULL, 'N;'),
+('user', '46', NULL, 'N;'),
+('user', '47', NULL, 'N;'),
+('user', '48', NULL, 'N;'),
+('user', '49', NULL, 'N;'),
+('user', '5', NULL, 'N;'),
+('user', '50', NULL, 'N;'),
+('user', '51', NULL, 'N;'),
+('user', '52', NULL, 'N;'),
+('user', '54', NULL, 'N;'),
+('user', '55', NULL, 'N;'),
+('user', '56', NULL, 'N;'),
+('user', '58', NULL, 'N;'),
+('user', '59', NULL, 'N;'),
+('user', '6', NULL, 'N;'),
+('user', '60', NULL, 'N;'),
+('user', '7', NULL, 'N;'),
+('user', '8', NULL, 'N;'),
+('user', '9', NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -127,6 +176,88 @@ INSERT INTO `page` (`id`, `slug`, `title_en`, `title_ar`, `body_en`, `body_ar`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sm_list`
+--
+
+CREATE TABLE IF NOT EXISTS `sm_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `query` text NOT NULL,
+  `email_field` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_sm_list_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sm_queue`
+--
+
+CREATE TABLE IF NOT EXISTS `sm_queue` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `to` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `headers` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `create_time` timestamp NULL DEFAULT NULL,
+  `update_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_sm_queue_to` (`to`),
+  KEY `idx_sm_queue_subject` (`subject`),
+  KEY `idx_sm_queue_status` (`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sm_template`
+--
+
+CREATE TABLE IF NOT EXISTS `sm_template` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `from` varchar(255) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `body` text,
+  `alternative_body` text,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_sm_template_name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `sm_template`
+--
+
+INSERT INTO `sm_template` (`id`, `name`, `description`, `from`, `subject`, `body`, `alternative_body`) VALUES
+(1, 'forgot_password', NULL, 'info@livemena.com', 'Yii-GZero fortgot password email', 'Hello __name__,<br/>\r\n<p>\r\nReset passowrd url: <a href="__url__">__url__</a>\r\n</p>', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_migration`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_migration` (
+  `version` varchar(255) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_migration`
+--
+
+INSERT INTO `tbl_migration` (`version`, `apply_time`) VALUES
+('m000000_000000_base', 1392306406),
+('m140213_154829_add_simplemailer_tables', 1392306536);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -134,21 +265,25 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `name` varchar(128) NOT NULL,
-  `facebook_id` varchar(255) NOT NULL,
-  `google_id` varchar(255) NOT NULL,
-  `twitter` varchar(255) NOT NULL,
+  `first_name` varchar(128) CHARACTER SET utf8 NOT NULL,
+  `last_name` varchar(128) NOT NULL,
+  `gender` tinyint(4) NOT NULL,
+  `birth` date NOT NULL,
+  `facebook_id` bigint(20) NOT NULL,
+  `google_id` bigint(20) NOT NULL,
+  `twitter_id` bigint(20) NOT NULL,
+  `key` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `password`, `name`, `facebook_id`, `google_id`, `twitter`) VALUES
-(1, 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'Admin', '', '', ''),
-(2, 'user@user.com', 'e10adc3949ba59abbe56e057f20f883e', 'Anas', '', '', '');
+INSERT INTO `user` (`id`, `email`, `password`, `first_name`, `last_name`, `gender`, `birth`, `facebook_id`, `google_id`, `twitter_id`, `key`) VALUES
+(1, 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'Admin', 'Admin', 0, '0000-00-00', 0, 0, 0, '8612c55d2969d1f587bf1c5aaaa32964'),
+(2, 'user@user.com', 'e10adc3949ba59abbe56e057f20f883e', 'Anas', '', 0, '0000-00-00', 0, 0, 0, '');
 
 --
 -- Constraints for dumped tables
