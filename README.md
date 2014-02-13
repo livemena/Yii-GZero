@@ -18,15 +18,14 @@ Yii Grand-Zero Ready-to-code application template
 - mobile detector.
 - Yii debug toolbar.
 - Google analytics.
-- Pages manager
+- Pages manager.
+- SimpleMailer.
+- Google, facebook and twitter connect.
 
 ### To do
-- users.
-- mailer.
 - geoLocator.
 - multi-language urls.
 - rtl support.
-- facebook, twitter and google connect.
 - [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
 
 Powred by [LiveMena](http://livemena.com/)
