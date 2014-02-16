@@ -50,10 +50,6 @@ return CMap::mergeArray(
 				'class'=>'CDbAuthManager',
 			),
 			
-            'bsHtml' => array(
-                'class' => 'components.BSHtml'
-            ),
-			
 			'urlManager'=>array(
 				'urlFormat'=>'path',
 				'showScriptName'=>false,
