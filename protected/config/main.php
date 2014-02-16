@@ -41,9 +41,18 @@ return CMap::mergeArray(
 				'class' => 'WebUser',
 			),
 			
+			'messages'=>array(
+				'class'=>'CDbMessageSource',
+				//additional parameters for CDbMessageSource here
+			),
+			
 			'authManager'=>array(
 				'class'=>'CDbAuthManager',
 			),
+			
+            'bsHtml' => array(
+                'class' => 'components.BSHtml'
+            ),
 			
 			'urlManager'=>array(
 				'urlFormat'=>'path',

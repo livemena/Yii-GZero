@@ -64,10 +64,10 @@ class Page extends CActiveRecord
 			'id' => 'ID',
 			'slug' => 'Slug',
 			'title_en' => 'Title En',
-			'title_ar' => 'Title Ar',
+			'title_ar' => 'العنوان',
 			'body_en' => 'Body En',
-			'body_ar' => 'Body Ar',
-			'created_at' => 'Created At',
+			'body_ar' => 'النص',
+			'created_at' => Yii::t('app','created_at'),
 		);
 	}
 	

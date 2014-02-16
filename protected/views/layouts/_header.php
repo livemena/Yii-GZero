@@ -13,13 +13,13 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'htmlOptions'=>array('class'=>'nav navbar-nav'),
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/p/about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Pages', 'url'=>array('/page/index')),
+				array('label'=>Yii::t('app','home'), 'url'=>array('/site/index')),
+				array('label'=>Yii::t('app','aboutus'), 'url'=>array('/p/about')),
+				array('label'=>Yii::t('app','contact'), 'url'=>array('/site/contact')),
+				array('label'=>'Page', 'url'=>array('/page/index')),
 				array('label'=>'SimpleMailer', 'url'=>array('/SimpleMailer'), 'visible'=>Yii::app()->user->isAdmin()),
-				array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>Yii::t('app','login'), 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>Yii::t('app','logout').' ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!--/.nav-collapse -->

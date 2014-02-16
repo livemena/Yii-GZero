@@ -77,17 +77,17 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'email' => 'Email',
-			'password' => 'Password',
-			'first_name' => 'First Name',
-			'last_name' => 'Last Name',
-			'gender' => 'Gender',
-			'birth' => 'Birth',
-			'facebook_id' => 'Facebook',
-			'google_id' => 'Google',
-			'twitter_id' => 'Twitter',
-			'name' => 'Name',
-			'verifyPassword' => 'Confirm Password',
+			'email' => Yii::t('app','email'),
+			'password' => Yii::t('app','password'),
+			'first_name' => Yii::t('app','first_name'),
+			'last_name' => Yii::t('app','last_name'),
+			'gender' => Yii::t('app','gender'),
+			'birth' => Yii::t('app','birth'),
+			'facebook_id' => Yii::t('app','facebook'),
+			'google_id' => Yii::t('app','google'),
+			'twitter_id' => Yii::t('app','twitter'),
+			'name' => Yii::t('app','name'),
+			'verifyPassword' => Yii::t('app','verifyPassword'),
 		);
 	}
 

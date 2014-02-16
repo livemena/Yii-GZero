@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 ?>
 
 <div class="page-header">
-	<h1>Contact Us</h1>
+	<h1><?php echo Yii::t('app','contactus') ?></h1>
 </div>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
@@ -85,7 +85,7 @@ If you have business inquiries or other questions, please fill out the following
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn-primary')); ?>
+			<?php echo CHtml::submitButton(Yii::t('app','submit'),array('class'=>'btn btn-primary')); ?>
 		</div>
 	</div>
 

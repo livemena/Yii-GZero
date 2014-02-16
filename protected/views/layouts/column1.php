@@ -15,7 +15,7 @@
 	
 	<div id="footer">
 	<hr>
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by LiveMena.<br/>
 		All Rights Reserved.<br/>
 		<a href="https://github.com/livemena/Yii-GZero" title="Yii Grand-Zero Ready-to-code application template">Yii-GZero</a> <?php echo Yii::powered(); ?>
 	<br>
