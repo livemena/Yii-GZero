@@ -17,6 +17,7 @@
 				array('label'=>Yii::t('app','aboutus'), 'url'=>array('/p/about')),
 				array('label'=>Yii::t('app','contact'), 'url'=>array('/site/contact')),
 				array('label'=>'Page', 'url'=>array('/page/index')),
+				array('label'=>'Messages', 'url'=>array('/message/index')),
 				array('label'=>'SimpleMailer', 'url'=>array('/SimpleMailer'), 'visible'=>Yii::app()->user->isAdmin()),
 				array('label'=>Yii::t('app','login'), 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>Yii::t('app','logout').' ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest)

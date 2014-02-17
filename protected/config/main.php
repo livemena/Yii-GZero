@@ -43,7 +43,9 @@ return CMap::mergeArray(
 			
 			'messages'=>array(
 				'class'=>'CDbMessageSource',
-				//additional parameters for CDbMessageSource here
+				  'forceTranslation'=>true,
+				  'sourceMessageTable' => 'source_message',
+				  'translatedMessageTable' => 'message',
 			),
 			
 			'authManager'=>array(
