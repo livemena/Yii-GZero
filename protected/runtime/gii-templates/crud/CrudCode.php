@@ -178,7 +178,7 @@ class CrudCode extends CCodeModel
 		if($column->type==='boolean')
 			return "CHtml::activeCheckBox(\$model,'{$column->name}')";
 		elseif(stripos($column->dbType,'text')!==false)
-			return "CHtml::activeTextArea(\$model,'{$column->name}',array('class'=>'form-control','rows'=>3,'placeholder'=>\$form->getAttributeLabel('{$column->name}')))";
+			return "CHtml::activeTextArea(\$model,'{$column->name}',array('class'=>'form-control','rows'=>3,'placeholder'=>\$model->getAttributeLabel('{$column->name}')))";
 		else
 		{
 			if(preg_match('/^(password|pass|passwd|passcode)$/i',$column->name))
@@ -192,7 +192,7 @@ class CrudCode extends CCodeModel
 			{
 				if(($size=$maxLength=$column->size)>60)
 					$size=60;
-				return "CHtml::{$inputField}(\$model,'{$column->name}',array('size'=>$size,'maxlength'=>$maxLength,'class'=>'form-control','placeholder'=>\$form->getAttributeLabel('{$column->name}')))";
+				return "CHtml::{$inputField}(\$model,'{$column->name}',array('size'=>$size,'maxlength'=>$maxLength,'class'=>'form-control','placeholder'=>\$model->getAttributeLabel('{$column->name}')))";
 			}
 		}
 	}
@@ -207,7 +207,7 @@ class CrudCode extends CCodeModel
 		if($column->type==='boolean')
 			return "\$form->checkBox(\$model,'{$column->name}')";
 		elseif(stripos($column->dbType,'text')!==false)
-			return "\$form->textArea(\$model,'{$column->name}',array('class'=>'form-control','rows'=>3,'placeholder'=>\$form->getAttributeLabel('{$column->name}')))";
+			return "\$form->textArea(\$model,'{$column->name}',array('class'=>'form-control','rows'=>3,'placeholder'=>\$model->getAttributeLabel('{$column->name}')))";
 		else
 		{
 			if(preg_match('/^(password|pass|passwd|passcode)$/i',$column->name))
@@ -221,7 +221,7 @@ class CrudCode extends CCodeModel
 			{
 				if(($size=$maxLength=$column->size)>60)
 					$size=60;
-				return "\$form->{$inputField}(\$model,'{$column->name}',array('size'=>$size,'maxlength'=>$maxLength,'class'=>'form-control','placeholder'=>\$form->getAttributeLabel('{$column->name}')))";
+				return "\$form->{$inputField}(\$model,'{$column->name}',array('size'=>$size,'maxlength'=>$maxLength,'class'=>'form-control','placeholder'=>\$model->getAttributeLabel('{$column->name}')))";
 			}
 		}
 	}

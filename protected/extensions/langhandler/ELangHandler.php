@@ -8,7 +8,7 @@ class ELangHandler extends CApplicationComponent {
         $this->parseLanguage();
     }
 
-    private function parseLanguage() {
+    private function parseLanguage(){
         Yii::app()->urlManager->parseUrl(Yii::app()->getRequest());
         if(!isset($_GET['lang'])) {
             $defaultLang = Yii::app()->getRequest()->getPreferredLanguage();

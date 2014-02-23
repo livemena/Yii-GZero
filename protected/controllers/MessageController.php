@@ -40,35 +40,41 @@ class MessageController extends Controller
 		));
 	}
 
-	public function actionFind($term=null)
+	public function actionFind()
 	{
-		$request=trim($term);
+		
+		$request=trim($_POST['term']);
 		
 		if($request!=''){
 		
-			$model = Message::model()->with('source')->findAll(array("condition"=>"translation like '$request%'"));
+			$model = SourceMessage::model()->with('messages')->findAll(array("condition"=>"message like '%$request%' OR messages.translation like '%$request%' "));
 			
-			$source = $model;
-			
-			// die(var_dump($model));
-			// $translate = $
-			
-			
-			// $data=array();
-			// foreach($model as $get){
-				// $data[]=$get->translation;
-			// }
-			
-			// $table = '';
-			// foreach($model as $m){
-				// echo $m->
-			// }
-			
-			// header('Content-type: application/json');
-			$this->layout='empty';
-			// echo CJavaScript::jsonEncode($data);
-			Yii::app()->end();
-		}
+			if($model){
+				$tbody = '';
+				foreach($model as $src):
+					$messages = SourceMessage::model()->findByAttributes(array('id'=>$src->id));
+				
+					$tbody .= '<tr>';
+						$tbody .= '<td>'.$src->message.'</td>';
+						$tbody .= '<td>';
+						foreach($messages->messages as $translate):
+							$tbody .= '<strong>'.$translate->language.'</strong><br>';
+							$tbody .= $translate->translation;
+							$tbody .= '<hr>';
+						endforeach;
+						$tbody .= '</td>';
+						$tbody .= '<td><input type="text" class="autoselect form-control" value="Yii::t(\'app\',\''.$src->message.'\')" /></td>';
+						$tbody .= '<td></td>';
+					$tbody .= '</tr>';
+				endforeach;
+				
+				$this->layout='empty';
+					echo $tbody;
+				Yii::app()->end();
+			}else
+				echo '';
+		}else
+			echo '';
 	}
 	/*
 	public function actions()
