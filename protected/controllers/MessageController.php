@@ -23,7 +23,7 @@ class MessageController extends Controller
 				// 'users'=>array('*'),
 			// ),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('index','find'),
+				'actions'=>array('index','find','delete'),
 				'roles'=>array('admin'),
 			),
 		);
@@ -54,7 +54,7 @@ class MessageController extends Controller
 				foreach($model as $src):
 					$messages = SourceMessage::model()->findByAttributes(array('id'=>$src->id));
 				
-					$tbody .= '<tr>';
+					$tbody .= '<tr id="'.$src->id.'" >';
 						$tbody .= '<td>'.$src->message.'</td>';
 						$tbody .= '<td>';
 						foreach($messages->messages as $translate):
@@ -64,7 +64,7 @@ class MessageController extends Controller
 						endforeach;
 						$tbody .= '</td>';
 						$tbody .= '<td><input type="text" class="autoselect form-control" value="Yii::t(\'app\',\''.$src->message.'\')" /></td>';
-						$tbody .= '<td></td>';
+						$tbody .= '<td><a class="btn btn-xs btn-danger deleteBtn" title="Delete"><i class="fa fa-trash-o"></i></a></td>';
 					$tbody .= '</tr>';
 				endforeach;
 				
@@ -76,6 +76,65 @@ class MessageController extends Controller
 		}else
 			echo '';
 	}
+	
+	public function actionCreate()
+	{
+		if(Yii::app()->request->isAjaxRequest)
+		{
+			$lastId = SourceMessage::model()->findAll(array('limit'=>1,'select'=>'max(id) as id','order'=>'id DESC'));
+			$newId = intval($lastId[0]->id)+1;
+			
+			$msgKey = Text::teaser($_POST['en'],24,'');
+			if(SourceMessage::model()->findByAttributes(array('message'=>$msgKey))){
+				$msgKey = Text::teaser($_POST['en'],24,'').'_'.rand(10,100);
+			}
+
+			$source = new SourceMessage;
+			$source->id = $newId;
+			$source->message = $msgKey;
+			if($source->save())
+			{
+				if($_POST['en'])
+				{
+					$msg = new Message;
+					$msg->id = $source->id;
+					$msg->language = 'en';
+					$msg->translation = $_POST['en'];
+					$msg->save();
+				}
+				if($_POST['ar'])
+				{
+					$msg = new Message;
+					$msg->id = $source->id;
+					$msg->language = 'ar';
+					$msg->translation = $_POST['ar'];
+					$msg->save();
+				}
+				
+				return $msgKey;
+			}else{
+				return false;
+			}
+		}
+	}
+	
+	public function actionDelete()
+	{
+		if(Yii::app()->request->isAjaxRequest)
+		{
+			$source = SourceMessage::model()->findByAttributes(array('id'=>$_POST['id']));
+			if($source->delete()){
+				return true;
+				Yii::app()->end();
+			}else{
+				die('error');
+			}
+		}else{
+			return false;
+			Yii::app()->end();
+		}
+	}
+	
 	/*
 	public function actions()
 	{

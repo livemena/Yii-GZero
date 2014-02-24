@@ -32,6 +32,8 @@ class SourceMessage extends CActiveRecord
 			array('id', 'required'),
 			array('id', 'numerical', 'integerOnly'=>true),
 			array('category', 'length', 'max'=>32),
+			array('id', 'unique'),
+			array('message', 'unique'),
 			array('message', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -56,10 +58,10 @@ class SourceMessage extends CActiveRecord
 	 */
 	public function attributeLabels() {
 		return array(
-				'id'=>Yii::t('app','source_message.id'),
-				'category'=>Yii::t('app','source_message.category'),
-				'message'=>Yii::t('app','source_message.message'),
-			);
+			'id'=>Yii::t('app','source_message.id'),
+			'category'=>Yii::t('app','source_message.category'),
+			'message'=>Yii::t('app','source_message.message'),
+		);
 	}
 
 	/**
@@ -98,5 +100,11 @@ class SourceMessage extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function afterDelete()
+	{
+		Message::model()->deleteAllByAttributes(array('id'=>$this->id));
+		parent::afterDelete();
 	}
 }

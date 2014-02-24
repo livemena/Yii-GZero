@@ -46,7 +46,7 @@ class Message extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'source' => array(self::BELONGS_TO, 'SourceMessage', 'id'),
+			'id0' => array(self::BELONGS_TO, 'SourceMessage', 'id'),
 		);
 	}
 

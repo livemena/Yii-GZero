@@ -34,8 +34,6 @@ class SiteController extends Controller
 	
 	public function actionLogin()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
 		$this->redirect(array('user/login'));
 	}
 
