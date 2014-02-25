@@ -91,7 +91,7 @@ class MessageController extends Controller
 
 			$source = new SourceMessage;
 			$source->id = $newId;
-			$source->message = $msgKey;
+			$source->message = strtolower($msgKey);
 			if($source->save())
 			{
 				if($_POST['en'])
