@@ -58,12 +58,12 @@ class MessageController extends Controller
 						$tbody .= '<td>'.$src->message.'</td>';
 						$tbody .= '<td>';
 						foreach($messages->messages as $translate):
-							$tbody .= '<strong>'.$translate->language.'</strong><br>';
-							$tbody .= $translate->translation;
+							$tbody .= '<div><label>'.$translate->language.'</label><br>';
+							$tbody .= '<span class="trn">'.$translate->translation.'</span></div>';
 							$tbody .= '<hr>';
 						endforeach;
 						$tbody .= '</td>';
-						$tbody .= '<td><input type="text" class="autoselect form-control" value="Yii::t(\'app\',\''.$src->message.'\')" /></td>';
+						$tbody .= '<td><input type="text" class="autoselect form-control embed" value="Yii::t(\'app\',\''.$src->message.'\')" /></td>';
 						$tbody .= '<td><a class="btn btn-xs btn-danger deleteBtn" title="Delete"><i class="fa fa-trash-o"></i></a></td>';
 					$tbody .= '</tr>';
 				endforeach;
@@ -79,7 +79,7 @@ class MessageController extends Controller
 	
 	public function actionCreate()
 	{
-		if(Yii::app()->request->isAjaxRequest)
+		if(Yii::app()->request->isAjaxRequest && !empty($_POST['en']) || !empty($_POST['ar']))
 		{
 			$lastId = SourceMessage::model()->findAll(array('limit'=>1,'select'=>'max(id) as id','order'=>'id DESC'));
 			$newId = intval($lastId[0]->id)+1;
@@ -111,11 +111,13 @@ class MessageController extends Controller
 					$msg->save();
 				}
 				
-				return $msgKey;
+				echo $msgKey;
+				Yii::app()->end();
 			}else{
 				return false;
 			}
-		}
+		} else
+		return false;
 	}
 	
 	public function actionDelete()

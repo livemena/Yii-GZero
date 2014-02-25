@@ -22,3 +22,13 @@ span.required{
 	direction:rtl;
 	text-align:right;
 }
+#ajaxFind input{
+	background:url("icon-search.png") no-repeat scroll 98% center rgba(0, 0, 0, 0)
+}
+#results label{
+    color: #ff8782;
+    font-family: Courier New;
+    font-size: 12px;
+    line-height: 12px;
+    text-transform: uppercase;
+}
