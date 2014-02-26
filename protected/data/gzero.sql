@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2014 at 05:28 PM
+-- Generation Time: Feb 26, 2014 at 10:54 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -40,55 +40,7 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 
 INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('admin', '1', NULL, 'N;'),
-('user', '10', NULL, 'N;'),
-('user', '11', NULL, 'N;'),
-('user', '12', NULL, 'N;'),
-('user', '13', NULL, 'N;'),
-('user', '14', NULL, 'N;'),
-('user', '15', NULL, 'N;'),
-('user', '16', NULL, 'N;'),
-('user', '17', NULL, 'N;'),
-('user', '18', NULL, 'N;'),
-('user', '19', NULL, 'N;'),
-('user', '20', NULL, 'N;'),
-('user', '21', NULL, 'N;'),
-('user', '22', NULL, 'N;'),
-('user', '23', NULL, 'N;'),
-('user', '25', NULL, 'N;'),
-('user', '26', NULL, 'N;'),
-('user', '27', NULL, 'N;'),
-('user', '28', NULL, 'N;'),
-('user', '3', NULL, 'N;'),
-('user', '30', NULL, 'N;'),
-('user', '32', NULL, 'N;'),
-('user', '33', NULL, 'N;'),
-('user', '34', NULL, 'N;'),
-('user', '35', NULL, 'N;'),
-('user', '37', NULL, 'N;'),
-('user', '38', NULL, 'N;'),
-('user', '4', NULL, 'N;'),
-('user', '40', NULL, 'N;'),
-('user', '42', NULL, 'N;'),
-('user', '43', NULL, 'N;'),
-('user', '45', NULL, 'N;'),
-('user', '46', NULL, 'N;'),
-('user', '47', NULL, 'N;'),
-('user', '48', NULL, 'N;'),
-('user', '49', NULL, 'N;'),
-('user', '5', NULL, 'N;'),
-('user', '50', NULL, 'N;'),
-('user', '51', NULL, 'N;'),
-('user', '52', NULL, 'N;'),
-('user', '54', NULL, 'N;'),
-('user', '55', NULL, 'N;'),
-('user', '56', NULL, 'N;'),
-('user', '58', NULL, 'N;'),
-('user', '59', NULL, 'N;'),
-('user', '6', NULL, 'N;'),
-('user', '60', NULL, 'N;'),
-('user', '7', NULL, 'N;'),
-('user', '8', NULL, 'N;'),
-('user', '9', NULL, 'N;');
+('user', '2', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -148,6 +100,70 @@ INSERT INTO `config` (`option`, `value`) VALUES
 ('settings_cdn', '0'),
 ('settings_google_analytic', '11'),
 ('skin_background_uri', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE IF NOT EXISTS `message` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `language` varchar(16) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `translation` text CHARACTER SET utf8,
+  PRIMARY KEY (`id`,`language`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id`, `language`, `translation`) VALUES
+(2, 'ar', 'مرحبا'),
+(2, 'en', 'Hello World!'),
+(3, 'ar', 'منزل'),
+(3, 'en', 'home'),
+(4, 'en', 'anas'),
+(6, 'ar', 'الرئيسية'),
+(6, 'en', 'hoem'),
+(7, 'ar', 'الرسائل'),
+(7, 'en', 'messages'),
+(9, 'ar', 'جوجل'),
+(9, 'en', 'google'),
+(10, 'ar', 'مايكروسوفت'),
+(10, 'en', 'microsoft'),
+(11, 'ar', 'نوكيا'),
+(11, 'en', 'nokia'),
+(12, 'ar', 'حمزة'),
+(12, 'en', 'hamaza'),
+(13, 'ar', 'حمزة'),
+(13, 'en', 'hamaza'),
+(14, 'ar', 'حمزة'),
+(14, 'en', 'hamaza'),
+(15, 'ar', 'محمد'),
+(15, 'en', 'mohmmad'),
+(16, 'ar', 'يامن'),
+(16, 'en', 'yamen'),
+(17, 'ar', 'الاردن'),
+(17, 'en', 'Jordan'),
+(19, 'ar', 'جيران'),
+(19, 'en', 'jeeran'),
+(20, 'ar', 'فيسبوك'),
+(20, 'en', 'facebook'),
+(21, 'ar', 'لبنان'),
+(21, 'en', 'lebanon'),
+(22, 'ar', 'تركيا'),
+(22, 'en', 'turkey'),
+(23, 'ar', 'مصر'),
+(23, 'en', 'egypt'),
+(25, 'ar', 'الكويت'),
+(25, 'en', 'KUWATI'),
+(26, 'ar', 'من نحن'),
+(26, 'en', 'About'),
+(27, 'ar', 'من نحن'),
+(27, 'en', 'About'),
+(28, 'ar', 'من نحن'),
+(28, 'en', 'About');
 
 -- --------------------------------------------------------
 
@@ -238,6 +254,49 @@ INSERT INTO `sm_template` (`id`, `name`, `description`, `from`, `subject`, `body
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `source_message`
+--
+
+CREATE TABLE IF NOT EXISTS `source_message` (
+  `id` int(11) NOT NULL,
+  `category` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT 'app',
+  `message` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  UNIQUE KEY `id_2` (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `source_message`
+--
+
+INSERT INTO `source_message` (`id`, `category`, `message`) VALUES
+(2, 'app', 'hello'),
+(3, 'app', 'home'),
+(4, 'app', 'anas'),
+(6, 'app', 'hoem'),
+(7, 'app', 'messages'),
+(9, 'app', 'google'),
+(10, 'app', 'microsoft'),
+(11, 'app', 'nokia'),
+(12, 'app', 'hamaza'),
+(13, 'app', 'hamaza_60'),
+(14, 'app', 'hamaza_44'),
+(15, 'app', 'mohmmad'),
+(16, 'app', 'yamen'),
+(17, 'app', 'Jordan'),
+(19, 'app', 'jeeran'),
+(20, 'app', 'facebook'),
+(21, 'app', 'lebanon'),
+(22, 'app', 'turkey'),
+(23, 'app', 'egypt'),
+(25, 'app', 'kuwati'),
+(26, 'app', 'about'),
+(27, 'app', 'about_50'),
+(28, 'app', 'about_59');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_migration`
 --
 
@@ -275,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `key` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user`
@@ -301,6 +360,12 @@ ALTER TABLE `authassignment`
 ALTER TABLE `authitemchild`
   ADD CONSTRAINT `authitemchild_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `authitemchild_ibfk_2` FOREIGN KEY (`child`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `FK_Message_SourceMessage` FOREIGN KEY (`id`) REFERENCES `source_message` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
