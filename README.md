@@ -1,6 +1,5 @@
-Yii Ground-Zero App (Beta)
+Yii Ground-Zero App
 =========
-test
 Yii Grand-Zero Ready-to-code application template
 
 ### Ready configurations
