@@ -1,4 +1,4 @@
-Yii Ground-Zero App (Beta)
+Yii Ground-Zero App
 =========
 Yii Grand-Zero Ready-to-code application template
 
