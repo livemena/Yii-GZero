@@ -27,6 +27,12 @@ $this->breadcrumbs=array(
 			</div>
 		  </div>
 		  <div class="form-group">
+			<label for="arabic" class="col-sm-2 control-label">Key</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control autoselect" id="key" name="key" placeholder="Optional" />
+			</div>
+		  </div>
+		  <div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 			  <button id="createWord" type="submit" class="btn btn-primary">Save & Get embed code</button>
 			</div>
@@ -75,6 +81,13 @@ $this->breadcrumbs=array(
   </div>
 </div>
 
+<div id="updateTest" class="modal" tabindex="-1" role="dialog" aria-labelledby="updateTest" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+  </div>
+</div>
+</div>
+
 <style>
 #results hr{
 	margin:5px 0
@@ -90,7 +103,7 @@ $(function(){
 	});
 	
 	$('#ajaxFind input[type="text"]').on('keyup',function(){
-		if($(this).val().length >= 3){
+		if($(this).val().length >= 2){
 		$('.loading.loading-2').show();
 			$.ajax({
 				type : 'POST',
@@ -115,7 +128,7 @@ $(function(){
 		}
 	});
 	
-	$('.deleteBtn').live('click', function(){
+	$('.deleteBtn').on('click', function(){
 		if (confirm("Are you sure you want to delete this translate ?")) {
 			$('.loading.loading-2').show();
 			var id = $(this).closest('tr').attr('id');
@@ -143,15 +156,40 @@ $(function(){
 		$('.loading.loading-1').show();
 		$.ajax({
 			type : 'POST',
-			data : {en:$('#english').val(),ar:$('#arabic').val()},
+			data : {en:$('#english').val(),ar:$('#arabic').val(),key:$('#key').val()},
 			url: baseUrl+"/message/create",
 		}).success(function(data) {
 			$('.loading.loading-1').hide();
 			$('#embedOutput').val("Yii::t('app','"+data+"')");
 			$('#embedOutput').select();
-		}).error(function(data){
+		}).error(function(xhr, ajaxOptions, thrownError){
 			$('.loading.loading-1').hide();
-			alert(data);
+			alert(thrownError);
+		});
+	});
+	
+	$("a[data-target=#updateTest]").live('click',function(ev) {
+		ev.preventDefault();
+		var target = $(this).attr("href");
+
+		// load the url and show modal on success
+		$("#updateTest .modal-content").load(target, function() { 
+			 $("#updateTest").modal("show"); 
+		});
+	});
+	
+	$('#save').live('click',function(){
+		$('.loading.loading-3').show();
+		$.ajax({
+			type : 'POST',
+			data : {msgEn:$('#msgEn').val(),msgAr:$('#msgAr').val()},
+			url: baseUrl+"/message/update/"+$('#sourceId').val(),
+		}).success(function(data) {
+			$('.loading.loading-3').hide();
+			alert('saved');
+		}).error(function(xhr, ajaxOptions, thrownError){
+			$('.loading.loading-3').hide();
+			alert(thrownError);
 		});
 	});
 	

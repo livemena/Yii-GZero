@@ -98,4 +98,29 @@ class Message extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public static function newMsg($msg,$key)
+	{
+		$lastId = SourceMessage::model()->findAll(array('limit'=>1,'select'=>'max(id) as id','order'=>'id DESC'));
+		$newId = intval($lastId[0]->id)+1;
+		
+		$msgKey = $key;
+		if(SourceMessage::model()->findByAttributes(array('message'=>$msgKey))){
+			$msgKey = Text::slug(Text::teaser(strtolower($msg),24,'').'_'.rand(10,100));
+		}
+		
+		$source = new SourceMessage;
+		$source->id = $newId;
+		$source->message = $msgKey;
+		if($source->save())
+		{
+			$message = new Message;
+			$message->id = $source->id;
+			$message->language = 'en';
+			$message->translation = $msg;
+			$message->save();
+		}
+		return true;
+	}
+	
 }

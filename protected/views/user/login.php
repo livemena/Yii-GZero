@@ -39,7 +39,7 @@ $this->breadcrumbs=array(
 				<?php echo $form->passwordField($model,'password',array('class'=>"form-control",'placeholder'=>"Enter password")); ?>
 				<?php echo $form->error($model,'password',array('class'=>'help-block')); ?>
 				<p class="hint">
-					Hint: You may login with <kbd>admin@admin.com</kbd>/<kbd>123456</kbd>.
+					Hint: You may login with <a href="javascript:;" onClick="$('#User_email').val('admin@admin.com');$('#User_password').val('123456');"><kbd>admin@admin.com</kbd>/<kbd>123456</kbd></a>.
 				</p>
 			</div>
 

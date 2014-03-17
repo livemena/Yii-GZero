@@ -58,6 +58,7 @@ return CMap::mergeArray(
 				// 'caseSensitive'=>false,
 				'rules'=>array(
 					'/p/<slug:\w+>'=>'page/view',
+					'/message/update/<id:\d+>'=>'message/update',
 					'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 					'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 					'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

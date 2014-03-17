@@ -23,7 +23,7 @@ class MessageController extends Controller
 				// 'users'=>array('*'),
 			// ),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('index','find','delete'),
+				'actions'=>array('index','find','update','create','delete'),
 				'roles'=>array('admin'),
 			),
 		);
@@ -51,6 +51,7 @@ class MessageController extends Controller
 			
 			if($model){
 				$tbody = '';
+				$i = 1;
 				foreach($model as $src):
 					$messages = SourceMessage::model()->findByAttributes(array('id'=>$src->id));
 				
@@ -64,8 +65,9 @@ class MessageController extends Controller
 						endforeach;
 						$tbody .= '</td>';
 						$tbody .= '<td><input type="text" class="autoselect form-control embed" value="Yii::t(\'app\',\''.$src->message.'\')" /></td>';
-						$tbody .= '<td><a class="btn btn-xs btn-danger deleteBtn" title="Delete"><i class="fa fa-trash-o"></i></a></td>';
-					$tbody .= '</tr>';
+						$tbody .= '<td><a class="btn btn-xs btn-default editBtn" title="Edit" type="button" data-toggle="modal" data-target="#updateTest" href="'.$this->createUrl('message/update',array('id'=>$src->id)).'"><i class="fa fa-pencil-square-o"></i></a>';
+						$tbody .= '<a class="btn btn-xs btn-danger deleteBtn" title="Delete"><i class="fa fa-trash-o"></i></a>';
+						$tbody .= '<div tabindex="-'.$i++.'" class="model" id="update-'.$src->id.'"></div></td></tr>';
 				endforeach;
 				
 				$this->layout='empty';
@@ -77,21 +79,94 @@ class MessageController extends Controller
 			echo '';
 	}
 	
+	public function actionUpdate($id)
+	{
+		$this->layout = false;
+	
+		$source = SourceMessage::model()->findByPk($id);
+		$msgEn = new Message;
+		$msgAr = new Message;
+	
+		if(Yii::app()->request->isPostRequest){
+
+			if(isset($_POST['msgEn'])){
+				$translateEn = Message::model()->findByAttributes(array('id'=>$id,'language'=>'en'));
+				if($translateEn){
+					$translateEn->translation = $_POST['msgEn'];
+					$translateEn->language = 'en';
+					$translateEn->save();
+				}else{
+					$translateEn = new Message;
+					$translateEn->id = $id;
+					$translateEn->language = 'en';
+					$translateEn->translation= $_POST['msgEn'];
+					$translateEn->save();
+				}
+			}
+			
+			if(isset($_POST['msgAr'])){
+				$translateAr = Message::model()->findByAttributes(array('id'=>$id,'language'=>'ar'));
+				if($translateAr){
+					$translateAr->translation = $_POST['msgAr'];
+					$translateAr->language = 'ar';
+					$translateAr->save();
+				}else{
+					$translateAr = new Message;
+					$translateAr->id = $id;
+					$translateAr->language = 'ar';
+					$translateAr->translation = $_POST['msgAr'];
+					$translateAr->save();
+				}
+			}
+			return true;
+			Yii::app()->end();
+			
+		} else {
+
+			if(Message::model()->findByAttributes(array('id'=>$id,'language'=>'en'))){
+				$msgEn = Message::model()->findByAttributes(array('id'=>$id,'language'=>'en'));
+			}
+			if(Message::model()->findByAttributes(array('id'=>$id,'language'=>'ar'))){
+				$msgAr = Message::model()->findByAttributes(array('id'=>$id,'language'=>'ar'));
+			}
+
+			$this->render('update',array(
+				'source'=>$source,
+				'msgEn'=>$msgEn,
+				'msgAr'=>$msgAr,
+			));
+		
+		}
+	}
+
+	
 	public function actionCreate()
 	{
 		if(Yii::app()->request->isAjaxRequest && !empty($_POST['en']) || !empty($_POST['ar']))
 		{
 			$lastId = SourceMessage::model()->findAll(array('limit'=>1,'select'=>'max(id) as id','order'=>'id DESC'));
 			$newId = intval($lastId[0]->id)+1;
-			
-			$msgKey = Text::teaser($_POST['en'],24,'');
-			if(SourceMessage::model()->findByAttributes(array('message'=>$msgKey))){
-				$msgKey = Text::teaser($_POST['en'],24,'').'_'.rand(10,100);
-			}
 
+			
+			if($_POST['key'])
+			{
+				$msgKey = $_POST['key'];
+				if(SourceMessage::model()->findByAttributes(array('message'=>$msgKey))){
+					header("HTTP/1.0 400 Please try another key");
+					Yii::app()->end();
+				}
+			}
+			else 
+			{
+				$msgKey = Text::slug(Text::teaser(strtolower($_POST['en']),24,''));
+				if(SourceMessage::model()->findByAttributes(array('message'=>$msgKey))){
+					$msgKey = Text::slug(Text::teaser(strtolower($_POST['en']),24,'').'_'.rand(10,100));
+				}
+			}
+			
 			$source = new SourceMessage;
 			$source->id = $newId;
-			$source->message = strtolower($msgKey);
+			$source->message = $msgKey;
 			if($source->save())
 			{
 				if($_POST['en'])

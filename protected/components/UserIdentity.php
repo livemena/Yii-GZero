@@ -1,27 +1,33 @@
 <?php
 class UserIdentity extends CUserIdentity
 {
+    public $user;
     private $_id;
-    private $_email;
 	
     public function authenticate()
     {
-        $record=User::model()->findByAttributes(array('email'=>$this->username));
-        if($record===null)
+        $user=User::model()->findByAttributes(array('email'=>$this->username));
+        if($user===null)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        else if($record->password!=$this->password)
+        else if($user->password!=$this->password)
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else
         {
-            $this->_id=$record->id;
-            $this->setState('email', $record->email);
+            $this->_id=$user->id;
+			$this->setUser($user);
             $this->errorCode=self::ERROR_NONE;
         }
+		unset($user);
         return !$this->errorCode;
     }
  
-    public function getId()
+    public function getUser()
     {
-        return $this->_id;
+        return $this->user;
+    }
+ 
+    public function setUser(CActiveRecord $user)
+    {
+        $this->user=$user->attributes;
     }
 }

@@ -43,13 +43,13 @@ class Controller extends CController
 
         if ($this->config('settings_cdn')){
             $cs->scriptMap = array(
-                'jquery.js' => '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js',
-                'jquery.min.js' => '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js',
+                'jquery.js' => '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js',
+                'jquery.min.js' => '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js',
             );
             $cs->packages = array(
                 'bootstrap' => array(
                     'basePath' => 'application.res',
-                    'baseUrl' => '//netdna.bootstrapcdn.com/bootstrap/3.0.0/',
+                    'baseUrl' => '//netdna.bootstrapcdn.com/bootstrap/3.1.1/',
                     'js' => array('js/bootstrap.min.js'),
                     'css' => array('css/bootstrap.min.css'),
                     'depends' => array('jquery')

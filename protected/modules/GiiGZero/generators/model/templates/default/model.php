@@ -94,11 +94,12 @@ class <?php echo $modelClass; ?> extends <?php echo $this->baseClass."\n"; ?>
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
-	public function attributeLabels() {
+	public function attributeLabels()
+	{
 		return array(
-	<?php foreach($labels as $name=>$label): ?>
-			<?php echo "'$name'=>Yii::t('app','$tableName.$name'),\n"; ?>
-	<?php endforeach; ?>
+<?php foreach($labels as $name=>$label): ?>
+			<?php echo "'$name' => '$label',\n"; ?>
+<?php endforeach; ?>
 		);
 	}
 

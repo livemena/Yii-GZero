@@ -2,10 +2,33 @@
 class WebUser extends CWebUser 
 {
 	private $_model;
+	public $id;
 
+    public function __get($name)
+    {
+        if ($this->hasState('__userInfo')) {
+            $user=$this->getState('__userInfo',array());
+            if (isset($user[$name])) {
+                return $user[$name];
+            }
+        }
+ 
+        return parent::__get($name);
+    }
+ 
+    public function login($identity, $duration) {
+        $this->setState('__userInfo', $identity->getUser());
+        parent::login($identity, $duration);
+    }
+	
 	function getModel(){
 		return $this->loadUser(Yii::app()->user->id);
 	}
+	
+	public function getId()
+    {
+        return $this->id;
+    }
 	
 	function isAdmin(){
 		if(Yii::app()->user->checkAccess('admin')){
