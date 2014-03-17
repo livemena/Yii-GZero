@@ -2,7 +2,7 @@
 class WebUser extends CWebUser 
 {
 	private $_model;
-	public $id;
+	// public $_id;
 
     public function __get($name)
     {
@@ -24,11 +24,6 @@ class WebUser extends CWebUser
 	function getModel(){
 		return $this->loadUser(Yii::app()->user->id);
 	}
-	
-	public function getId()
-    {
-        return $this->id;
-    }
 	
 	function isAdmin(){
 		if(Yii::app()->user->checkAccess('admin')){

@@ -30,4 +30,10 @@ class UserIdentity extends CUserIdentity
     {
         $this->user=$user->attributes;
     }
+	
+	public function getId()
+    {
+        return $this->_id;
+    }
+	
 }
