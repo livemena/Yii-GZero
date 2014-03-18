@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 ?>
 
 <div class="page-header">
-	<h1><?php echo Yii::t('app','contactus') ?></h1>
+	<h1><?php echo Yii::t('app','contact') ?></h1>
 </div>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>

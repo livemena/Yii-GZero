@@ -12,3 +12,5 @@ $this->pageTitle=Yii::app()->name;
 	<?php echo Yii::app()->user->birth; ?><br>
 	Is Admin: <?php echo var_dump(Yii::app()->user->checkAccess('admin')); ?><br>
 <?php } ?>
+
+<?php echo GZero::langSwitcher(); ?>

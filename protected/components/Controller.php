@@ -158,6 +158,6 @@ class Controller extends CController
 				ga('send', 'pageview');
 			");
 		}
-	}	
+	}
 
 }
