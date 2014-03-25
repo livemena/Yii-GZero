@@ -234,43 +234,45 @@ abstract class CCodeModel extends CFormModel
 	 */
 	public function save()
 	{
-	
-		$model=new ModelCode;
-		if(($pos=strrpos($this->tableName,'.'))!==false)
+		if(in_array('model',$_POST)) 
 		{
-			$schema=substr($this->tableName,0,$pos);
-			$tableName=substr($this->tableName,$pos+1);
-		}
-		else
-		{
-			$schema='';
-			$tableName=$this->tableName;
-		}
-		if($tableName[strlen($tableName)-1]==='*')
-		{
-			$tables=Yii::app()->{$this->connectionId}->schema->getTables($schema);
-			if($this->tablePrefix!='')
+			$model=new ModelCode;
+			if(($pos=strrpos($this->tableName,'.'))!==false)
 			{
-				foreach($tables as $i=>$table)
+				$schema=substr($this->tableName,0,$pos);
+				$tableName=substr($this->tableName,$pos+1);
+			}
+			else
+			{
+				$schema='';
+				$tableName=$this->tableName;
+			}
+			if($tableName[strlen($tableName)-1]==='*')
+			{
+				$tables=Yii::app()->{$this->connectionId}->schema->getTables($schema);
+				if($this->tablePrefix!='')
 				{
-					if(strpos($table->name,$this->tablePrefix)!==0)
-						unset($tables[$i]);
+					foreach($tables as $i=>$table)
+					{
+						if(strpos($table->name,$this->tablePrefix)!==0)
+							unset($tables[$i]);
+					}
 				}
 			}
-		}
-		else
-			$tables=array($this->getTableSchema($this->tableName));
+			else
+				$tables=array($this->getTableSchema($this->tableName));
+				
+			foreach($tables as $table)
+			{
+					$labels = $this->generateLabels($table);
+			}			
 			
-		foreach($tables as $table)
-		{
-				$labels = $this->generateLabels($table);
-		}			
-		
-		foreach($labels as $i => $v)
-		{
-			Message::model()->newMsg($v,$tableName.'.'.$i);
+			foreach($labels as $i => $v)
+			{
+				Message::model()->newMsg($v,$tableName.'.'.$i);
+			}
 		}
-
+		
 		$result=true;
 		foreach($this->files as $file)
 		{

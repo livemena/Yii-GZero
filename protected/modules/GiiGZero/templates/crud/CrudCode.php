@@ -216,7 +216,7 @@ class CrudCode extends CCodeModel
 				$inputField='textField';
 
 			if($column->type!=='string' || $column->size===null)
-				return "\$form->{$inputField}(\$model,'{$column->name}')";
+				return "\$form->{$inputField}(\$model,'{$column->name}',array('class'=>'form-control','placeholder'=>\$model->getAttributeLabel('{$column->name}')))";
 			else
 			{
 				if(($size=$maxLength=$column->size)>60)

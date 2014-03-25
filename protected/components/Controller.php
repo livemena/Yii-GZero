@@ -23,7 +23,7 @@ class Controller extends CController
 	
 	public function config($option)
 	{
-		$conf = Config::model()->findByPk(array('option'=>$option));
+		$conf = Config::model()->findByAttributes(array('option'=>$option));
 		
 		// if(isset($conf) && $option=='skin_name')
 		// {

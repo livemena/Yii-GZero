@@ -27,6 +27,7 @@
 						array('label'=>'Messages', 'url'=>array('message/index')),
 						array('label'=>'Page', 'url'=>array('/page/index')),
 						array('label'=>'SimpleMailer', 'url'=>array('/SimpleMailer')),
+						array('label'=>'Gii', 'url'=>array('/gii')),
 					)),
 				array('label'=>Yii::t('app','login'), 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>Yii::t('app','logout').' ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest),
