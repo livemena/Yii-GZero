@@ -15,7 +15,7 @@ Yii Grand-Zero Ready-to-code application template
 - CSS/JS Compressor (Docs: http://www.yiiframework.com/extension/eclientscript/).
 - Text helper.
 - Clear assets and cache commands.
-- mobile detector.
+- Mobile detector.
 - Yii debug toolbar.
 - Google analytics.
 - Pages manager.
@@ -24,8 +24,6 @@ Yii Grand-Zero Ready-to-code application template
 
 ### To do
 - geoLocator.
-- multi-language urls.
-- rtl support.
 - [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
 
 Powred by [LiveMena](http://livemena.com/)
