@@ -1,6 +1,6 @@
-Yii Ground-Zero App
+Yii Ground-Zero App 1.1
 =========
-Yii Grand-Zero Ready-to-code application template
+Yii Grand-Zero Ready-to-code application template based on Yii v1.1.x
 
 ### Ready configurations
 - URL manager.
