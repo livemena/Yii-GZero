@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "config".
+ * This is the model class for table "{{config}}".
  *
- * The followings are the available columns in table 'config':
+ * The followings are the available columns in table '{{config}}':
  * @property string $option
  * @property string $value
  */
@@ -14,7 +14,7 @@ class Config extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'config';
+		return '{{config}}';
 	}
 
 	/**
@@ -25,7 +25,7 @@ class Config extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('option, value', 'required'),
+			array('option', 'required'),
 			array('option', 'length', 'max'=>128),
 			array('value', 'length', 'max'=>256),
 			// The following rule is used by search().
@@ -51,8 +51,8 @@ class Config extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'option' => 'Option',
-			'value' => 'Value',
+						'option'=>Yii::t('app','config.option'),
+						'value'=>Yii::t('app','config.value'),
 		);
 	}
 

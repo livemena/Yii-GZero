@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "page".
+ * This is the model class for table "{{page}}".
  *
- * The followings are the available columns in table 'page':
+ * The followings are the available columns in table '{{page}}':
  * @property integer $id
  * @property string $slug
  * @property string $title_en
@@ -23,7 +23,7 @@ class Page extends CActiveRecord
 	 
 	public function tableName()
 	{
-		return 'page';
+		return '{{page}}';
 	}
 
 	/**

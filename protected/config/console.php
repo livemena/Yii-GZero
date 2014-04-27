@@ -30,6 +30,17 @@ return array(
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
+			'tablePrefix' => 'gz_',
+		),
+		
+		'commandMap'=>array(
+			'migrate'=>array(
+				'class'=>'system.cli.commands.MigrateCommand',
+				'migrationPath'=>'application.migrations',
+				'migrationTable'=>'gz_migration',
+				'connectionID'=>'db',
+				'templateFile'=>'application.migrations.template',
+			),
 		),
 		
 		'log'=>array(

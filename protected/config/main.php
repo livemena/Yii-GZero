@@ -44,12 +44,15 @@ return CMap::mergeArray(
 			'messages'=>array(
 				'class'=>'CDbMessageSource',
 				  'forceTranslation'=>true,
-				  'sourceMessageTable' => 'source_message',
-				  'translatedMessageTable' => 'message',
+				  'sourceMessageTable' => 'gz_source_message',
+				  'translatedMessageTable' => 'gz_message',
 			),
 			
 			'authManager'=>array(
 				'class'=>'CDbAuthManager',
+				'assignmentTable'=>'gz_authassignment',
+				'itemChildTable'=>'gz_authitemchild',
+				'itemTable'=>'gz_authitem',
 			),
 			
 			'urlManager'=>array(
@@ -72,6 +75,7 @@ return CMap::mergeArray(
 				'username' => 'root',
 				'password' => '',
 				'charset' => 'utf8',
+				'tablePrefix' => 'gz_',
 			),
 
 			// Language handler
