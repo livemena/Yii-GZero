@@ -74,7 +74,7 @@ $this->layout='//layouts/column2';
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn-primary')); ?>
+			<?php echo CHtml::submitButton(Yii::t('app','submit'),array('class'=>'btn btn-primary')); ?>
 		</div>
 	</div>
 

@@ -7,6 +7,7 @@ return CMap::mergeArray(
 		'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 		'name'=>'Yii Grand-Zero Application',
 		'language'=>'en',
+		'sourceLanguage'=>'en',
 		
 		// mobile detector
 		'onBeginRequest'=>array('Mobile', 'BeginRequest'),
@@ -58,8 +59,13 @@ return CMap::mergeArray(
 			'urlManager'=>array(
 				'urlFormat'=>'path',
 				'showScriptName'=>false,
+				'class'=>'application.extensions.langhandler.ELangCUrlManager',
 				// 'caseSensitive'=>false,
 				'rules'=>array(
+					// Custom 
+					
+					// GZero
+					'<lang:(en|ar)>/<_c>/<_a>/' => '<_c>/<  _a>',
 					'/p/<slug:\w+>'=>'page/view',
 					'/message/update/<id:\d+>'=>'message/update',
 					'<controller:\w+>/<id:\d+>'=>'<controller>/view',
