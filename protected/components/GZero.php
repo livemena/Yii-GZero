@@ -2,16 +2,22 @@
 
 class GZero
 {
-	public function langSwitcher($type='link',$htmlOptions=array())
+	public static function langSwitcher($type='link',$htmlOptions=array())
 	{
 		$lang = Yii::app()->language;
-		$label = 'عربي';
-		$url = $this->createUrl($this->id.'/'.$this->action->id,array('lang'=>'ar'));
 
-		if($lang=='ar'){
-			$label = 'English';
-			$url = $this->createUrl($this->id.'/'.$this->action->id,array('lang'=>'en'));
+		switch ($lang) {
+			case 'en':
+				$label = 'عربي';
+				$_GET['lang'] = 'ar';
+				break;
+			case 'ar':
+				$label = 'English';
+				$_GET['lang'] = 'en';
+				break;
 		}
+		
+		$url = Yii::app()->getController()->createUrl(Yii::app()->getController()->id.'/'.Yii::app()->getController()->action->id,$_GET);
 		
 		switch ($type) {
 			case 'link':
