@@ -2,7 +2,7 @@
 
 class GZero
 {
-	public function langSwitcher($type='link',$htmlOptions=array())
+	public static function langSwitcher($type='link',$htmlOptions=array())
 	{
 		$lang = Yii::app()->language;
 		$label = 'عربي';

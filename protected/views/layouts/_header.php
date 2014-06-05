@@ -7,15 +7,15 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	  </button>
-	  <a class="navbar-brand" href="#"><?php echo $this->config('name'); ?></a>
+	  <a class="navbar-brand" href="<?php echo $this->createUrl('site/index'); ?>"><?php echo $this->config('name'); ?></a>
 	</div>
 	<div class="collapse navbar-collapse">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'htmlOptions'=>array('class'=>'nav navbar-nav'),
 			'encodeLabel' => false,
 			'items'=>array(
-				array('label'=>Yii::t('app','home'), 'url'=>array('/site/index')),
-				array('label'=>Yii::t('app','aboutus'), 'url'=>array('/p/about')),
+				array('label'=>Yii::t('app','home'), 'url'=>array('site/index')),
+				array('label'=>Yii::t('app','aboutus'), 'url'=>array('page/view','slug'=>'about')),
 				array('label'=>Yii::t('app','contact'), 'url'=>array('/site/contact')),
 				array('label'=>Yii::t('app','admin').' <b class="caret"></b>',
 					'itemOptions' => array('class' => 'dropdown'),

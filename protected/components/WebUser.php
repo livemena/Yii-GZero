@@ -5,7 +5,7 @@
 class WebUser extends CWebUser 
 {
 	private $_model;
-	// public $_id;
+	public $_id;
 
     public function __get($name)
     {

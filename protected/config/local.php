@@ -23,22 +23,6 @@ return array(
 			  'optimizeScriptFiles' => false,	// @since: 1.1
 			  'optimizeCssFiles' => false,	// @since: 1.1
 		),
-
-		// enabel yii debug toolbar
-		'log'=>array(
-			'class'=>'CLogRouter',
-			'routes'=>array(
-				// array(
-					// 'class'=>'CWebLogRoute',
-				// ),
-				array(
-					'class' => 'CWebLogRoute',
-					'enabled' =>true ,
-					'categories' => 'system.db.*',
-					'class'=>'ext.yii-debug-toolbar.YiiDebugToolbarRoute',
-				),
-			),
-		),
 	),
 	
 );
