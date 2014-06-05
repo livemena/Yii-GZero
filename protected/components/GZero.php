@@ -6,11 +6,11 @@ class GZero
 	{
 		$lang = Yii::app()->language;
 		$label = 'عربي';
-		$url = Yii::app()->getController()->createUrl($this->id.'/'.$this->action->id,array('lang'=>'ar'));
+		$url = $this->createUrl($this->id.'/'.$this->action->id,array('lang'=>'ar'));
 
 		if($lang=='ar'){
 			$label = 'English';
-			$url = Yii::app()->getController()->createUrl($this->id.'/'.$this->action->id,array('lang'=>'en'));
+			$url = $this->createUrl($this->id.'/'.$this->action->id,array('lang'=>'en'));
 		}
 		
 		switch ($type) {
