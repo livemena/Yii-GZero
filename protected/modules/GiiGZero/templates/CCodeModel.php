@@ -268,6 +268,8 @@ abstract class CCodeModel extends CFormModel
 		
 		foreach($labels as $i => $v)
 		{
+			$tableName = str_replace('{{','',$tableName);
+			$tableName = str_replace('}}','',$tableName);
 			Message::model()->newMsg($v,$tableName.$i);
 		}
 
