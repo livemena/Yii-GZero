@@ -1,5 +1,17 @@
 <?php
 
+/* 
+	Copy this code to your model:
+	
+	public function img($w=false, $h=false, $htmlOptions=array()) {
+		$img = 0;
+		$htmlOptions['title']=$this->title;
+		if ($this->image_uri != NULL){ $img = $this->image_uri; }
+		return Img::embed('/news/'.$img, $w, $h, 'default.png',$htmlOptions);
+	}
+	
+*/
+
 class Img
 {
     public static function uri($img, $w=false, $h=false, $def=false) {
