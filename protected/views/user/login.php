@@ -66,7 +66,7 @@ $this->breadcrumbs=array(
 				</div>
 				
 				<p class="hint alert alert-info">
-					<strong>Hint:</strong> You may login with <a href="javascript:;" onClick="$('#User_email').val('admin@admin.com');$('#User_password').val('123456');"><span class="label label-success">admin@admin.com</span> / <span class="label label-success">123456</span></a>.
+					<strong>Hint:</strong> You may login with <a href="javascript:;" onClick="$('#User_email').val('admin@admin.com');$('#User_password').val('123456');"><span class="label label-success">admin@admin.com</span> / <span class="label label-success">123456</span></a>
 				</p>
 
 				<?php echo CHtml::submitButton('Login',array('class'=>'btn btn-lg btn-primary btn-block')); ?>
