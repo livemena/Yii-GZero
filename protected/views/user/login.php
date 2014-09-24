@@ -10,60 +10,84 @@ $this->breadcrumbs=array(
 	'Login',
 );
 ?>
-<div class="row">
-	<div class="col-md-8">
-		<h1>Login</h1>
-
-		<p>Please fill out the following form with your login credentials:</p>
-
-		<div class="form">
-		<?php $form=$this->beginWidget('CActiveForm', array(
-			'id'=>'login-form',
-			'enableClientValidation'=>true,
-			'clientOptions'=>array(
-				'validateOnSubmit'=>true,
-				'errorCssClass'=>'has-error',
-			),
-		)); ?>
-
-			<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-			<div class="form-group">
-				<?php echo $form->labelEx($model,'email'); ?>
-				<?php echo $form->textField($model,'email',array('class'=>"form-control",'placeholder'=>"Enter email")); ?>
-				<?php echo $form->error($model,'email',array('class'=>'help-block')); ?>
+<div id="gz-login-form" class="omb_login">
+	<h3 class="omb_authTitle">Login or <a href="<?php echo $this->createUrl('user/register'); ?>">Sign up</a></h3>
+	<div class="row omb_row-sm-offset-3 omb_socialButtons">
+		<div class="col-xs-4 col-sm-2">
+			<a href="<?php echo $this->createUrl('user/login',array('service'=>'facebook')); ?>" class="btn btn-lg btn-block omb_btn-facebook">
+				<i class="fa fa-facebook visible-xs"></i>
+				<span class="hidden-xs">Facebook</span>
+			</a>
+		</div>
+		<div class="col-xs-4 col-sm-2">
+			<a href="<?php echo $this->createUrl('user/login',array('service'=>'twitter')); ?>" class="btn btn-lg btn-block omb_btn-twitter">
+				<i class="fa fa-twitter visible-xs"></i>
+				<span class="hidden-xs">Twitter</span>
+			</a>
+		</div>	
+		<div class="col-xs-4 col-sm-2">
+			<a href="#" class="btn btn-lg btn-block omb_btn-google">
+				<i class="fa fa-google-plus visible-xs"></i>
+				<span class="hidden-xs">Google+</span>
+			</a>
+		</div>	
+	</div>
+		<div class="row omb_row-sm-offset-3 omb_loginOr">
+			<div class="col-xs-12 col-sm-6">
+				<hr class="omb_hrOr">
+				<span class="omb_spanOr">or</span>
 			</div>
+		</div>
+				
+	<?php $form=$this->beginWidget('CActiveForm', array(
+		'id'=>'login-form',
+		'enableClientValidation'=>true,
+		'clientOptions'=>array(
+			'validateOnSubmit'=>true,
+			'errorCssClass'=>'has-error',
+		),
+	)); ?>
+		<div class="row omb_row-sm-offset-3">
+			<div class="col-xs-12 col-sm-6">	
 
-			<div class="form-group">
-				<?php echo $form->labelEx($model,'password'); ?>
-				<?php echo $form->passwordField($model,'password',array('class'=>"form-control",'placeholder'=>"Enter password")); ?>
-				<?php echo $form->error($model,'password',array('class'=>'help-block')); ?>
-				<p class="hint">
-					Hint: You may login with <a href="javascript:;" onClick="$('#User_email').val('admin@admin.com');$('#User_password').val('123456');"><kbd>admin@admin.com</kbd>/<kbd>123456</kbd></a>.
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<?php echo $form->emailField($model,'email',array('class'=>"form-control",'placeholder'=>"Enter email")); ?>
+					</div>
+					<?php echo $form->error($model,'email',array('class'=>'help-block')); ?>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<?php echo $form->passwordField($model,'password',array('class'=>"form-control",'placeholder'=>"Enter password")); ?>
+					</div>
+					<?php echo $form->error($model,'password',array('class'=>'help-block')); ?>
+				</div>
+				
+				<p class="hint alert alert-info">
+					<strong>Hint:</strong> You may login with <a href="javascript:;" onClick="$('#User_email').val('admin@admin.com');$('#User_password').val('123456');"><span class="label label-success">admin@admin.com</span> / <span class="label label-success">123456</span></a>.
+				</p>
+
+				<?php echo CHtml::submitButton('Login',array('class'=>'btn btn-lg btn-primary btn-block')); ?>
+
+			</div>
+		</div>
+		<div class="row omb_row-sm-offset-3">
+			<div class="col-xs-12 col-sm-3">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" checked value="1" id="User_rememberMe" name="User[rememberMe]"> Remember Me
+					</label>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-3">
+				<p class="omb_forgotPwd">
+					<a href="#">Forgot password ?</a>
 				</p>
 			</div>
-
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" checked value="1" id="User_rememberMe" name="User[rememberMe]"> Remember me next time
-				</label>
-			</div>
-
-			<div class="buttons">
-				<?php echo CHtml::submitButton('Login',array('class'=>'btn btn-primary')); ?>
-				<div class="help-block"><a href="<?php echo $this->createUrl('user/forgotPassword'); ?>">Forgot your password ?</a></div>
-			</div>
-
+		</div>
+		
 		<?php $this->endWidget(); ?>
-		</div><!-- form -->
-	</div>
-	<div class="col-md-4">
-		<p>
-			<a href="<?php echo $this->createUrl('user/login',array('service'=>'facebook')); ?>" class="btn btn-facebook"> Login using facebook</a>
-			&nbsp;&nbsp;
-			<a href="<?php echo $this->createUrl('user/login',array('service'=>'twitter')); ?>" class="btn btn-twitter"> Login using twitter</a>
-		</p>
-		<p class="text-muted">OR</p>
-		<p><a href="<?php echo $this->createUrl('user/register'); ?>">Register from here</a></p>
-	</div>
+		
 </div>

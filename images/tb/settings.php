@@ -1,7 +1,7 @@
 <?php
 
 class Conf {
-  public static $qaulity = array('png'=>9, 'jpeg'=>85);
+  public static $qaulity = array('png'=>9, 'jpeg'=>80);
   public static $orig = '..';
   public static $max_width = 1000;
   public static $max_height = 1000;
