@@ -16,7 +16,6 @@ Yii Grand-Zero Ready-to-code application template based on Yii v1.1.x
 - Text helper.
 - Clear assets and cache commands.
 - Mobile detector.
-- Yii debug toolbar.
 - Google analytics.
 - Pages manager.
 - SimpleMailer.
