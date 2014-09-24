@@ -45,10 +45,8 @@ $this->breadcrumbs=array(
 
 			<div class="checkbox">
 				<label>
-					<?php echo $form->checkBox($model,'rememberMe'); ?>
-					Remember me next time
+					<input type="checkbox" checked value="1" id="User_rememberMe" name="User[rememberMe]"> Remember me next time
 				</label>
-				<?php echo $form->error($model,'rememberMe'); ?>
 			</div>
 
 			<div class="buttons">

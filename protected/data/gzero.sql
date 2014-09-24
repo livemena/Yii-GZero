@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2014 at 12:03 PM
+-- Generation Time: Sep 08, 2014 at 07:39 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -206,6 +206,68 @@ INSERT INTO `gz_page` (`id`, `slug`, `title_en`, `title_ar`, `body_en`, `body_ar
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gz_sm_list`
+--
+
+CREATE TABLE IF NOT EXISTS `gz_sm_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `query` text CHARACTER SET latin1 NOT NULL,
+  `email_field` varchar(255) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_sm_list_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gz_sm_queue`
+--
+
+CREATE TABLE IF NOT EXISTS `gz_sm_queue` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `to` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `subject` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `body` text CHARACTER SET latin1 NOT NULL,
+  `headers` text CHARACTER SET latin1 NOT NULL,
+  `status` int(11) NOT NULL,
+  `create_time` timestamp NULL DEFAULT NULL,
+  `update_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_sm_queue_to` (`to`),
+  KEY `idx_sm_queue_subject` (`subject`),
+  KEY `idx_sm_queue_status` (`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gz_sm_template`
+--
+
+CREATE TABLE IF NOT EXISTS `gz_sm_template` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `from` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `subject` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `body` text CHARACTER SET latin1,
+  `alternative_body` text CHARACTER SET latin1,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_sm_template_name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `gz_sm_template`
+--
+
+INSERT INTO `gz_sm_template` (`id`, `name`, `description`, `from`, `subject`, `body`, `alternative_body`) VALUES
+(1, 'forgot_password', NULL, 'info@livemena.com', 'Yii-GZero fortgot password email', 'Hello __name__,<br/>\r\n<p>\r\nReset passowrd url: <a href="__url__">__url__</a>\r\n</p>', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gz_source_message`
 --
 
@@ -273,68 +335,6 @@ CREATE TABLE IF NOT EXISTS `gz_user` (
 INSERT INTO `gz_user` (`id`, `email`, `password`, `first_name`, `last_name`, `gender`, `birth`, `facebook_id`, `google_id`, `twitter_id`, `key`) VALUES
 (1, 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'Admin', 'Admin', 0, '0000-00-00', 0, 0, 0, '8612c55d2969d1f587bf1c5aaaa32964'),
 (2, 'user@user.com', 'e10adc3949ba59abbe56e057f20f883e', 'Anas', '', 0, '0000-00-00', 0, 0, 0, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sm_list`
---
-
-CREATE TABLE IF NOT EXISTS `sm_list` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `query` text NOT NULL,
-  `email_field` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_sm_list_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sm_queue`
---
-
-CREATE TABLE IF NOT EXISTS `sm_queue` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `to` varchar(255) NOT NULL,
-  `subject` varchar(255) NOT NULL,
-  `body` text NOT NULL,
-  `headers` text NOT NULL,
-  `status` int(11) NOT NULL,
-  `create_time` timestamp NULL DEFAULT NULL,
-  `update_time` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_sm_queue_to` (`to`),
-  KEY `idx_sm_queue_subject` (`subject`),
-  KEY `idx_sm_queue_status` (`status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sm_template`
---
-
-CREATE TABLE IF NOT EXISTS `sm_template` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `from` varchar(255) DEFAULT NULL,
-  `subject` varchar(255) DEFAULT NULL,
-  `body` text,
-  `alternative_body` text,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_sm_template_name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `sm_template`
---
-
-INSERT INTO `sm_template` (`id`, `name`, `description`, `from`, `subject`, `body`, `alternative_body`) VALUES
-(1, 'forgot_password', NULL, 'info@livemena.com', 'Yii-GZero fortgot password email', 'Hello __name__,<br/>\r\n<p>\r\nReset passowrd url: <a href="__url__">__url__</a>\r\n</p>', NULL);
 
 --
 -- Constraints for dumped tables

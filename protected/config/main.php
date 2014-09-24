@@ -74,6 +74,8 @@ return CMap::mergeArray(
 					
 					// GZero
 					'<lang:(ar|en)>/<_c>/<_a>/' => '<_c>/<_a>',
+					'<lang:(ar|en)>/login'=>'user/login',
+					'<lang:(ar|en)>/admin'=>'page/admin',
 					'page/<slug:\w+>'=>'page/view',
 					'/message/update/<id:\d+>'=>'message/update',
 					'<controller:\w+>/<id:\d+>'=>'<controller>/view',

@@ -2,10 +2,14 @@
 	/* @var $this Controller */ 
 	$pageId = $this->id.'-'.$this->action->id;
 	
-	// Default scripts ( jQuery , Bootstrap , default.css )
-	Yii::app()->getController()->registerDefaults();
-	Yii::app()->getController()->registerFontAwesome();
-	Yii::app()->getController()->registerGoogleAnalytics();
+	/*
+	* Available packages:
+	* bootstrap
+	* fontawesome (optional)
+	* fancybox (optional)
+	* GZero::registerPackage(cdn(boolean),$ga_id(Google Analytics ID),$packages = array());
+	*/
+	GZero::registerPackage(false,false,array('fontawesome','fancybox'));
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo Yii::app()->language; ?>">

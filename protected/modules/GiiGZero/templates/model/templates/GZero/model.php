@@ -99,10 +99,11 @@ class <?php echo $modelClass; ?> extends <?php echo $this->baseClass."\n"; ?>
 		return array(
 <?php foreach($labels as $name=>$label): ?>
 			<?php 
+				$tableName = str_replace($this->tablePrefix,'',$tableName);
 				$tableName = str_replace('{{','',$tableName);
 				$tableName = str_replace('}}','',$tableName);
 			?>
-			<?php echo "'$name'=>Yii::t('app','$tableName.$name'),\n"; ?>
+<?php echo "'$name'=>Yii::t('app','$tableName.$name'),\n"; ?>
 <?php endforeach; ?>
 		);
 	}
