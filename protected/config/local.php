@@ -15,14 +15,6 @@ return array(
 
 	'components'=>array(
 
-		// Scripts & CSS optimzation is off
-		'clientScript' => array(
-		  'class' => 'ext.minify.EClientScript',
-			  'combineScriptFiles' => false, // By default this is set to false, set this to true if you'd like to combine the script files
-			  'combineCssFiles' => false, // By default this is set to false, set this to true if you'd like to combine the css files
-			  'optimizeScriptFiles' => false,	// @since: 1.1
-			  'optimizeCssFiles' => false,	// @since: 1.1
-		),
 	),
 	
 );

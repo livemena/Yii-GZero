@@ -9,7 +9,7 @@
 	* fancybox (optional)
 	* GZero::registerPackage(cdn(boolean),$ga_id(Google Analytics ID),$packages = array());
 	*/
-	GZero::registerPackage(false,false,array('fontawesome','fancybox'));
+	GZero::registerPackage(!YII_DEBUG,false,array('fontawesome','fancybox'));
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo Yii::app()->language; ?>">
