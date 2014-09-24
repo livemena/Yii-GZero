@@ -68,7 +68,7 @@ return CMap::mergeArray(
 				'urlFormat'=>'path',
 				'showScriptName'=>false,
 				'class'=>'application.extensions.langhandler.ELangCUrlManager',
-				// 'caseSensitive'=>false,
+				'caseSensitive'=>false,
 				'rules'=>array(
 					// Custom 
 					
@@ -76,6 +76,8 @@ return CMap::mergeArray(
 					'<lang:(ar|en)>/<_c>/<_a>/' => '<_c>/<_a>',
 					'<lang:(ar|en)>/login'=>'user/login',
 					'<lang:(ar|en)>/admin'=>'page/admin',
+					'gii'=>'/gii',
+					'SimpleMailer'=>'/SimpleMailer',
 					'page/<slug:\w+>'=>'page/view',
 					'/message/update/<id:\d+>'=>'message/update',
 					'<controller:\w+>/<id:\d+>'=>'<controller>/view',
@@ -100,14 +102,6 @@ return CMap::mergeArray(
 				'languages' => array('en','ar'),
 				'strict' => true,
 			),
-			// Scripts & CSS optimzation is on
-			// 'clientScript' => array(
-			  // 'class' => 'ext.minify.EClientScript',
-				  // 'combineScriptFiles' => true, // By default this is set to false, set this to true if you'd like to combine the script files
-				  // 'combineCssFiles' => true, // By default this is set to false, set this to true if you'd like to combine the css files
-				  // 'optimizeScriptFiles' => true,	// @since: 1.1
-				  // 'optimizeCssFiles' => true,	// @since: 1.1
-			// ),
 			
      'clientScript' => array(
        'class' => 'ext.yii-EClientScript.EClientScript',

@@ -21,20 +21,9 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 	
-	public function config($option)
+	public function init()
 	{
-		$conf = Config::model()->findByAttributes(array('option'=>$option));
-		
-		// if(isset($conf) && $option=='skin_name')
-		// {
-			// $skins = CJSON::decode($conf->value);
-			// $skin = array_search('1', $skins);
-			// $conf->value = $skin;
-		// }
-		
-		if(isset($conf)){
-			return $conf->value;
-		}
+		date_default_timezone_set("Asia/Amman");
 	}
 	
 }

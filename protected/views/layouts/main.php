@@ -1,7 +1,8 @@
 <?php 
 	/* @var $this Controller */ 
 	$pageId = $this->id.'-'.$this->action->id;
-	
+	$baseUrl = Yii::app()->baseUrl;
+
 	/*
 	* Available packages:
 	* bootstrap
@@ -14,11 +15,11 @@
 <!DOCTYPE html>
 <html lang="<?php echo Yii::app()->language; ?>">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
-	<meta name="description" content="<?php echo $this->config('description'); ?>">
+	<meta name="description" content="">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,8 +34,5 @@
 
 	<?php echo $content; ?>
 
-<?php if($this->config('skin_background_uri')): ?>
-	<style>body{background-image:url("<?php echo $this->config('skin_background_uri'); ?>");}</style>
-<?php endif; ?>
 </body>
 </html>
