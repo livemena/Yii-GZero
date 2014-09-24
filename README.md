@@ -21,9 +21,9 @@ Yii Grand-Zero Ready-to-code application template based on Yii v1.1.x
 - Pages manager.
 - SimpleMailer.
 - Google, facebook and twitter connect.
+- geoLocator.
 
 ### To do
-- geoLocator.
 - [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
 
 Powred by [LiveMena](http://livemena.com/)
