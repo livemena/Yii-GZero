@@ -18,7 +18,6 @@ Yii Grand-Zero Ready-to-code application template based on Yii v1.1.x
 - Mobile detector.
 - Google analytics.
 - Pages manager.
-- SimpleMailer.
 - Google, facebook and twitter connect.
 - geoLocator.
 - Open Graph.
