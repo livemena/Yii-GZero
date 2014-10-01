@@ -5,7 +5,7 @@
 return CMap::mergeArray(
 	array(
 		'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-		'name'=>'Yii Grand-Zero Application',
+		'name'=>'Yii-GZero',
 		'language'=>'en',
 		'sourceLanguage'=>'en',
 		
