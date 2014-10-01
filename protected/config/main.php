@@ -50,14 +50,6 @@ return CMap::mergeArray(
 				'itemChildTable'=>'gz_authitemchild',
 				'itemTable'=>'gz_authitem',
 			),
-		
-      'geoip' => array(
-          'class' => 'application.extensions.geoip.CGeoIP',
-          // specify filename location for the corresponding database
-          'filename' => 'C:\path\to\GeoIP\GeoLiteCity.dat',
-          // Choose MEMORY_CACHE or STANDARD mode
-          'mode' => 'STANDARD',
-      ),
 			
 			'urlManager'=>array(
 				'urlFormat'=>'path',
