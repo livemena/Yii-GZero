@@ -234,7 +234,7 @@ abstract class CCodeModel extends CFormModel
 	 */
 	public function save()
 	{
-	
+
 		$model=new ModelCode;
 		if(($pos=strrpos($this->tableName,'.'))!==false)
 		{
@@ -271,7 +271,8 @@ abstract class CCodeModel extends CFormModel
 				$tableName = str_replace($this->tablePrefix,'',$tableName);
 				$tableName = str_replace('{{','',$tableName);
 				$tableName = str_replace('}}','',$tableName);
-			Message::model()->newMsg($v,$tableName.$i);
+				
+				Message::model()->newMsg($v,$tableName.'.'.$i);
 		}
 
 		$result=true;

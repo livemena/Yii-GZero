@@ -22,7 +22,8 @@
 	  <input type="text" class="form-control rtl-text" id="msgAr" name="msgAr" placeholder="عربي" value="<?php if(isset($msgAr->translation)){echo $msgAr->translation;}; ?>">
 	</div>
   </div>
+	<input type="hidden" id="tr_id" value="<?php echo $source->id; ?>" />
 </form>
 <div class="modal-footer">
-	<button id="save" type="submit" class="btn btn-primary">Save</button>
+	<small class="text-muted">Press enter to save</small> <button id="save" type="submit" class="btn btn-primary">Save</button>
 </div>

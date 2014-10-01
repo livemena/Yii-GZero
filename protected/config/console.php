@@ -10,15 +10,9 @@ return array(
 	'preload'=>array('log'),
 
 	'import' => array(
-		'application.modules.SimpleMailer.components.*',
-		'application.modules.SimpleMailer.models.*',
 	),
 		
 	'modules' => array(
-		'SimpleMailer' => array(
-			'attachImages' => true, // This is the default value, for attaching the images used into the emails.
-			'sendEmailLimit'=> 500, // Also the default value, how much emails should be sent when calling yiic mailer
-		),
 	),
 	
 	// application components

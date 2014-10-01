@@ -48,7 +48,7 @@ class GZero
 				$cs->packages = array(
 						'bootstrap' => array(
 								'basePath' => 'application.res',
-								'baseUrl' => '//netdna.bootstrapcdn.com/bootstrap/3.1.1/',
+								'baseUrl' => '//netdna.bootstrapcdn.com/bootstrap/3.2.0/',
 								'js' => array('js/bootstrap.min.js'),
 								'css' => array('css/bootstrap.min.css'),
 								'depends' => array('jquery')
@@ -57,7 +57,33 @@ class GZero
 								'basePath' => 'application.res',
 								'baseUrl' => '//netdna.bootstrapcdn.com/font-awesome/4.0.0/',
 								'css' => array('css/font-awesome.min.css'),
-						)
+						),
+					'fancybox' => array(
+							'basePath' => 'application.res',
+							'baseUrl' => Yii::app()->baseUrl . '/res/lib/fancybox/',
+							'js' => array('lib/jquery.mousewheel-3.0.6.pack.js', 'source/jquery.fancybox.pack.js'),
+							'css' => array('source/jquery.fancybox.css'),
+							'depends' => array('jquery')
+					),
+					'fancybox-buttons' => array(
+							'basePath' => 'application.res',
+							'baseUrl' => Yii::app()->baseUrl . '/res/lib/fancybox/source/helpers/',
+							'js' => array('jquery.fancybox-buttons.js'),
+							'css' => array('jquery.fancybox-buttons.css'),
+					),
+					'fancybox-thumbs' => array(
+							'basePath' => 'application.res',
+							'baseUrl' => Yii::app()->baseUrl . '/res/lib/fancybox/source/helpers/',
+							'js' => array('jquery.fancybox-thumbs.js'),
+							'css' => array('jquery.fancybox-thumbs.css'),
+					),
+					'bootstrap-rtl' => array(
+							'basePath' => 'application.res',
+							'baseUrl' => Yii::app()->baseUrl . '/res/lib/bootstrap-rtl/',
+							'js' => array('js/bootstrap.js'),
+							'css' => array('css/bootstrap.css'),
+							'depends' => array('jquery')
+					)
 				);
 		else:
 			$cs->packages = array(
@@ -102,16 +128,15 @@ class GZero
 				);
 		endif;
 
-
 		// if ($buttons)
 				// $cs->registerPackage('fancybox-buttons');
 		// if ($thumbs)
 				// $cs->registerPackage('fancybox-thumbs');
 
 		if (Yii::app()->language == 'ar'){
-				$cs->registerPackage('bootstrap-rtl');
+				$packages[] = 'bootstrap-rtl';
 		} else {
-				$cs->registerPackage('bootstrap');
+				$packages[] = 'bootstrap';
 		}
 		
 		foreach($packages as $pk){
@@ -132,5 +157,21 @@ class GZero
 		
 		$cs->registerCSSFile(Yii::app()->baseUrl . '/res/style/main_'.Yii::app()->language.'.css');
 		$cs->registerScriptFile(Yii::app()->baseUrl . '/res/js/main.js');
+	}
+	
+	public static function registerOpenGraph($option=array('site_name'=>null,'title'=>null,'description'=>null,'thumbnail'=>null,'url'=>null))
+	{
+		$cs = Yii::app()->clientScript;
+
+		if($option['site_name'])
+			$cs->registerMetaTag($option['site_name'],null,null,array('property'=>'og:site_name'));
+		if($option['title'])
+			$cs->registerMetaTag($option['title'],null,null,array('property'=>'og:title'));
+		if($option['description'])
+			$cs->registerMetaTag($option['description'],null,null,array('property'=>'og:description'));
+		if($option['thumbnail'])
+			$cs->registerMetaTag($option['thumbnail'],null,null,array('property'=>'og:thumbnail'));
+		if($option['url'])
+			$cs->registerMetaTag($option['url'],null,null,array('property'=>'og:url'));
 	}
 }

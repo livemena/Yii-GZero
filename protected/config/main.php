@@ -22,15 +22,10 @@ return CMap::mergeArray(
 			'application.components.twitter.*',
 			'application.commands.*',
 			'application.extensions.redactor.ImperaviRedactorWidget',
-			'application.modules.SimpleMailer.components.*',
-			'application.modules.SimpleMailer.models.*',
 		),
 		
 		'modules' => array(
-			'SimpleMailer' => array(
-				'attachImages' => true, // This is the default value, for attaching the images used into the emails.
-				'sendEmailLimit'=> 500, // Also the default value, how much emails should be sent when calling yiic mailer
-			),
+
 		),
 
 		// application components
@@ -77,7 +72,6 @@ return CMap::mergeArray(
 					'<lang:(ar|en)>/login'=>'user/login',
 					'<lang:(ar|en)>/admin'=>'page/admin',
 					'gii'=>'/gii',
-					'SimpleMailer'=>'/SimpleMailer',
 					'page/<slug:\w+>'=>'page/view',
 					'/message/update/<id:\d+>'=>'message/update',
 					'<controller:\w+>/<id:\d+>'=>'<controller>/view',

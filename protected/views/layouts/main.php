@@ -1,16 +1,23 @@
 <?php 
 	/* @var $this Controller */ 
 	$pageId = $this->id.'-'.$this->action->id;
-	$baseUrl = Yii::app()->baseUrl;
-
+	
 	/*
 	* Available packages:
-	* bootstrap
+	* bootstrap and main css files
 	* fontawesome (optional)
 	* fancybox (optional)
 	* GZero::registerPackage(cdn(boolean),$ga_id(Google Analytics ID),$packages = array());
 	*/
 	GZero::registerPackage(!YII_DEBUG,false,array('fontawesome','fancybox'));
+	
+	GZero::registerOpenGraph(array(
+		'site_name'=>Yii::app()->name,
+		'title'=>$this->pageTitle,
+		'description'=>null,
+		'thumbnail'=>null, // uri
+		'url'=>null
+	));
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo Yii::app()->language; ?>">

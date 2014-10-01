@@ -41,7 +41,7 @@ If you have business inquiries or other questions, please fill out the following
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 	
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model, '', '', array('class' => 'alert alert-danger')); ?>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'name',array('class'=>'col-sm-2 control-label')); ?>

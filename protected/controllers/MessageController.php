@@ -59,7 +59,7 @@ class MessageController extends Controller
 						$tbody .= '<td>';
 						foreach($messages->messages as $translate):
 							$tbody .= '<div><label>'.$translate->language.'</label><br>';
-							$tbody .= '<span class="trn">'.$translate->translation.'</span></div>';
+							$tbody .= '<span class="trn '.$translate->language.'">'.$translate->translation.'</span></div>';
 							$tbody .= '<hr>';
 						endforeach;
 						$tbody .= '</td>';

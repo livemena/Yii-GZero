@@ -178,15 +178,47 @@ $(function(){
 		});
 	});
 	
+$('#msgAr, #msgEn').live('keypress',function(e){
+    if (e.keyCode == 13) {
+				$('.loading.loading-3').show();
+				var msgEn = $('#msgEn').val();
+				var msgAr = $('#msgAr').val();
+				$.ajax({
+					type : 'POST',
+					data : {msgEn:msgEn,msgAr:msgAr},
+					url: baseUrl+"/message/update/"+$('#sourceId').val(),
+				}).success(function(data) {
+				
+					$('#updateTest').modal('hide');
+					$('.loading.loading-3').hide();
+					var tr_id = $('#tr_id').val();
+					$('#'+tr_id).find('.en').text(msgEn);
+					$('#'+tr_id).find('.ar').text(msgAr);
+					
+				}).error(function(xhr, ajaxOptions, thrownError){
+					$('.loading.loading-3').hide();
+					alert(thrownError);
+				});
+        return false;
+    }
+});
+	
 	$('#save').live('click',function(){
 		$('.loading.loading-3').show();
+		var msgEn = $('#msgEn').val();
+		var msgAr = $('#msgAr').val();
 		$.ajax({
 			type : 'POST',
-			data : {msgEn:$('#msgEn').val(),msgAr:$('#msgAr').val()},
+			data : {msgEn:msgEn,msgAr:msgAr},
 			url: baseUrl+"/message/update/"+$('#sourceId').val(),
 		}).success(function(data) {
+		
+			$('#updateTest').modal('hide');
 			$('.loading.loading-3').hide();
-			alert('saved');
+			var tr_id = $('#tr_id').val();
+			$('#'+tr_id).find('.en').text(msgEn);
+			$('#'+tr_id).find('.ar').text(msgAr);
+			
 		}).error(function(xhr, ajaxOptions, thrownError){
 			$('.loading.loading-3').hide();
 			alert(thrownError);
