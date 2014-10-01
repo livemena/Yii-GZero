@@ -10,7 +10,7 @@ Yii Grand-Zero Ready-to-code application template based on Yii v1.1.x
 - multi-language.
 
 ### Features
-- Bootstrap 3.1.0 http://getbootstrap.com/
+- Bootstrap http://getbootstrap.com/
 - Image helper (Docs: http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/).
 - CSS/JS Compressor (Docs: http://www.yiiframework.com/extension/eclientscript/).
 - Text helper.
@@ -21,6 +21,9 @@ Yii Grand-Zero Ready-to-code application template based on Yii v1.1.x
 - SimpleMailer.
 - Google, facebook and twitter connect.
 - geoLocator.
+- Open Graph.
+- smart gii templates.
+- messages manager for translation.
 
 ### To do
 - [What's missing ?!](https://github.com/livemena/Yii-GZero/issues/new)
