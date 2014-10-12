@@ -15,6 +15,7 @@
 			'encodeLabel' => false,
 			'items'=>array(
 				array('label'=>Yii::t('app','home'), 'url'=>array('site/index')),
+				array('label'=>Yii::t('app','documentation'), 'url'=>array('site/documentation')),
 				array('label'=>Yii::t('app','aboutus'), 'url'=>array('page/view','slug'=>'about')),
 				array('label'=>Yii::t('app','contact'), 'url'=>array('/site/contact')),
 				array('label'=>Yii::t('app','admin').' <b class="caret"></b>',

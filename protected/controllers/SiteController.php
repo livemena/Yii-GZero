@@ -36,6 +36,11 @@ class SiteController extends Controller
 	{
 		$this->redirect(array('user/login'));
 	}
+	
+	public function actionDocumentation()
+	{
+		$this->render('documentation');
+	}
 
 	/**
 	 * This is the action to handle external exceptions.

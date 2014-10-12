@@ -2,7 +2,7 @@
 
 class Text
 {
-    public static function teaser($s, $l=256 ,$etc="..." , $strip_tags = true, $fullwords=true) {
+    public static function teaser($s, $l=256 , $etc="..." , $strip_tags = true, $fullwords=true) {
 	  $s = $strip_tags ? strip_tags($s) : $s;
       $s1 = str_replace(array("\n","\r"),array(" "," "), $s); // replace new line with spaces
       $s2 = mb_substr($s1." ", 0, $l, "utf-8");

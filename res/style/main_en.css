@@ -23,6 +23,7 @@ span.required{
 	direction:ltr;
 	text-align:left;
 }
+
 #ajaxFind input{
 	background:url("icon-search.png") no-repeat scroll 98% center rgba(0, 0, 0, 0)
 }

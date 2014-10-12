@@ -20,8 +20,7 @@ class Conf {
 	"620x620"=>true,
 	
 	//... your custom sizes
-  
-  
+
   // Watermark
   // "480x480"=>array(
     // array("watermark-corner.png", 1.0, 1.0), // file x-percent y-percent x-margin y-margin
