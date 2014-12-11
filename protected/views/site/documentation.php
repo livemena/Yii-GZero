@@ -1,3 +1,7 @@
+<?php 
+	$cs = Yii::app()->clientScript;
+	$cs->registerScriptFile(Yii::app()->baseUrl . '/res/lib/zeroclipboard/ZeroClipboard.min.js');
+?>
 <style>
 .toplink {
 	position: fixed;
@@ -35,7 +39,7 @@
 <div class="row">
 <div class="col-md-3">
 
-<nav id="nav-side">
+<nav id="nav-side" class="hidden-sm hidden-xs">
 	<ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="190">
 		<li class="active"><a href="#mobile_detection">Mobile detection</a></li>
 		<li><a href="#css_js">CSS & Javascript</a></li>
@@ -88,8 +92,22 @@ else:
 	'fontawesome',
 	'fancybox'
 ));</pre>
+    <button id="copy-button" data-clipboard-text="Copy Me!" title="Click to copy me.">Copy to Clipboard</button>
 	</div>
-	
+	<script>
+var client = new ZeroClipboard( document.getElementById("copy-button") );
+
+client.on( "ready", function( readyEvent ) {
+  alert( "ZeroClipboard SWF is ready!" );
+
+  // client.on( "aftercopy", function( event ) {
+    // `this` === `client`
+    // `event.target` === the element that was clicked
+    // event.target.style.display = "none";
+    // alert("Copied text to clipboard: " + event.data["text/plain"] );
+  // } );
+} );
+	</script>
 	<div class="panel" name="og" id="og">
 		<h3>Open Graph Protocol</h3>
 <pre>
@@ -140,6 +158,7 @@ public function img($w=false, $h=false, $htmlOptions=array()) {
 			<li><a href="http://www.yiiframework.com/doc/api/" target="_blank" >Yii API</a></li>
 			<li><a href="http://www.yiiframework.com/wiki/" target="_blank" >Yii wiki</a></li>
 			<li><a href="http://www.yiiframework.com/extensions/" target="_blank" >Yii Extensions</a></li>
+			<li><a href="http://yiidemos.gopagoda.com/index.php/site/index" target="_blank" >yiidemos.gopagoda.com</a></li>
 		</ul>
 	</div>
 

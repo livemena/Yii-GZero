@@ -30,7 +30,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo "<?php echo \$form->errorSummary(\$model); ?>\n"; ?>
+	<?php echo "<?php echo \$form->errorSummary(\$model, '', '', array('class' => 'alert alert-danger')); ?>\n"; ?>
 
 <?php foreach($this->getModelAttributes() as $attribute): ?>
 	<div class="form-group">
