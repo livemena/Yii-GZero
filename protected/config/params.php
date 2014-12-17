@@ -6,11 +6,10 @@ return array(
 	// this is used in contact page
 	'adminEmail'=>'admin@admin.com',
 	'facebook'=>array(
-		'client_id'=>'417810991650867',
-		'client_secret'=>'a5c2d4310e86f5caf29fcd3caf6bfb17' , 
+		'client_id'=>'1580261192206957',
+		'client_secret'=>'1e8a3aecf5e66f9cb10f2469d745f395' , 
 		'redirect_url'=>'/user/login?id=facebook',
-		//'key'=>'',
-		'scope'=>'email,user_about_me'
+		'scope'=>'email'
 	),
 	'twitter'=>array(
 		'CONSUMER_KEY' => 'wRiylVHT6dBb2RGM97h5pg',

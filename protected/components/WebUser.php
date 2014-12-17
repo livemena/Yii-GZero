@@ -7,22 +7,22 @@ class WebUser extends CWebUser
 	private $_model;
 	public $_id;
 
-    public function __get($name)
-    {
-        if ($this->hasState('__userInfo')) {
-            $user=$this->getState('__userInfo',array());
-            if (isset($user[$name])) {
-                return $user[$name];
-            }
-        }
- 
-        return parent::__get($name);
-    }
- 
-    public function login($identity, $duration) {
-        $this->setState('__userInfo', $identity->getUser());
-        parent::login($identity, $duration);
-    }
+	public function __get($name)
+	{
+			if ($this->hasState('__userInfo')) {
+					$user=$this->getState('__userInfo',array());
+					if (isset($user[$name])) {
+							return $user[$name];
+					}
+			}
+
+			return parent::__get($name);
+	}
+
+	public function login($identity, $duration) {
+			$this->setState('__userInfo', $identity->getUser());
+			parent::login($identity, $duration);
+	}
 	
 	function getModel(){
 		return $this->loadUser(Yii::app()->user->id);
@@ -43,19 +43,21 @@ class WebUser extends CWebUser
 		$isNewUser  = null;
 		
 		if($id=='facebook'){
-			if(!isset(Yii::app()->session['access_token'])) $facebook_info = $this->storeAccesstocken('facebook') ;
-			$facebook_info = $this->getUserInfo('https://graph.facebook.com/me' ,'access_token='.Yii::app()->session['access_token' ]);
-			$user = User::model()->find("facebook_id =?" , array( $facebook_info->id) );
+			if(!isset(Yii::app()->session['access_token']))
+				$facebook_info = $this->storeAccesstocken('facebook');
+				
+				$facebook_info = $this->getUserInfo('https://graph.facebook.com/me' ,'access_token='.Yii::app()->session['access_token' ]);
+				$user = User::model()->find("facebook_id =?" , array( $facebook_info->id) );
 			
-			// print '<pre>' . print_r($facebook_info,1) . '</pre>';
-			// die();
+				print '<pre>' . print_r($facebook_info,1) . '</pre>';
+				die();
 
 			$isNewUser = false;
-			if(!isset($user)) {
+			if(!isset($user)){
 				$isNewUser = true;
-				$userPhoto = file_get_contents('https://graph.facebook.com/'.$facebook_info->id.'/picture?type=large');
-				$images_path = realpath(Yii::app()->basePath . '/../images/user/');
-				file_put_contents($images_path.'/'.$facebook_info->id.'.jpg',$userPhoto);
+				// $userPhoto = file_get_contents('https://graph.facebook.com/'.$facebook_info->id.'/picture?type=large');
+				// $images_path = realpath(Yii::app()->basePath . '/../images/user/');
+				// file_put_contents($images_path.'/'.$facebook_info->id.'.jpg',$userPhoto);
 				
 				$user = new User();
 				$user->facebook_id  = $facebook_info->id;
@@ -66,18 +68,18 @@ class WebUser extends CWebUser
 					}else{
 					$user->gender = '1';
 				}
-				$user->photo_uri = $facebook_info->id.'.jpg';
+				// $user->photo_uri = $facebook_info->id.'.jpg';
 				$user->email = $facebook_info->email;
 				$user->country_id = 202;
-				if($facebook_info->location->name){
-					$locations = explode( ',', str_replace(' ', '', $facebook_info->location->name) );
-					$criteria = new CDbCriteria();
-					$criteria->addInCondition("name_en", $locations );
-					$country = Country::model()->findAll($criteria);
-					if($country){
-						$user->country_id = $country[0]->id;
-					}
-				}
+				// if($facebook_info->location->name){
+					// $locations = explode( ',', str_replace(' ', '', $facebook_info->location->name) );
+					// $criteria = new CDbCriteria();
+					// $criteria->addInCondition("name_en", $locations );
+					// $country = Country::model()->findAll($criteria);
+					// if($country){
+						// $user->country_id = $country[0]->id;
+					// }
+				// }
 				$user->save(false);
 			}
 		}
@@ -150,14 +152,16 @@ class WebUser extends CWebUser
 		
 		$user->login();
 		
-		if($isNewUser){
-			header('Location: http://shajje3.com/'.Yii::app()->language.'/user/update');
-			exit;
-		}
-		else{
-			Yii::app()->getController()->redirect(Yii::app()->request->getBaseUrl(true));
-			exit;
-		}
+		Yii::app()->getController()->redirect(Yii::app()->request->getBaseUrl(true));
+		
+		// if($isNewUser){
+			// header('Location:'.Yii::app()->baseUrl.'/'.Yii::app()->language.'/user/update');
+			// exit;
+		// }
+		// else{
+			// Yii::app()->getController()->redirect(Yii::app()->request->getBaseUrl(true));
+			// exit;
+		// }
 	}
 
 	public function storeAccesstocken($network)

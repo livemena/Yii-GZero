@@ -27,9 +27,7 @@ return CMap::mergeArray(
 			'application.extensions.redactor.ImperaviRedactorWidget',
 		),
 		
-		'modules' => array(
-
-		),
+		// 'modules'=>array(),
 
 		// application components
 		'components'=>array(
