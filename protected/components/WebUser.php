@@ -237,6 +237,7 @@ class WebUser extends CWebUser
 
 	public function getUserInfo($url , $data=''){
 		list($info, $content) = HttpClient::getRequest($url .'?'.$data);
+		die(var_dump($content));
 		if ($info['code']!=200 || null===($json=json_decode($content))){
 			throw new Exception('bad response: '.json_encode($info));
 		}
