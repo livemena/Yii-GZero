@@ -18,8 +18,6 @@
  */
 class User extends CActiveRecord
 {
-
-	public $name;
 	public $verifyPassword;
 	public $rememberMe;
 
@@ -43,10 +41,9 @@ class User extends CActiveRecord
 			array('email, password', 'required','on'=>'login'),
 			array('email', 'required','on'=>'forgotPassword'),
 			array('email, password, verifyPassword', 'required', 'on'=>'register'),
-			array('gender', 'numerical', 'integerOnly'=>true),
 			array('verifyPassword', 'compare', 'on' => 'register', 'compareAttribute' => 'password'),
 			array('email, password, key', 'length', 'max'=>255),
-			array('first_name, last_name', 'length', 'max'=>128),
+			array('full_name', 'length', 'max'=>128),
 			array('facebook_id, google_id, twitter_id', 'length', 'max'=>20),
 			array('email', 'email'),
 			array('email', 'unique','on'=>'register'),
@@ -55,7 +52,7 @@ class User extends CActiveRecord
 			array('password', 'authenticate','on'=>'login'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, email, password, first_name, last_name, gender, birth, facebook_id, google_id, twitter_id', 'safe', 'on'=>'search'),
+			array('id, email, password, full_name, facebook_id, google_id, twitter_id, key', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,14 +76,10 @@ class User extends CActiveRecord
 			'id' => 'ID',
 			'email' => Yii::t('app','email'),
 			'password' => Yii::t('app','password'),
-			'first_name' => Yii::t('app','first_name'),
-			'last_name' => Yii::t('app','last_name'),
-			'gender' => Yii::t('app','gender'),
-			'birth' => Yii::t('app','birth'),
+			'full_name' => Yii::t('app','full_name'),
 			'facebook_id' => Yii::t('app','facebook'),
 			'google_id' => Yii::t('app','google'),
 			'twitter_id' => Yii::t('app','twitter'),
-			'name' => Yii::t('app','name'),
 			'verifyPassword' => Yii::t('app','verifyPassword'),
 		);
 	}
@@ -162,13 +155,6 @@ class User extends CActiveRecord
 		}
 		else
 			return false;
-	}
-
-	public function afterFind()
-	{
-		parent::afterFind();
-		
-		$this->name = $this->first_name.' '.$this->last_name;
 	}
 	
 	public function beforeSave()
