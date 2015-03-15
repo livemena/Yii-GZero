@@ -40,98 +40,60 @@ class GZero
 		*/
 		$cs = Yii::app()->clientScript;
 
+    $cs->scriptMap = array(
+      'jquery.js' => Yii::app()->baseUrl.'/res/lib/jquery-1.11.1/jquery.min.js',
+      'jquery.min.js' => Yii::app()->baseUrl.'/res/lib/jquery-1.11.1/jquery.min.js',
+    );
+    
 		if ($cdn):
 				$cs->scriptMap = array(
-						'jquery.js' => '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js',
-						'jquery.min.js' => '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js',
+          'jquery.js' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
+          'jquery.min.js' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
 				);
 				$cs->packages = array(
-						'bootstrap' => array(
-								'basePath' => 'application.res',
-								'baseUrl' => '//netdna.bootstrapcdn.com/bootstrap/3.2.0/',
-								'js' => array('js/bootstrap.min.js'),
-								'css' => array('css/bootstrap.min.css'),
-								'depends' => array('jquery')
-						),
-						'fontawesome' => array(
-								'basePath' => 'application.res',
-								'baseUrl' => '//netdna.bootstrapcdn.com/font-awesome/4.0.0/',
-								'css' => array('css/font-awesome.min.css'),
-						),
-					'fancybox' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/fancybox/',
-							'js' => array('lib/jquery.mousewheel-3.0.6.pack.js', 'source/jquery.fancybox.pack.js'),
-							'css' => array('source/jquery.fancybox.css'),
-							'depends' => array('jquery')
-					),
-					'fancybox-buttons' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/fancybox/source/helpers/',
-							'js' => array('jquery.fancybox-buttons.js'),
-							'css' => array('jquery.fancybox-buttons.css'),
-					),
-					'fancybox-thumbs' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/fancybox/source/helpers/',
-							'js' => array('jquery.fancybox-thumbs.js'),
-							'css' => array('jquery.fancybox-thumbs.css'),
-					),
-					'bootstrap-rtl' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/bootstrap-rtl/',
-							'js' => array('js/bootstrap.js'),
-							'css' => array('css/bootstrap.css'),
-							'depends' => array('jquery')
-					)
+          'bootstrap' => array(
+            'basePath' => 'application.res',
+            'baseUrl' => '//netdna.bootstrapcdn.com/bootstrap/3.2.0/',
+            'js' => array('js/bootstrap.min.js'),
+            'css' => array('css/bootstrap.min.css'),
+            'depends' => array('jquery')
+          ),
+          'fontawesome' => array(
+            'basePath' => 'application.res',
+            'baseUrl' => '//netdna.bootstrapcdn.com/font-awesome/4.3.0/',
+            'css' => array('css/font-awesome.min.css'),
+          ),
+          'bootstrap-rtl' => array(
+            'basePath' => 'application.res',
+            'baseUrl' => Yii::app()->baseUrl . '/res/lib/bootstrap-rtl/',
+            'js' => array('js/bootstrap.js'),
+            'css' => array('css/bootstrap.css'),
+            'depends' => array('jquery')
+          )
 				);
 		else:
 			$cs->packages = array(
-					'bootstrap' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/bootstrap/',
-							'js' => array('js/bootstrap.js'),
-							'css' => array('css/bootstrap.css'),
-							'depends' => array('jquery')
-					),
-					'fontawesome' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/font-awesome/',
-							'css' => array('/css/font-awesome.min.css'),
-					),
-					'fancybox' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/fancybox/',
-							'js' => array('lib/jquery.mousewheel-3.0.6.pack.js', 'source/jquery.fancybox.pack.js'),
-							'css' => array('source/jquery.fancybox.css'),
-							'depends' => array('jquery')
-					),
-					'fancybox-buttons' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/fancybox/source/helpers/',
-							'js' => array('jquery.fancybox-buttons.js'),
-							'css' => array('jquery.fancybox-buttons.css'),
-					),
-					'fancybox-thumbs' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/fancybox/source/helpers/',
-							'js' => array('jquery.fancybox-thumbs.js'),
-							'css' => array('jquery.fancybox-thumbs.css'),
-					),
-					'bootstrap-rtl' => array(
-							'basePath' => 'application.res',
-							'baseUrl' => Yii::app()->baseUrl . '/res/lib/bootstrap-rtl/',
-							'js' => array('js/bootstrap.js'),
-							'css' => array('css/bootstrap.css'),
-							'depends' => array('jquery')
-					)
+        'bootstrap' => array(
+          'basePath' => 'application.res',
+          'baseUrl' => Yii::app()->baseUrl . '/res/lib/bootstrap/',
+          'js' => array('js/bootstrap.js'),
+          'css' => array('css/bootstrap.css'),
+          'depends' => array('jquery')
+        ),
+        'fontawesome' => array(
+          'basePath' => 'application.res',
+          'baseUrl' => Yii::app()->baseUrl . '/res/lib/font-awesome/',
+          'css' => array('/css/font-awesome.min.css'),
+        ),
+        'bootstrap-rtl' => array(
+          'basePath' => 'application.res',
+          'baseUrl' => Yii::app()->baseUrl . '/res/lib/bootstrap-rtl/',
+          'js' => array('js/bootstrap.js'),
+          'css' => array('css/bootstrap.css'),
+          'depends' => array('jquery')
+        )
 				);
 		endif;
-
-		// if ($buttons)
-				// $cs->registerPackage('fancybox-buttons');
-		// if ($thumbs)
-				// $cs->registerPackage('fancybox-thumbs');
 
 		if (Yii::app()->language == 'ar'){
 				$packages[] = 'bootstrap-rtl';

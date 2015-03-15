@@ -6,10 +6,9 @@
 	* Available packages:
 	* bootstrap and main css files
 	* fontawesome (optional)
-	* fancybox (optional)
 	* GZero::registerPackage(cdn(boolean),$ga_id(Google Analytics ID),$packages = array());
 	*/
-	GZero::registerPackage(!YII_DEBUG,false,array('fontawesome','fancybox'));
+	GZero::registerPackage(!YII_DEBUG,false,array('fontawesome'));
 	
 	GZero::registerOpenGraph(array(
 		'site_name'=>Yii::app()->name,

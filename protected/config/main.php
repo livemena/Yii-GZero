@@ -31,8 +31,13 @@ return CMap::mergeArray(
 
 		// application components
 		'components'=>array(
+    
+      /* bootstrap classes */
 			'widgetFactory'=>array(
 				'widgets'=>array(
+					'CListView'=>array(
+            'pagerCssClass'=>'pager-wrapper',
+          ),
 					'CLinkPager'=>array(
 						'header' => '<div class="pagination">',
 						'footer' => '</div>',
@@ -41,8 +46,19 @@ return CMap::mergeArray(
 						'hiddenPageCssClass' => 'disabled',
 						'htmlOptions'=>array('class'=>'pagination'),
 					),
-				),
-			),
+          'CGridView' => array(
+            'htmlOptions' => array(
+                'class' => 'table-responsive'
+            ),
+            'pagerCssClass' => 'pager-wrapper',
+            'itemsCssClass' => 'table table-striped table-hover',
+            'cssFile' => false,
+            'summaryCssClass' => '',
+            'summaryText' => 'Showing {start} to {end} of {count} entries',
+          ),
+        ),
+      ),
+      
 			'user'=>array(
 				// enable cookie-based authentication
 				'allowAutoLogin'=>true,
@@ -52,15 +68,15 @@ return CMap::mergeArray(
 			'messages'=>array(
 				'class'=>'CDbMessageSource',
 				'forceTranslation'=>true,
-				'sourceMessageTable' => 'gz_source_message',
-				'translatedMessageTable' => 'gz_message',
+				'sourceMessageTable' => 'message_source',
+				'translatedMessageTable' => 'message',
 			),
 			
 			'authManager'=>array(
 				'class'=>'CDbAuthManager',
-				'assignmentTable'=>'gz_authassignment',
-				'itemChildTable'=>'gz_authitemchild',
-				'itemTable'=>'gz_authitem',
+				'assignmentTable'=>'authassignment',
+				'itemChildTable'=>'authitemchild',
+				'itemTable'=>'authitem',
 			),
 			
 			'urlManager'=>array(
@@ -82,16 +98,6 @@ return CMap::mergeArray(
 					'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 					'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 				),
-			),
-
-			// Local database connection
-			'db'=>array(
-				'connectionString' => 'mysql:host=localhost;dbname=gzero',
-				'emulatePrepare' => true,
-				'username' => 'root',
-				'password' => '',
-				'charset' => 'utf8',
-				'tablePrefix' => 'gz_',
 			),
 
 			// Language handler

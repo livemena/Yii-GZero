@@ -15,12 +15,12 @@
 class Img
 {
     public static function uri($img, $w=false, $h=false, $def=false) {
-      if ($def===false) $def='default-cinema.png';
+      if ($def===false) $def='default.png';
       if (!$img || !file_exists(Yii::app()->basePath."/../images/${img}")) {
-        return 'http://'.$_SERVER['HTTP_HOST']."/images/${def}";
+        return Yii::app()->baseUrl."/images/${def}";
       }
       if (!$w) return "/images/${img}";
-      return 'http://'.$_SERVER['HTTP_HOST']."/images/tb/${w}x${h}/${img}.jpg";
+      return Yii::app()->baseUrl."/images/tb/${w}x${h}/${img}.jpg";
     }
 
     public static function embed($img, $w=false, $h=false, $def=false, $attr=false) {

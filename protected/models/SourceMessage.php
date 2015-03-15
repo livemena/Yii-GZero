@@ -18,7 +18,7 @@ class SourceMessage extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{source_message}}';
+		return 'message_source';
 	}
 
 	/**

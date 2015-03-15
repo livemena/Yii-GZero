@@ -1,6 +1,5 @@
 <?php 
 	$cs = Yii::app()->clientScript;
-	$cs->registerScriptFile(Yii::app()->baseUrl . '/res/lib/zeroclipboard/ZeroClipboard.min.js');
 ?>
 <style>
 .toplink {
@@ -92,22 +91,7 @@ else:
 	'fontawesome',
 	'fancybox'
 ));</pre>
-    <button id="copy-button" data-clipboard-text="Copy Me!" title="Click to copy me.">Copy to Clipboard</button>
 	</div>
-	<script>
-var client = new ZeroClipboard( document.getElementById("copy-button") );
-
-client.on( "ready", function( readyEvent ) {
-  alert( "ZeroClipboard SWF is ready!" );
-
-  // client.on( "aftercopy", function( event ) {
-    // `this` === `client`
-    // `event.target` === the element that was clicked
-    // event.target.style.display = "none";
-    // alert("Copied text to clipboard: " + event.data["text/plain"] );
-  // } );
-} );
-	</script>
 	<div class="panel" name="og" id="og">
 		<h3>Open Graph Protocol</h3>
 <pre>

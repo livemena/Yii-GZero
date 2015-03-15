@@ -168,7 +168,7 @@ $(function(){
 		});
 	});
 	
-	$("a[data-target=#updateTest]").live('click',function(ev) {
+	$("a[data-target=#updateTest]").on('click',function(ev) {
 		ev.preventDefault();
 		var target = $(this).attr("href");
 
@@ -178,7 +178,7 @@ $(function(){
 		});
 	});
 	
-$('#msgAr, #msgEn').live('keypress',function(e){
+$('#msgAr, #msgEn').on('keypress',function(e){
     if (e.keyCode == 13) {
 				$('.loading.loading-3').show();
 				var msgEn = $('#msgEn').val();
@@ -203,7 +203,7 @@ $('#msgAr, #msgEn').live('keypress',function(e){
     }
 });
 	
-	$('#save').live('click',function(){
+	$('#save').on('click',function(){
 		$('.loading.loading-3').show();
 		var msgEn = $('#msgEn').val();
 		var msgAr = $('#msgAr').val();
