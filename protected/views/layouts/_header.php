@@ -2,10 +2,10 @@
   <div class="container">
 	<div class="navbar-header">
 	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		<span class="sr-only">Toggle navigation</span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
 	  </button>
 	  <a class="navbar-brand" href="<?php echo $this->createUrl('site/index'); ?>"><?php echo Yii::app()->name ?></a>
 	</div>
@@ -30,7 +30,8 @@
 						array('label'=>'Gii', 'url'=>array('/gii'),'linkOptions'=>array('target'=>'_blank')),
 					)),
 				array('label'=>Yii::t('app','login'), 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>Yii::t('app','logout').' ('.Yii::app()->user->getModel()->full_name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest),
+        array('label'=>Yii::t('app','Update User'), 'url'=>array('/user/update'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>Yii::t('app','logout').' ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				GZero::langSwitcher('menu')
 			),
 		)); ?>

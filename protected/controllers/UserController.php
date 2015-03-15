@@ -28,11 +28,11 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('login','register','forgotPassword'),
+				'actions'=>array('login','register','forgotPassword','resetPassword'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('logout'),
+				'actions'=>array('logout','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -98,19 +98,45 @@ class UserController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->save())
 			{
-				// $login = new User;
-				// $login->email = $model->email;
-				// $login->password = $model->password;
 				$model->password = $model->password;
 				$model->login();
 				
-				$this->redirect('index');
+				$this->redirect('site/index');
 			}else{
 				$model->getErrors();
 			}
 		}
 		// display the login form
 		$this->render('register',array('model'=>$model));
+	}
+  
+	public function actionUpdate()
+	{
+		$model= $this->loadModel(Yii::app()->user->id);
+		$model->setScenario('update');
+
+		// if it is ajax validation request
+		if(isset($_POST['ajax']) && $_POST['ajax']==='user-update-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+
+		// collect user input data
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+			$pass = $model->password;
+			// validate user input and redirect to the previous page if valid
+			if($model->validate() && $model->save())
+			{
+				$this->redirect('site/index');
+			}else{
+				$model->getErrors();
+			}
+		}
+		// display the login form
+		$this->render('update',array('model'=>$model));
 	}
 	
 	public function actionForgotPassword()
@@ -174,7 +200,7 @@ class UserController extends Controller
 					}
 				}
 				// display the login form
-				$this->render('forgot_password',array('model'=>$model));
+				$this->render('reset_password',array('model'=>$model));
 			}
 		}
 	}

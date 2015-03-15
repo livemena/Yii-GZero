@@ -2,45 +2,53 @@
 /* @var $this UserController */
 /* @var $model User */
 /* @var $form CActiveForm */
-$this->layout='//layouts/column2';
+$this->layout='//layouts/column1';
+
+$this->pageTitle=Yii::app()->name . ' - Forgot Password';
+$this->breadcrumbs=array(
+	'Forgot Password',
+);
 ?>
+<div id="gz-login-form" class="omb_login">
+	<h3 class="omb_authTitle">Forgot Password</a></h3>
 
-<div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'user-forgotpassword-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// See class documentation of CActiveForm for details on this,
-	// you need to use the performAjaxValidation()-method described there.
-	'clientOptions'=>array(
-		'errorCssClass'=>'has-error',
-	),
-	'enableAjaxValidation'=>false,
-	'htmlOptions'=>array('class'=>'form-horizontal')
-)); ?>
+  <?php $form=$this->beginWidget('CActiveForm', array(
+    'id'=>'user-forgotpassword-form',
+    // Please note: When you enable ajax validation, make sure the corresponding
+    // controller action is handling ajax validation correctly.
+    // See class documentation of CActiveForm for details on this,
+    // you need to use the performAjaxValidation()-method described there.
+    'clientOptions'=>array(
+      'errorCssClass'=>'has-error',
+    ),
+    'enableAjaxValidation'=>false,
+    'htmlOptions'=>array('class'=>'form-horizontal')
+  )); ?>
 
-<?php
+  <?php
     foreach(Yii::app()->user->getFlashes() as $key => $message) {
         echo '<div class="alert alert-' . $key . '">' . $message . "</div>\n";
     }
-?>
+  ?>
 
-	<?php echo $form->errorSummary($model); ?>
+		<div class="row omb_row-sm-offset-3">
+			<div class="col-xs-12 col-sm-6">
+      
+      <?php echo $form->errorSummary($model); ?>
 
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'email',array('class'=>'col-sm-2 control-label')); ?>
-		<div class="col-sm-10">
-			<?php echo $form->textField($model,'email',array('class'=>'form-control')); ?>
-			<?php echo $form->error($model,'email',array('class'=>'help-block')); ?>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user"></i></span>
+          <?php echo $form->emailField($model,'email',array('class'=>"form-control",'placeholder'=>"Enter email")); ?>
+        </div>
+        <?php echo $form->error($model,'email',array('class'=>'help-block')); ?>
+      </div>
+
+			<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn-primary btn-block')); ?>
+
+			</div>
 		</div>
-	</div>
-
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn-primary')); ?>
-		</div>
-	</div>
 
 <?php $this->endWidget(); ?>
 

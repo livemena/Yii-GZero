@@ -85,7 +85,7 @@ $this->breadcrumbs=array(
 			</div>
 			<div class="col-xs-12 col-sm-3">
 				<p class="omb_forgotPwd">
-					<a href="#">Forgot password ?</a>
+					<a href="<?php echo $this->createUrl('user/forgotPassword'); ?>">Forgot password ?</a>
 				</p>
 			</div>
 		</div>

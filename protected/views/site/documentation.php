@@ -82,14 +82,12 @@ else:
 				<li>jQuery <small class="text-muted">CDN</small></li>
 				<li>Bootstrap <small class="text-muted">CDN + RTL</small></li>
 				<li>FontAwesome (optional) <small class="text-muted">CDN</small></li>
-				<li>Fancybox (optional)</li>
 			</ul>
 		</p>
 		<br>
 		<p>Copy this code to main.php layout or any page:</p>
 <pre>GZero::registerPackage( cdn(boolean) , $ga_id(Google Analytics ID) ,array(
 	'fontawesome',
-	'fancybox'
 ));</pre>
 	</div>
 	<div class="panel" name="og" id="og">

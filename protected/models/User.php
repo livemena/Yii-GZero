@@ -41,6 +41,7 @@ class User extends CActiveRecord
 			array('email, password', 'required','on'=>'login'),
 			array('email', 'required','on'=>'forgotPassword'),
 			array('email, password, verifyPassword', 'required', 'on'=>'register'),
+			array('email, password, verifyPassword', 'required', 'on'=>'update'),
 			array('verifyPassword', 'compare', 'on' => 'register', 'compareAttribute' => 'password'),
 			array('email, password, key', 'length', 'max'=>255),
 			array('full_name', 'length', 'max'=>128),
@@ -105,10 +106,7 @@ class User extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('password',$this->password,true);
-		$criteria->compare('first_name',$this->first_name,true);
-		$criteria->compare('last_name',$this->last_name,true);
-		$criteria->compare('gender',$this->gender);
-		$criteria->compare('birth',$this->birth,true);
+		$criteria->compare('full_name',$this->first_name,true);
 		$criteria->compare('facebook_id',$this->facebook_id,true);
 		$criteria->compare('google_id',$this->google_id,true);
 		$criteria->compare('twitter_id',$this->twitter_id,true);

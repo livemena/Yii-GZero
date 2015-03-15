@@ -25,7 +25,10 @@ class WebUser extends CWebUser
 	}
 	
 	function getModel(){
-		return $this->loadModel(Yii::app()->user->id);
+    if(!Yii::app()->user->isGuest)
+      return $this->loadModel(Yii::app()->user->id);
+    else
+      return false;
 	}
   
 	public function loadModel($id)

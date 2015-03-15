@@ -8,7 +8,7 @@ $this->layout='//layouts/column2';
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'user-register-form',
+	'id'=>'user-resetpassword-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// See class documentation of CActiveForm for details on this,
@@ -20,41 +20,7 @@ $this->layout='//layouts/column2';
 	'htmlOptions'=>array('class'=>'form-horizontal')
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'first_name',array('class'=>'col-sm-2 control-label')); ?>
-		<div class="col-sm-10">
-			<?php echo $form->textField($model,'first_name',array('class'=>'form-control')); ?>
-			<?php echo $form->error($model,'first_name',array('class'=>'help-block')); ?>
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'last_name',array('class'=>'col-sm-2 control-label')); ?>
-		<div class="col-sm-10">
-			<?php echo $form->textField($model,'last_name',array('class'=>'form-control')); ?>
-			<?php echo $form->error($model,'last_name',array('class'=>'help-block')); ?>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'email',array('class'=>'col-sm-2 control-label')); ?>
-		<div class="col-sm-10">
-			<?php echo $form->textField($model,'email',array('class'=>'form-control')); ?>
-			<?php echo $form->error($model,'email',array('class'=>'help-block')); ?>
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'gender',array('class'=>'col-sm-2 control-label')); ?>
-		<div class="col-sm-10">
-			<?php echo $form->textField($model,'gender',array('class'=>'form-control')); ?>
-			<?php echo $form->error($model,'gender',array('class'=>'help-block')); ?>
-		</div>
-	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'password',array('class'=>'col-sm-2 control-label')); ?>
