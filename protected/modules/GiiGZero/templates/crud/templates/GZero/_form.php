@@ -10,8 +10,6 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
-
 <?php echo "<?php \$form=\$this->beginWidget('CActiveForm', array(
 	'id'=>'".$this->class2id($this->modelClass)."-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -55,5 +53,3 @@ foreach($this->tableSchema->columns as $column)
 	</div>
 
 <?php echo "<?php \$this->endWidget(); ?>\n"; ?>
-
-</div><!-- form -->

@@ -7,10 +7,11 @@
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-Yii::import('system.gii.CCodeGenerator');
-Yii::import('application.runtime.gii-templates.CCodeModel');
-Yii::import('system.gii.CCodeFile');
-Yii::import('system.gii.CCodeForm');
+
+Yii::import('application.modules.GiiGZero.CCodeGenerator');
+Yii::import('application.modules.GiiGZero.CCodeModel');
+Yii::import('application.modules.GiiGZero.CCodeFile');
+Yii::import('application.modules.GiiGZero.CCodeForm');
 
 /**
  * GiiModule is a module that provides Web-based code generation capabilities.

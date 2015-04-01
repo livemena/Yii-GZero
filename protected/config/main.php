@@ -1,9 +1,9 @@
 <?php
+$params = require(__DIR__ . '/params.php');
+
 // uncomment the following to define a path alias
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-
-$params = require(__DIR__ . '/params.php');
 
 return CMap::mergeArray(
 	array(
@@ -20,11 +20,13 @@ return CMap::mergeArray(
 
 		// autoloading model and component classes
 		'import'=>array(
-			'application.models.*',
-			'application.components.*',
-			'application.components.twitter.*',
 			'application.commands.*',
-			'application.extensions.redactor.ImperaviRedactorWidget',
+			'application.components.*',
+			'application.components.facebook.*',
+			'application.components.twitter.*',
+			'application.models.*',
+			'ext.redactor.ImperaviRedactorWidget',
+			'ext.giix-components.*', // giix components
 		),
 		
 		// 'modules'=>array(),
@@ -91,9 +93,9 @@ return CMap::mergeArray(
 					'<lang:(ar|en)>/<_c>/<_a>/' => '<_c>/<_a>',
 					'<lang:(ar|en)>/login'=>'user/login',
 					'<lang:(ar|en)>/admin'=>'page/admin',
-					'gii'=>'/gii',
-					'page/<slug:\w+>'=>'page/view',
-					'/message/update/<id:\d+>'=>'message/update',
+					'<lang:(ar|en)>/gii'=>'/gii',
+					'<lang:(ar|en)>page/<slug:\w+>'=>'page/view',
+					'<lang:(ar|en)>/message/update/<id:\d+>'=>'message/update',
 					'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 					'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 					'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

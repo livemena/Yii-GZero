@@ -5,12 +5,9 @@
  *
  * The followings are the available columns in table 'user':
  * @property integer $id
+ * @property string $full_name
  * @property string $email
  * @property string $password
- * @property string $first_name
- * @property string $last_name
- * @property integer $gender
- * @property string $birth
  * @property string $facebook_id
  * @property string $google_id
  * @property string $twitter_id
@@ -19,9 +16,6 @@
 class User extends CActiveRecord
 {
 	public $verifyPassword;
-	public $rememberMe;
-
-	public $_identity;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -74,14 +68,14 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'email' => Yii::t('app','email'),
-			'password' => Yii::t('app','password'),
-			'full_name' => Yii::t('app','full_name'),
-			'facebook_id' => Yii::t('app','facebook'),
-			'google_id' => Yii::t('app','google'),
-			'twitter_id' => Yii::t('app','twitter'),
-			'verifyPassword' => Yii::t('app','verifyPassword'),
+			'id'=>Yii::t('app','user.id'),
+			'full_name'=>Yii::t('app','user.full_name'),
+			'email'=>Yii::t('app','user.email'),
+			'password'=>Yii::t('app','user.password'),
+			'facebook_id'=>Yii::t('app','user.facebook_id'),
+			'google_id'=>Yii::t('app','user.google_id'),
+			'twitter_id'=>Yii::t('app','user.twitter_id'),
+			'key'=>Yii::t('app','user.key'),
 		);
 	}
 
@@ -104,9 +98,9 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('full_name',$this->full_name,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('password',$this->password,true);
-		$criteria->compare('full_name',$this->first_name,true);
 		$criteria->compare('facebook_id',$this->facebook_id,true);
 		$criteria->compare('google_id',$this->google_id,true);
 		$criteria->compare('twitter_id',$this->twitter_id,true);
@@ -178,5 +172,4 @@ class User extends CActiveRecord
 		}
 		return true;
 	}
-	
 }

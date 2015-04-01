@@ -1,5 +1,8 @@
 # run git "rm --cached FILES" if you already have those files
 
+*index.php
+protected/config/local.php
+
 assets/*
 !assets/.gitignore
 protected/runtime/*
@@ -20,6 +23,3 @@ nbproject/
 Icon?
 ehthumbs.db
 Thumbs.db
-
-
-

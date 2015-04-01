@@ -15,6 +15,9 @@
 <?php echo "<?php \$form=\$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl(\$this->route),
 	'method'=>'get',
+	'htmlOptions'=>array(
+		'class'=>'form-horizontal'
+	),
 )); ?>\n"; ?>
 
 <?php foreach($this->tableSchema->columns as $column): ?>
@@ -23,14 +26,18 @@
 	if(strpos($field,'password')!==false)
 		continue;
 ?>
-	<div class="row">
+	<div class="form-group">
 		<?php echo "<?php echo \$form->label(\$model,'{$column->name}'); ?>\n"; ?>
-		<?php echo "<?php echo ".$this->generateActiveField($this->modelClass,$column)."; ?>\n"; ?>
+		<div class="col-sm-10">
+			<?php echo "<?php echo ".$this->generateActiveField($this->modelClass,$column)."; ?>\n"; ?>
+		</div>
 	</div>
 
 <?php endforeach; ?>
-	<div class="row buttons">
-		<?php echo "<?php echo CHtml::submitButton('Search'); ?>\n"; ?>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+		<?php echo "<?php echo CHtml::submitButton('Search',array('class'=>'btn btn-default')); ?>\n"; ?>
+		</div>
 	</div>
 
 <?php echo "<?php \$this->endWidget(); ?>\n"; ?>

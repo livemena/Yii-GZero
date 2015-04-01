@@ -16,14 +16,17 @@ echo "\$this->breadcrumbs=array(
 ?>
 
 $this->menu=array(
-	array('label'=>'Create <?php echo $this->modelClass; ?>', 'url'=>array('create')),
-	array('label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
+	array('label'=>'<span class="glyphicon glyphicon-plus"></span> Create <?php echo $this->modelClass; ?>', 'url'=>array('create')),
+	array('label'=>'<span class="glyphicon glyphicon-th-list"></span> Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
 );
 ?>
 
-<h1><?php echo $label; ?></h1>
+<div class="page-header">
+	<h1><?php echo $label; ?></h1>
+</div>
 
 <?php echo "<?php"; ?> $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
+	'summaryText'=>false,
 	'itemView'=>'_view',
 )); ?>

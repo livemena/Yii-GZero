@@ -16,7 +16,7 @@ class CrudCode extends CCodeModel
 			array('model, controller, baseControllerClass', 'required'),
 			array('model', 'match', 'pattern'=>'/^\w+[\w+\\.]*$/', 'message'=>'{attribute} should only contain word characters and dots.'),
 			array('controller', 'match', 'pattern'=>'/^\w+[\w+\\/]*$/', 'message'=>'{attribute} should only contain word characters and slashes.'),
-			array('baseControllerClass', 'match', 'pattern'=>'/^[a-zA-Z_][\w\\\\]*$/', 'message'=>'{attribute} should only contain word characters and backslashes.'),
+			array('baseControllerClass', 'match', 'pattern'=>'/^[a-zA-Z_\\\\][\w\\\\]*$/', 'message'=>'{attribute} should only contain word characters and backslashes.'),
 			array('baseControllerClass', 'validateReservedWord', 'skipOnError'=>true),
 			array('model', 'validateModel'),
 			array('baseControllerClass', 'sticky'),
@@ -181,10 +181,19 @@ class CrudCode extends CCodeModel
 			return "CHtml::activeTextArea(\$model,'{$column->name}',array('class'=>'form-control','rows'=>3,'placeholder'=>\$model->getAttributeLabel('{$column->name}')))";
 		else
 		{
-			if(preg_match('/^(password|pass|passwd|passcode)$/i',$column->name))
+			if(preg_match('/^(password|pass|passwd|passcode)$/i',$column->name)){
 				$inputField='activePasswordField';
-			else
+			}elseif(preg_match('/^(email|mail)$/i',$column->name)){
+				$inputField='activeEmailField';
+			}elseif(preg_match('/^(image_uri|photo_uri|image|photo)$/i',$column->name)){
+				$inputField='activeFileField';
+			}elseif(preg_match('/^(url|link)$/i',$column->name)){
+				$inputField='activeUrlField';
+			}elseif(preg_match('/^(birth|dob)$/i',$column->name)){
+				$inputField='activeDateField';
+			}else{
 				$inputField='activeTextField';
+			}
 
 			if($column->type!=='string' || $column->size===null)
 				return "CHtml::{$inputField}(\$model,'{$column->name}')";
@@ -210,10 +219,19 @@ class CrudCode extends CCodeModel
 			return "\$form->textArea(\$model,'{$column->name}',array('class'=>'form-control','rows'=>3,'placeholder'=>\$model->getAttributeLabel('{$column->name}')))";
 		else
 		{
-			if(preg_match('/^(password|pass|passwd|passcode)$/i',$column->name))
+			if(preg_match('/^(password|pass|passwd|passcode)$/i',$column->name)){
 				$inputField='passwordField';
-			else
+			}elseif(preg_match('/^(email|mail)$/i',$column->name)){
+				$inputField='emailField';
+			}elseif(preg_match('/^(image_uri|photo_uri|image|photo)$/i',$column->name)){
+				$inputField='fileField';
+			}elseif(preg_match('/^(url|link)$/i',$column->name)){
+				$inputField='urlField';
+			}elseif(preg_match('/^(birth|dob)$/i',$column->name)){
+				$inputField='dateField';
+			}else{
 				$inputField='textField';
+			}
 
 			if($column->type!=='string' || $column->size===null)
 				return "\$form->{$inputField}(\$model,'{$column->name}',array('class'=>'form-control','placeholder'=>\$model->getAttributeLabel('{$column->name}')))";

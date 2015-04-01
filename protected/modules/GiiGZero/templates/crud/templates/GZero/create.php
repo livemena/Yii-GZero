@@ -17,11 +17,13 @@ echo "\$this->breadcrumbs=array(
 ?>
 
 $this->menu=array(
-	array('label'=>'List <?php echo $this->modelClass; ?>', 'url'=>array('index')),
-	array('label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
+	array('label'=>'<span class="glyphicon glyphicon-list"></span> List <?php echo $this->modelClass; ?>', 'url'=>array('index')),
+	array('label'=>'<span class="glyphicon glyphicon-th-list"></span> Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create <?php echo $this->modelClass; ?></h1>
+<div class="page-header">
+	<h1>Create <?php echo $this->modelClass; ?></h1>
+</div>
 
 <?php echo "<?php \$this->renderPartial('_form', array('model'=>\$model)); ?>"; ?>

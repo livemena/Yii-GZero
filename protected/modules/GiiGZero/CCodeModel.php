@@ -234,7 +234,8 @@ abstract class CCodeModel extends CFormModel
 	 */
 	public function save()
 	{
-		if(in_array('model',$_POST)) 
+		// die(print_r($_POST));
+		if(in_array('ModelCode',$_POST))
 		{
 			$model=new ModelCode;
 			if(($pos=strrpos($this->tableName,'.'))!==false)
@@ -276,48 +277,6 @@ abstract class CCodeModel extends CFormModel
 				
 				Message::model()->newMsg($v,$tableName.'.'.$i);
 			}
-		}else{
-		
-				// $model=new ModelCode;
-				// if(($pos=strrpos($this->tableName,'.'))!==false)
-				// {
-					// $schema=substr($this->tableName,0,$pos);
-					// $tableName=substr($this->tableName,$pos+1);
-				// }
-				// else
-				// {
-					// $schema='';
-					// $tableName=$this->tableName;
-				// }
-				// if($tableName[strlen($tableName)-1]==='*')
-				// {
-					// $tables=Yii::app()->{$this->connectionId}->schema->getTables($schema);
-					// if($this->tablePrefix!='')
-					// {
-						// foreach($tables as $i=>$table)
-						// {
-							// if(strpos($table->name,$this->tablePrefix)!==0)
-								// unset($tables[$i]);
-						// }
-					// }
-				// }
-				// else
-					// $tables=array($this->getTableSchema($this->tableName));
-					
-				// foreach($tables as $table)
-				// {
-						// $labels = $this->generateLabels($table);
-				// }			
-				
-				// foreach($labels as $i => $v)
-				// {
-						// $tableName = str_replace($this->tablePrefix,'',$tableName);
-						// $tableName = str_replace('{{','',$tableName);
-						// $tableName = str_replace('}}','',$tableName);
-						
-						// Message::model()->newMsg($v,$tableName.'.'.$i);
-				// }
-				
 		}
 		
 		$result=true;

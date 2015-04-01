@@ -29,9 +29,18 @@
 						array('label'=>'Page', 'url'=>array('/page/index')),
 						array('label'=>'Gii', 'url'=>array('/gii'),'linkOptions'=>array('target'=>'_blank')),
 					)),
-				array('label'=>Yii::t('app','login'), 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
-        array('label'=>Yii::t('app','Update User'), 'url'=>array('/user/update'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>Yii::t('app','logout').' ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>Yii::t('app','user').' <b class="caret"></b>',
+					'itemOptions' => array('class' => 'dropdown'),
+					'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
+					'url'=>'#',
+					'submenuOptions' => array('class' => 'dropdown-menu'),
+					'visible'=>!Yii::app()->user->isGuest,
+					'items'=>array(
+						array('label'=>'Update', 'url'=>array('user/update')),
+						array('label'=>'Manage', 'url'=>array('user/admin'),'visible'=>Yii::app()->user->isAdmin()),
+						array('label'=>'<i class="fa fa-power-off"></i> Logout', 'url'=>array('user/logout')),
+					)),
+				array('label'=>Yii::t('app','login'), 'url'=>array('user/login'), 'visible'=>Yii::app()->user->isGuest),
 				GZero::langSwitcher('menu')
 			),
 		)); ?>

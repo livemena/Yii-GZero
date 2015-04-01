@@ -1,6 +1,6 @@
 <?php
 return array (
-  'template' => 'default',
+  'template' => 'GZero',
   'connectionId' => 'db',
   'tablePrefix' => '',
   'modelPath' => 'application.models',

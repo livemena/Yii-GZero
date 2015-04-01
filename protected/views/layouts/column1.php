@@ -17,7 +17,7 @@
 	<hr>
 		Copyright &copy; <?php echo date('Y'); ?> by LiveMena.<br/>
 		All Rights Reserved.<br/>
-		<a href="https://github.com/livemena/Yii-GZero" title="Yii Grand-Zero Ready-to-code application template">Yii-GZero</a> <?php echo Yii::powered(); ?>
+		<a href="https://github.com/livemena/Yii-GZero" title="Yii Grand-Zero Ready-to-code application template">Yii-GZero</a> <?php echo Yii::powered(); ?> v<?php echo Yii::getVersion(); ?>
 	<br>
 	<br>
 	</div><!-- footer -->

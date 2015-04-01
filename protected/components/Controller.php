@@ -24,6 +24,9 @@ class Controller extends CController
 	public function init()
 	{
 		date_default_timezone_set("Asia/Amman");
+
+		// Autoload facebook;
+		// require_once( __DIR__ . '../vendors/facebook-php-sdk-v4/autoload.php');
 	}
 	
 }

@@ -72,9 +72,9 @@ If you have business inquiries or other questions, please fill out the following
 		<div class="col-sm-offset-2 col-sm-10">
 			<?php echo $form->labelEx($model,'verifyCode'); ?>
 			<div>
-			<?php $this->widget('CCaptcha'); ?>
-			<?php echo $form->textField($model,'verifyCode',array('class'=>'form-control')); ?>
-			<?php echo $form->error($model,'verifyCode',array('class'=>'help-block')); ?>
+				<?php $this->widget('CCaptcha'); ?>
+				<?php echo $form->textField($model,'verifyCode',array('class'=>'form-control')); ?>
+				<?php echo $form->error($model,'verifyCode',array('class'=>'help-block')); ?>
 			</div>
 			<div class="hint">Please enter the letters as they are shown in the image above.
 			<br/>Letters are not case-sensitive.</div>
