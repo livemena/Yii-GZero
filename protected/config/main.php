@@ -1,12 +1,12 @@
 <?php
+$db = require(__DIR__ . '/db.php');
 $params = require(__DIR__ . '/params.php');
 
 // uncomment the following to define a path alias
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 
-return CMap::mergeArray(
-	array(
+return array(
 		'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 		'name'=>'Yii-GZero',
 		'language'=>'en',
@@ -110,6 +110,8 @@ return CMap::mergeArray(
         //),
 			),
 			
+			'db'=>$db,
+			
 			'user'=>array(
 				// enable cookie-based authentication
 				'allowAutoLogin'=>true,
@@ -175,6 +177,4 @@ return CMap::mergeArray(
 			)
 		),
 		'params'=>$params,
-	),
-	require(dirname(__FILE__).'/local.php')
 );
