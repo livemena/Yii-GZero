@@ -1,7 +1,7 @@
 # run git "rm --cached FILES" if you already have those files
 
 /index.php
-protected/yii.php
+protected/yiic.php
 protected/config/db_local.php
 assets/*
 !assets/.gitignore
