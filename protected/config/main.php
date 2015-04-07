@@ -25,8 +25,11 @@ return CMap::mergeArray(
 			'application.components.facebook.*',
 			'application.components.twitter.*',
 			'application.models.*',
+			'application.helpers.*',
 			'ext.redactor.ImperaviRedactorWidget',
 			'ext.giix-components.*', // giix components
+			'ext.image.*', // giix components
+			// 'ext.yii-facebook-opengraph.*',
 		),
 		
 		// 'modules'=>array(),
@@ -60,7 +63,43 @@ return CMap::mergeArray(
           ),
         ),
       ),
-      
+			
+			'image'=>array(
+					'class'=>'ext.image.CImageComponent',
+					// GD or ImageMagick
+					'driver'=>'GD',
+					// ImageMagick setup path
+					// 'params'=>array('directory'=>'...'),
+			),
+			
+			'facebook'=>array(
+        'class' => '\YiiFacebook\SFacebook',
+        'appId'=>'1580261192206957', // needed for JS SDK, Social Plugins and PHP SDK
+        'secret'=>'1e8a3aecf5e66f9cb10f2469d745f395', // needed for the PHP SDK
+        //'version'=>'v2.2', // Facebook APi version to default to
+        //'locale'=>'en_US', // override locale setting (defaults to en_US)
+        //'jsSdk'=>true, // include JavaScript SDK on all pages
+        //'async'=>true, // load JavaScript SDK asynchronously
+        //'jsCallback'=>false, // declare if you are going to be inserting any JS callbacks to the async JS SDK loader
+        //'callbackScripts'=>'', // default JS SDK init callback JavaScript
+        //'status'=>false, // JS SDK - check login status
+        //'cookie'=>false, // JS SDK - enable cookies to allow the server to access the session
+        //'xfbml'=>false,  // JS SDK - parse XFBML / html5 Social Plugins
+        //'frictionlessRequests'=>false, // JS SDK - enable frictionless requests for request dialogs
+        //'hideFlashCallback'=>null, // JS SDK - A function that is called whenever it is necessary to hide Adobe Flash objects on a page.
+        //'html5'=>true,  // use html5 Social Plugins instead of older XFBML
+        //'defaultScope'=>array(), // default Facebook Login permissions to request with Login button
+        //'redirectUrl'=>null, // default Facebook post-Login redirect URL
+        //'expiredSessionCallback'=>null, // PHP callable method to run if expired Facebook session is detected
+        //'userFbidAttribute'=>null, // if using FBAuthRequest, declare Facebook ID attribute on user model here
+        //'accountLinkUrl'=>null, // if using FBAuthRequest, declare link to user account page here
+        //'ogTags'=>array(  // set default OG tags
+            //'og:title'=>'MY_WEBSITE_NAME',
+            //'og:description'=>'MY_WEBSITE_DESCRIPTION',
+            //'og:image'=>'URL_TO_WEBSITE_LOGO',
+        //),
+			),
+			
 			'user'=>array(
 				// enable cookie-based authentication
 				'allowAutoLogin'=>true,
@@ -90,6 +129,7 @@ return CMap::mergeArray(
 					// Custom 
 					
 					// GZero
+					'<lang:(ar|en)>/' => 'site/index',
 					'<lang:(ar|en)>/<_c>/<_a>/' => '<_c>/<_a>',
 					'<lang:(ar|en)>/login'=>'user/login',
 					'<lang:(ar|en)>/admin'=>'page/admin',

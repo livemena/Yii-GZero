@@ -86,9 +86,7 @@ else:
 		</p>
 		<br>
 		<p>Copy this code to main.php layout or any page:</p>
-<pre>GZero::registerPackage( cdn(boolean) , $ga_id(Google Analytics ID) ,array(
-	'fontawesome',
-));</pre>
+<pre>$this->renderPartial('//layouts/_scripts_registration');</pre>
 	</div>
 	<div class="panel" name="og" id="og">
 		<h3>Open Graph Protocol</h3>
@@ -116,19 +114,28 @@ GZero::registerOpenGraph(array(
 	</div>
 	
 	<div class="panel" name="img" id="img">
-		<h3>Image Helper</h3>
+		<h3>Image Helper (New)</h3>
+		
+		Usage:
+		<br>
+		
+<pre>
+	echo ImageHelper::thumb(100,100, 'images/icon.png');
+</pre>
+		
+		<h3>Image Helper (old)</h3>
 
 		<p>Copy this code to your model:</p>
 		
-<pre>
-public function img($w=false, $h=false, $htmlOptions=array()) {
-	$img = 0;
-	$htmlOptions['title']=$this->title;
-	if ($this->image_uri != NULL){ $img = $this->image_uri; }
-	return Img::embed('/news/'.$img, $w, $h, 'default.png',$htmlOptions);
-}
-</pre>
-<p>Example: <a href="http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/">yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/</a></p>
+		<pre>
+		public function img($w=false, $h=false, $htmlOptions=array()) {
+			$img = 0;
+			$htmlOptions['title']=$this->title;
+			if ($this->image_uri != NULL){ $img = $this->image_uri; }
+			return Img::embed('/news/'.$img, $w, $h, 'default.png',$htmlOptions);
+		}
+		</pre>
+		<p>More info: <a href="http://www.yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/">yiiframework.com/wiki/366/create-image-thumbnails-with-php_img_preview/</a></p>
 	
 	</div>
 

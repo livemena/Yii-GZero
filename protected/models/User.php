@@ -15,6 +15,8 @@
  */
 class User extends CActiveRecord
 {
+	public $_identity;
+	public $rememberMe;
 	public $verifyPassword;
 	/**
 	 * @return string the associated database table name
@@ -47,7 +49,7 @@ class User extends CActiveRecord
 			array('password', 'authenticate','on'=>'login'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, email, password, full_name, facebook_id, google_id, twitter_id, key', 'safe', 'on'=>'search'),
+			array('id, email, password, full_name, facebook_id, created_at, google_id, twitter_id, key', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,6 +78,7 @@ class User extends CActiveRecord
 			'google_id'=>Yii::t('app','user.google_id'),
 			'twitter_id'=>Yii::t('app','user.twitter_id'),
 			'key'=>Yii::t('app','user.key'),
+			'created_at'=>Yii::t('app','user.created_at'),
 		);
 	}
 
@@ -151,7 +154,10 @@ class User extends CActiveRecord
 	
 	public function beforeSave()
 	{
-		$this->password = md5($this->password);
+		if($this->isNewRecord)
+		{
+				$this->created_at = time();
+		}
 		return true;
 	}
 
@@ -161,6 +167,9 @@ class User extends CActiveRecord
 		{
 			Yii::app()->authManager->assign('user', $this->id);
 		}
+		$this->password = md5($this->password);
+		$this->save();
+		
 		return true;
 	}
 

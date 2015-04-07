@@ -2,6 +2,9 @@
 	/* @var $this SiteController */
 	$this->pageTitle=Yii::app()->name;
 ?>
+
+<?php // echo Yii::app()->facebook->getLoginUrl() ?>
+
 <div class="page-header">
 	<h1>Welcome To Yii Grand-Zero 1.1 <small>Ready-to-code application template</small></h1> 
 </div>
