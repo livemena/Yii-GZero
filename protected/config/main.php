@@ -32,7 +32,17 @@ return CMap::mergeArray(
 			// 'ext.yii-facebook-opengraph.*',
 		),
 		
-		// 'modules'=>array(),
+		'modules'=>array(
+			// Gii is enabled locally
+			'gii'=>array(
+				'class'=>'application.modules.GiiGZero.GiiModule',
+				'generatorPaths'=>array(
+					'application.modules.GiiGZero.templates',
+				),
+				'password'=>'123456',
+				'ipFilters'=>array('127.0.0.1','::1'),
+			),
+		),
 
 		// application components
 		'components'=>array(
