@@ -36,5 +36,16 @@
 
 	<?php echo $content; ?>
 
+	<div class="container">
+		<div id="footer">
+		<hr>
+			Copyright &copy; <?php echo date('Y'); ?> by LiveMena.<br/>
+			All Rights Reserved.<br/>
+			<a href="https://github.com/livemena/Yii-GZero" title="Yii Grand-Zero Ready-to-code application template">Yii-GZero</a> <?php echo Yii::powered(); ?>
+		<br>
+		<br>
+		</div>
+	</div>
+	
 </body>
 </html>

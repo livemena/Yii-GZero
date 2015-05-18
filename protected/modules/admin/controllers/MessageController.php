@@ -2,7 +2,7 @@
 
 class MessageController extends Controller
 {
-	public $layout='//layouts/column2';
+	public $layout='/layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -30,8 +30,8 @@ class MessageController extends Controller
 	
 	public function actionIndex()
 	{
-		$sMessage = new SourceMessage;
-		$message = new Message;
+		$sMessage = new TranslateSource;
+		$message = new TranslateMessage;
 
 		$this->render('index',array(
 			'sMessage'=>$sMessage,
@@ -46,13 +46,13 @@ class MessageController extends Controller
 		
 		if($request!=''){
 		
-			$model = SourceMessage::model()->with('messages')->findAll(array("condition"=>"message like '%$request%' OR messages.translation like '%$request%' "));
+			$model = TranslateSource::model()->with('messages')->findAll(array("condition"=>"message like '%$request%' OR messages.translation like '%$request%' "));
 			
 			if($model){
 				$tbody = '';
 				$i = 1;
 				foreach($model as $src):
-					$messages = SourceMessage::model()->findByAttributes(array('id'=>$src->id));
+					$messages = TranslateSource::model()->findByAttributes(array('id'=>$src->id));
 				
 					$tbody .= '<tr id="'.$src->id.'" >';
 						$tbody .= '<td>'.$src->message.'</td>';
@@ -82,20 +82,20 @@ class MessageController extends Controller
 	{
 		$this->layout = false;
 	
-		$source = SourceMessage::model()->findByPk($id);
-		$msgEn = new Message;
-		$msgAr = new Message;
+		$source = TranslateSource::model()->findByPk($id);
+		$msgEn = new TranslateMessage;
+		$msgAr = new TranslateMessage;
 	
 		if(Yii::app()->request->isPostRequest){
 
 			if(isset($_POST['msgEn'])){
-				$translateEn = Message::model()->findByAttributes(array('id'=>$id,'language'=>'en'));
+				$translateEn = TranslateMessage::model()->findByAttributes(array('id'=>$id,'language'=>'en'));
 				if($translateEn){
 					$translateEn->translation = $_POST['msgEn'];
 					$translateEn->language = 'en';
 					$translateEn->save();
 				}else{
-					$translateEn = new Message;
+					$translateEn = new TranslateMessage;
 					$translateEn->id = $id;
 					$translateEn->language = 'en';
 					$translateEn->translation= $_POST['msgEn'];
@@ -104,13 +104,13 @@ class MessageController extends Controller
 			}
 			
 			if(isset($_POST['msgAr'])){
-				$translateAr = Message::model()->findByAttributes(array('id'=>$id,'language'=>'ar'));
+				$translateAr = TranslateMessage::model()->findByAttributes(array('id'=>$id,'language'=>'ar'));
 				if($translateAr){
 					$translateAr->translation = $_POST['msgAr'];
 					$translateAr->language = 'ar';
 					$translateAr->save();
 				}else{
-					$translateAr = new Message;
+					$translateAr = new TranslateMessage;
 					$translateAr->id = $id;
 					$translateAr->language = 'ar';
 					$translateAr->translation = $_POST['msgAr'];
@@ -122,11 +122,11 @@ class MessageController extends Controller
 			
 		} else {
 
-			if(Message::model()->findByAttributes(array('id'=>$id,'language'=>'en'))){
-				$msgEn = Message::model()->findByAttributes(array('id'=>$id,'language'=>'en'));
+			if(TranslateMessage::model()->findByAttributes(array('id'=>$id,'language'=>'en'))){
+				$msgEn = TranslateMessage::model()->findByAttributes(array('id'=>$id,'language'=>'en'));
 			}
-			if(Message::model()->findByAttributes(array('id'=>$id,'language'=>'ar'))){
-				$msgAr = Message::model()->findByAttributes(array('id'=>$id,'language'=>'ar'));
+			if(TranslateMessage::model()->findByAttributes(array('id'=>$id,'language'=>'ar'))){
+				$msgAr = TranslateMessage::model()->findByAttributes(array('id'=>$id,'language'=>'ar'));
 			}
 
 			$this->render('update',array(
@@ -143,14 +143,14 @@ class MessageController extends Controller
 	{
 		if(Yii::app()->request->isAjaxRequest && !empty($_POST['en']) || !empty($_POST['ar']))
 		{
-			$lastId = SourceMessage::model()->findAll(array('limit'=>1,'select'=>'max(id) as id','order'=>'id DESC'));
+			$lastId = TranslateSource::model()->findAll(array('limit'=>1,'select'=>'max(id) as id','order'=>'id DESC'));
 			$newId = intval($lastId[0]->id)+1;
 
 			
 			if($_POST['key'])
 			{
 				$msgKey = $_POST['key'];
-				if(SourceMessage::model()->findByAttributes(array('message'=>$msgKey))){
+				if(TranslateSource::model()->findByAttributes(array('message'=>$msgKey))){
 					header("HTTP/1.0 400 Please try another key");
 					Yii::app()->end();
 				}
@@ -158,12 +158,12 @@ class MessageController extends Controller
 			else 
 			{
 				$msgKey = Text::slug(Text::teaser(strtolower($_POST['en']),24,''));
-				if(SourceMessage::model()->findByAttributes(array('message'=>$msgKey))){
+				if(TranslateSource::model()->findByAttributes(array('message'=>$msgKey))){
 					$msgKey = Text::slug(Text::teaser(strtolower($_POST['en']),24,'').'_'.rand(10,100));
 				}
 			}
 			
-			$source = new SourceMessage;
+			$source = new TranslateSource;
 			$source->id = $newId;
 			$source->message = $msgKey;
 			if($source->save())
@@ -198,7 +198,7 @@ class MessageController extends Controller
 	{
 		if(Yii::app()->request->isAjaxRequest)
 		{
-			$source = SourceMessage::model()->findByAttributes(array('id'=>$_POST['id']));
+			$source = TranslateSource::model()->findByAttributes(array('id'=>$_POST['id']));
 			if($source->delete()){
 				return true;
 				Yii::app()->end();

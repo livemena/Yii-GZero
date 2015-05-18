@@ -11,12 +11,10 @@
   $lang = Yii::app()->language;
   
   /* ---- jQuery ----- */
-	
   $cs->scriptMap = array(
     'jquery.js' => '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
     'jquery.min.js' => '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
   );
-  
   
   /* ---- Packages ----- */
 
@@ -75,13 +73,13 @@
   
   
   /* ---- CSS ----- */
-  
 	$cs->registerCSSFile($resPath . '/css/main_'.$lang.'.css');
-  
+	
+	if($lang=='ar')
+		$cs->registerCSSFile($resPath . '/css/rtl-fix.css');
 	
   /* ---- JS ----- */
   $cs->registerScriptFile($resPath . '/js/main.js');
-
 	
   /* ---- inline JS ---- */
   

@@ -1,20 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "{{config}}".
+ * This is the model class for table "message".
  *
- * The followings are the available columns in table '{{config}}':
- * @property string $option
- * @property string $value
+ * The followings are the available columns in table 'message':
+ * @property integer $id
+ * @property string $language
+ * @property string $translation
+ *
+ * The followings are the available model relations:
+ * @property TranslateSource $id0
  */
-class Config extends CActiveRecord
+class TranslateMessage extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return '{{config}}';
+		return 'translate_message';
 	}
 
 	/**
@@ -25,12 +29,12 @@ class Config extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('option', 'required'),
-			array('option', 'length', 'max'=>128),
-			array('value', 'length', 'max'=>256),
+			array('id', 'numerical', 'integerOnly'=>true),
+			array('language', 'length', 'max'=>16),
+			array('translation', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('option, value', 'safe', 'on'=>'search'),
+			array('id, language, translation', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -42,18 +46,19 @@ class Config extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'id0' => array(self::BELONGS_TO, 'TranslateSource', 'id'),
 		);
 	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
-	public function attributeLabels()
-	{
+	public function attributeLabels() {
 		return array(
-						'option'=>Yii::t('app','config.option'),
-						'value'=>Yii::t('app','config.value'),
-		);
+				'id'=>Yii::t('app','message.id'),
+				'language'=>Yii::t('app','message.language'),
+				'translation'=>Yii::t('app','message.translation'),
+			);
 	}
 
 	/**
@@ -74,8 +79,9 @@ class Config extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('option',$this->option,true);
-		$criteria->compare('value',$this->value,true);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('language',$this->language,true);
+		$criteria->compare('translation',$this->translation,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -86,10 +92,35 @@ class Config extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Config the static model class
+	 * @return Message the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
+	
+	public static function newMsg($msg,$key)
+	{
+		$lastId = TranslateSource::model()->findAll(array('limit'=>1,'select'=>'max(id) as id','order'=>'id DESC'));
+		$newId = intval($lastId[0]->id)+1;
+		
+		$msgKey = $key;
+		if(TranslateSource::model()->findByAttributes(array('message'=>$msgKey))){
+			$msgKey = Text::slug(Text::teaser(strtolower($msg),24,'').'_'.rand(10,100));
+		}
+		
+		$source = new TranslateSource;
+		$source->id = $newId;
+		$source->message = $msgKey;
+		if($source->save())
+		{
+			$message = new Message;
+			$message->id = $source->id;
+			$message->language = 'en';
+			$message->translation = $msg;
+			$message->save();
+		}
+		return true;
+	}
+	
 }

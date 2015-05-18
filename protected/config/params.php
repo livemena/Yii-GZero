@@ -8,7 +8,7 @@ return array(
 	'facebook'=>array(
 		'client_id'=>'1580261192206957',
 		'client_secret'=>'1e8a3aecf5e66f9cb10f2469d745f395' , 
-		'redirect_url'=>'/user/login?id=facebook',
+		'redirect_url'=>'/user/login?service=facebook',
 		'scope'=>'email'
 	),
 	'twitter'=>array(

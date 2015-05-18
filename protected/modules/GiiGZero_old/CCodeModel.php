@@ -274,7 +274,7 @@ abstract class CCodeModel extends CFormModel
 				$tableName = str_replace('{{','',$tableName);
 				$tableName = str_replace('}}','',$tableName);
 				
-				Message::model()->newMsg($v,$tableName.'.'.$i);
+				TranslateMessage::model()->newMsg($v,$tableName.'.'.$i);
 			}
 		}else{
 		
@@ -315,7 +315,7 @@ abstract class CCodeModel extends CFormModel
 						// $tableName = str_replace('{{','',$tableName);
 						// $tableName = str_replace('}}','',$tableName);
 						
-						// Message::model()->newMsg($v,$tableName.'.'.$i);
+						// TranslateMessage::model()->newMsg($v,$tableName.'.'.$i);
 				// }
 				
 		}

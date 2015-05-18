@@ -234,10 +234,9 @@ abstract class CCodeModel extends CFormModel
 	 */
 	public function save()
 	{
-		// die(print_r($_POST));
-		if(in_array('ModelCode',$_POST))
+		if(isset($_POST['ModelCode']))
 		{
-			$model=new ModelCode;
+			// $model=new ModelCode;
 			if(($pos=strrpos($this->tableName,'.'))!==false)
 			{
 				$schema=substr($this->tableName,0,$pos);
@@ -275,7 +274,7 @@ abstract class CCodeModel extends CFormModel
 				$tableName = str_replace('{{','',$tableName);
 				$tableName = str_replace('}}','',$tableName);
 				
-				Message::model()->newMsg($v,$tableName.'.'.$i);
+				TranslateMessage::model()->newMsg($v,$tableName.'.'.$i);
 			}
 		}
 		

@@ -22,6 +22,7 @@ return array(
 		'import'=>array(
 			'application.commands.*',
 			'application.components.*',
+			'application.components.HttpClient',
 			'application.components.facebook.*',
 			'application.components.twitter.*',
 			'application.models.*',
@@ -33,6 +34,7 @@ return array(
 		),
 		
 		'modules'=>array(
+			'admin',
 			// Gii is enabled locally
 			'gii'=>array(
 				'class'=>'application.modules.GiiGZero.GiiModule',
@@ -121,8 +123,8 @@ return array(
 			'messages'=>array(
 				'class'=>'CDbMessageSource',
 				'forceTranslation'=>true,
-				'sourceMessageTable' => 'message_source',
-				'translatedMessageTable' => 'message',
+				'sourceMessageTable' => 'translate_source',
+				'translatedMessageTable' => 'translate_message',
 			),
 			
 			'authManager'=>array(

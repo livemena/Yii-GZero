@@ -1,6 +1,6 @@
 <?php
 /* @var $this MessageController */
-$this->layout = '//layouts/column1';
+$this->layout = '/layouts/column2';
 
 $this->breadcrumbs=array(
 	'Message',
@@ -98,7 +98,7 @@ $this->breadcrumbs=array(
 </style>
 <script>
 $(function(){
-	$('#createBtn').click(function () {
+	$('#createBtn').click(function (){
 		$('#createPanel').slideToggle();
 	});
 	
@@ -108,7 +108,7 @@ $(function(){
 			$.ajax({
 				type : 'POST',
 				data : {term:$(this).val()},
-				url: baseUrl+"/message/find",
+				url: "<?php echo $this->createUrl('message/find'); ?>",
 			}).success(function(data) {
 				$('#results').fadeIn();
 				$('#results tbody').html(data);
@@ -136,7 +136,7 @@ $(function(){
 			row.addClass('deleting');
 			$.ajax({
 				type: 'POST',
-				url: baseUrl+'/message/delete/',
+				url: "<?php echo $this->createUrl('message/delete'); ?>",
 				data: {id:id},
 				success: function(data){
 					row.fadeOut('slow');
@@ -157,7 +157,7 @@ $(function(){
 		$.ajax({
 			type : 'POST',
 			data : {en:$('#english').val(),ar:$('#arabic').val(),key:$('#key').val()},
-			url: baseUrl+"/message/create",
+			url: "<?php echo $this->createUrl('message/create'); ?>",
 		}).success(function(data) {
 			$('.loading.loading-1').hide();
 			$('#embedOutput').val("Yii::t('app','"+data+"')");
@@ -178,30 +178,32 @@ $(function(){
 		});
 	});
 	
-$('#msgAr, #msgEn').on('keypress',function(e){
-    if (e.keyCode == 13) {
-				$('.loading.loading-3').show();
-				var msgEn = $('#msgEn').val();
-				var msgAr = $('#msgAr').val();
-				$.ajax({
-					type : 'POST',
-					data : {msgEn:msgEn,msgAr:msgAr},
-					url: baseUrl+"/message/update/"+$('#sourceId').val(),
-				}).success(function(data) {
-				
-					$('#updateTest').modal('hide');
-					$('.loading.loading-3').hide();
-					var tr_id = $('#tr_id').val();
-					$('#'+tr_id).find('.en').text(msgEn);
-					$('#'+tr_id).find('.ar').text(msgAr);
+$('#updateTest').on('loaded.bs.modal', function (e) {
+	// alert('d');
+	$('#msgAr, #msgEn').on('keypress',function(e){
+			if (e.keyCode == 13) {
+					$('.loading.loading-3').show();
+					var msgEn = $('#msgEn').val();
+					var msgAr = $('#msgAr').val();
+					$.ajax({
+						type : 'POST',
+						data : {msgEn:msgEn,msgAr:msgAr},
+						url: "<?php echo $this->createUrl('message/update'); ?>/?id="+$('#sourceId').val(),
+					}).success(function(data) {
 					
-				}).error(function(xhr, ajaxOptions, thrownError){
-					$('.loading.loading-3').hide();
-					alert(thrownError);
-				});
-        return false;
-    }
-});
+						$('#updateTest').modal('hide');
+						$('.loading.loading-3').hide();
+						var tr_id = $('#tr_id').val();
+						$('#'+tr_id).find('.en').text(msgEn);
+						$('#'+tr_id).find('.ar').text(msgAr);
+						
+					}).error(function(xhr, ajaxOptions, thrownError){
+						$('.loading.loading-3').hide();
+						alert(thrownError);
+					});
+					return false;
+			}
+	});
 	
 	$('#save').on('click',function(){
 		$('.loading.loading-3').show();
@@ -210,7 +212,7 @@ $('#msgAr, #msgEn').on('keypress',function(e){
 		$.ajax({
 			type : 'POST',
 			data : {msgEn:msgEn,msgAr:msgAr},
-			url: baseUrl+"/message/update/"+$('#sourceId').val(),
+			url: "<?php echo $this->createUrl('message/update'); ?>/?id="+$('#sourceId').val(),
 		}).success(function(data) {
 		
 			$('#updateTest').modal('hide');
@@ -224,6 +226,8 @@ $('#msgAr, #msgEn').on('keypress',function(e){
 			alert(thrownError);
 		});
 	});
+})
+	
 	
 });
 </script>

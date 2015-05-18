@@ -1,24 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "message".
+ * This is the model class for table "source_message".
  *
- * The followings are the available columns in table 'message':
+ * The followings are the available columns in table 'source_message':
  * @property integer $id
- * @property string $language
- * @property string $translation
+ * @property string $category
+ * @property string $message
  *
  * The followings are the available model relations:
- * @property SourceMessage $id0
+ * @property Message[] $messages
  */
-class Message extends CActiveRecord
+class TranslateSource extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'message';
+		return 'translate_source';
 	}
 
 	/**
@@ -29,12 +29,15 @@ class Message extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('id', 'required'),
 			array('id', 'numerical', 'integerOnly'=>true),
-			array('language', 'length', 'max'=>16),
-			array('translation', 'safe'),
+			array('category', 'length', 'max'=>32),
+			array('id', 'unique'),
+			array('message', 'unique'),
+			array('message', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, language, translation', 'safe', 'on'=>'search'),
+			array('id, category, message', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,7 +49,7 @@ class Message extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'id0' => array(self::BELONGS_TO, 'SourceMessage', 'id'),
+			'messages' => array(self::HAS_MANY, 'TranslateMessage', 'id'),
 		);
 	}
 
@@ -55,10 +58,10 @@ class Message extends CActiveRecord
 	 */
 	public function attributeLabels() {
 		return array(
-				'id'=>Yii::t('app','message.id'),
-				'language'=>Yii::t('app','message.language'),
-				'translation'=>Yii::t('app','message.translation'),
-			);
+			'id'=>Yii::t('app','source_message.id'),
+			'category'=>Yii::t('app','source_message.category'),
+			'message'=>Yii::t('app','source_message.message'),
+		);
 	}
 
 	/**
@@ -80,8 +83,8 @@ class Message extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('language',$this->language,true);
-		$criteria->compare('translation',$this->translation,true);
+		$criteria->compare('category',$this->category,true);
+		$criteria->compare('message',$this->message,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -92,35 +95,16 @@ class Message extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Message the static model class
+	 * @return TranslateSource the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
 	
-	public static function newMsg($msg,$key)
+	public function afterDelete()
 	{
-		$lastId = SourceMessage::model()->findAll(array('limit'=>1,'select'=>'max(id) as id','order'=>'id DESC'));
-		$newId = intval($lastId[0]->id)+1;
-		
-		$msgKey = $key;
-		if(SourceMessage::model()->findByAttributes(array('message'=>$msgKey))){
-			$msgKey = Text::slug(Text::teaser(strtolower($msg),24,'').'_'.rand(10,100));
-		}
-		
-		$source = new SourceMessage;
-		$source->id = $newId;
-		$source->message = $msgKey;
-		if($source->save())
-		{
-			$message = new Message;
-			$message->id = $source->id;
-			$message->language = 'en';
-			$message->translation = $msg;
-			$message->save();
-		}
-		return true;
+		Message::model()->deleteAllByAttributes(array('id'=>$this->id));
+		parent::afterDelete();
 	}
-	
 }
