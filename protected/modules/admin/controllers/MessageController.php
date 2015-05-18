@@ -19,7 +19,7 @@ class MessageController extends Controller
 	{
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('index','find','update','create','delete'),
+				'actions'=>array('index','find','update','create','delete','ReGenerateMessages'),
 				'roles'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -39,6 +39,61 @@ class MessageController extends Controller
 		));
 	}
 
+	public function actionReGenerateMessages()
+	{
+		// header('Content-Type: text/php; charset=utf-8');
+		
+		$msgAr = TranslateMessage::model()->findAllByAttributes(array('language'=>'ar'));
+		$msgEn = TranslateMessage::model()->findAllByAttributes(array('language'=>'en'));
+		
+		$sep = DIRECTORY_SEPARATOR;
+		$messagesPath = dirname(__FILE__)."{$sep}..{$sep}..{$sep}..{$sep}messages";
+		
+		if(!empty($msgAr)){
+			
+			$fileContentAr = "<?php\n";
+			$fileContentAr .= "// ** Language: Arabic \n";
+			$fileContentAr .= "// ** Note: This file has been generated automatically by Zero Translation Messages System, so any change could would be overwritten. \n";
+			$fileContentAr .= "return array(\n";
+			foreach($msgAr as $msg){
+				$fileContentAr .= "\t'{$msg->id0->message}'=>'{$msg->translation}',\n";
+			}
+			$fileContentAr .= ");";
+
+			// Write Arabic file
+			$fileArabic = fopen($messagesPath."{$sep}ar{$sep}app.php", "w") or die("Unable to open Arabic file!");
+			fwrite($fileArabic, $fileContentAr);
+			fclose($fileArabic);
+			print 'Arabic file successfully generated<br>';
+
+		}else{
+			print 'Arabic file is empty';
+		}
+		
+		if(!empty($msgEn)){
+			
+			$fileContentEn = "<?php\n";
+			$fileContentEn .= "// ** Language: English \n";
+			$fileContentEn .= "// ** Note: This file has been generated automatically by Zero Translation Messages System, so any change could would be overwritten. \n";
+			$fileContentEn .= "return array(\n";
+			foreach($msgEn as $msg){
+				$fileContentEn .= "\t'{$msg->id0->message}'=>'{$msg->translation}',\n";
+			}
+			$fileContentEn .= ");";
+
+			// Write English file
+			$fileEnglish = fopen($messagesPath."{$sep}en{$sep}app.php", "w") or die("Unable to open English file!");
+			fwrite($fileEnglish, $fileContentEn);
+			fclose($fileEnglish);
+			print 'English file successfully generated<br>';
+			
+		}else{
+			print 'English file is empty';
+		}
+
+		Yii::app()->end();
+	}
+	
 	public function actionFind()
 	{
 		

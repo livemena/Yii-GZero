@@ -8,6 +8,7 @@ $this->breadcrumbs=array(
 ?>
 <div style="max-width:700px;margin:50px auto 100px">
 <a id="createBtn" class="btn btn-link"><i class="fa fa-pencil"></i> Create new Translate</a>
+<a class="btn btn-link pull-right" target="_blank" href="<?php echo $this->createUrl('message/ReGenerateMessages'); ?>"><i class="fa fa-refresh"></i> Re-Generate Files</a>
 
 <div id="createPanel" class="panel panel-default hid">
   <div class="panel-heading clearfix"><div class="pull-left">Create new Translate</div> <div class="pull-right"><i class="fa fa-spinner fa-spin loading loading-1"></i></div></div>

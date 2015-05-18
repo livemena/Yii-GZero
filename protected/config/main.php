@@ -121,10 +121,10 @@ return array(
 			),
 			
 			'messages'=>array(
-				'class'=>'CDbMessageSource',
+				// 'class'=>'CDbMessageSource',
 				'forceTranslation'=>true,
-				'sourceMessageTable' => 'translate_source',
-				'translatedMessageTable' => 'translate_message',
+				// 'sourceMessageTable' => 'translate_source',
+				// 'translatedMessageTable' => 'translate_message',
 			),
 			
 			'authManager'=>array(

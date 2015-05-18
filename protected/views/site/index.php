@@ -7,7 +7,7 @@
 <div class="header clearfix">
 	<nav>
 		<ul class="nav nav-pills pull-right">
-			<li role="presentation" class="active"><a href="<?php echo $this->createUrl('site/index'); ?>">Home</a></li>
+			<li role="presentation" class="active"><a href="<?php echo $this->createUrl('site/index'); ?>"><?php echo Yii::t('app','home');?></a></li>
 			<li role="presentation"><a href="<?php echo $this->createUrl('page/view',array('slug'=>'about')); ?>">About</a></li>
 			<li role="presentation"><a href="<?php echo $this->createUrl('site/contact'); ?>">Contact</a></li>
 			<?php if(Yii::app()->user->isAdmin()): ?>
@@ -28,7 +28,7 @@
 	<h1>Yii-Gzero</h1>
 	<h2>Base for your startup's using Yii &amp; Bootstrap</h2>
 	<p class="lead">It is simple integration/base of back-end and front-end frameworks<br>for fast start your projects.</p>
-	<a class="btn btn-large btn-success" href="<?php echo $this->createUrl('site/documentation'); ?>"><span class="glyphicon glyphicon-chevron-right"></span> Getting Started</a>
+	<a class="btn btn-large btn-success" href="<?php echo $this->createUrl('site/documentation'); ?>">Getting Started</a>
 </div>
 
 <div class="row marketing">
@@ -36,8 +36,8 @@
 		<h4>Auth/Registration</h4>
 		<p>Support auth/registration/recovery implemented as a module.</p>
 
-		<h4>User profile</h4>
-		<p>Possible for view and edit user profile implemented as a module.</p>
+		<h4>Messages System</h4>
+		<p>Possible for create or edit messages file using generator tool.</p>
 
 		<h4>Yii RBAC</h4>
 		<p>Simple Yii role based access control for web application.</p>
@@ -48,7 +48,7 @@
 		<p>Base for create own admin panel implemented as a module.</p>
 
 		<h4>E-mail notices</h4>
-		<p>Integrated extension YiiMailer for support E-mail notices.</p>
+		<p>Integrated extension YiiMailer for support E-mail notices. (NOT TESTED YET)</p>
 
 		<h4>Comfortable architecture</h4>
 		<p>Modular architecture for easy development and scaling.</p>
