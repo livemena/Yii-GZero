@@ -163,24 +163,24 @@ class User extends CActiveRecord
 
 	public function afterSave()
 	{
-		if($this->isNewRecord)
-		{
-			Yii::app()->authManager->assign('user', $this->id);
-		}
+		// if($this->isNewRecord)
+		// {
+			// Yii::app()->authManager->assign('user', $this->id);
+		// }
 		$this->password = md5($this->password);
 		$this->save();
 		
 		return true;
 	}
 
-	public function beforeDelete()
-	{
-		if($this->isNewRecord)
-		{
-			Yii::app()->authManager->revoke('user', $this->id);
-		}
-		return true;
-	}
+	// public function beforeDelete()
+	// {
+		// if($this->isNewRecord)
+		// {
+			// Yii::app()->authManager->revoke('user', $this->id);
+		// }
+		// return true;
+	// }
 	
 	// public function getFullname(){
 		// return $this->first_name .' '.$this->last_name;

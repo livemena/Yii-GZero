@@ -114,7 +114,7 @@ class TranslateMessage extends CActiveRecord
 		$source->message = $msgKey;
 		if($source->save())
 		{
-			$message = new Message;
+			$message = new TranslateMessage;
 			$message->id = $source->id;
 			$message->language = 'en';
 			$message->translation = $msg;

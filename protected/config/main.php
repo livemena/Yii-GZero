@@ -9,8 +9,8 @@ $params = require(__DIR__ . '/params.php');
 return array(
 		'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 		'name'=>'Yii-GZero',
-		'language'=>'en',
-		'sourceLanguage'=>'en',
+		'language'=>'ar',
+		'sourceLanguage'=>'ar',
 		
 		// mobile detector
 		'onBeginRequest'=>array('Mobile', 'BeginRequest'),
@@ -53,7 +53,7 @@ return array(
 			'widgetFactory'=>array(
 				'widgets'=>array(
 					'CListView'=>array(
-            'pagerCssClass'=>'pager-wrapper',
+            'pagerCssClass'=>'pager-wrapper text-center ltr',
           ),
 					'CLinkPager'=>array(
 						'header' => '<div class="pagination">',
@@ -153,6 +153,10 @@ return array(
 					'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 					'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 					'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+					
+					'<lang:(ar|en)>/admin/<controller:\w+>/<id:\d+>'=>'admin/<controller>/view',
+					'<lang:(ar|en)>/admin/<controller:\w+>/<action:\w+>/<id:\d+>'=>'admin/<controller>/<action>',
+					'<lang:(ar|en)>/admin/<controller:\w+>/<action:\w+>'=>'admin/<controller>/<action>',
 				),
 			),
 

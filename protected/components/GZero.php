@@ -29,19 +29,34 @@ class GZero
 		}
 	}
 	
-	public static function registerOpenGraph($option=array('site_name'=>null,'title'=>null,'description'=>null,'thumbnail'=>null,'url'=>null))
+	public static function registerOpenGraph(
+		$option=array(
+			'site_name'=>'MY CIIN',
+			'title'=>'MY CIIN - Seen, Loved, Shared',
+			'description'=>'Seen, Loved, Shared',
+			'image'=>'http://myciin.com/images/ciin-thumb.png',
+			'url'=>'http://www.myciin.com'
+		))
 	{
+		
+		$option=array_merge(array(
+			'site_name'=>'Yii-GZero',
+			'title'=>'Yii-GZero',
+			'description'=>'Yii-GZero',
+			'image'=>'image',
+			'url'=>'image'
+		),$option);
+		
 		$cs = Yii::app()->clientScript;
 
-		if($option['site_name'])
 			$cs->registerMetaTag($option['site_name'],null,null,array('property'=>'og:site_name'));
-		if($option['title'])
+
 			$cs->registerMetaTag($option['title'],null,null,array('property'=>'og:title'));
-		if($option['description'])
+
 			$cs->registerMetaTag($option['description'],null,null,array('property'=>'og:description'));
-		if($option['thumbnail'])
-			$cs->registerMetaTag($option['thumbnail'],null,null,array('property'=>'og:thumbnail'));
-		if($option['url'])
+	
+			$cs->registerMetaTag($option['image'],null,null,array('property'=>'og:image'));
+
 			$cs->registerMetaTag($option['url'],null,null,array('property'=>'og:url'));
 	}
 }
