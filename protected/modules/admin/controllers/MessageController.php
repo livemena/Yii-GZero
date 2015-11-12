@@ -119,7 +119,7 @@ class MessageController extends Controller
 						endforeach;
 						$tbody .= '</td>';
 						$tbody .= '<td><input type="text" class="autoselect form-control embed" value="Yii::t(\'app\',\''.$src->message.'\')" /></td>';
-						$tbody .= '<td><a class="btn btn-xs btn-default editBtn" title="Edit" type="button" data-toggle="modal" data-target="#updateTest" href="'.$this->createUrl('message/update',array('id'=>$src->id)).'"><i class="fa fa-pencil-square-o"></i></a>';
+						$tbody .= '<td><a class="btn btn-xs btn-default editBtn" title="Edit" type="button" href="'.$this->createUrl('message/update',array('id'=>$src->id)).'"><i class="fa fa-pencil-square-o"></i></a>';
 						$tbody .= '<a class="btn btn-xs btn-danger deleteBtn" title="Delete"><i class="fa fa-trash-o"></i></a>';
 						$tbody .= '<div tabindex="-'.$i++.'" class="model" id="update-'.$src->id.'"></div></td></tr>';
 				endforeach;
@@ -225,7 +225,7 @@ class MessageController extends Controller
 			{
 				if($_POST['en'])
 				{
-					$msg = new Message;
+					$msg = new TranslateMessage;
 					$msg->id = $source->id;
 					$msg->language = 'en';
 					$msg->translation = $_POST['en'];
@@ -233,7 +233,7 @@ class MessageController extends Controller
 				}
 				if($_POST['ar'])
 				{
-					$msg = new Message;
+					$msg = new TranslateMessage;
 					$msg->id = $source->id;
 					$msg->language = 'ar';
 					$msg->translation = $_POST['ar'];

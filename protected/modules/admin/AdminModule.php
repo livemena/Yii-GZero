@@ -8,8 +8,11 @@ class AdminModule extends CWebModule
 		Yii::app()->language = 'en';
 		Yii::app()->sourceLanguage = 'en';
 
-		// this method is called when the module is being created
-		// you may place code here to customize the module or the application
+		Yii::app()->setComponents(array(
+			'errorHandler'=>array(
+				'errorAction'=>'/admin/default/error'
+			)
+		));
 
 		// import the module-level models and components
 		$this->setImport(array(

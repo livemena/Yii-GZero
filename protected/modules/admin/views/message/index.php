@@ -1,16 +1,18 @@
 <?php
 /* @var $this MessageController */
-$this->layout = '/layouts/column2';
+$this->layout = '/layouts/column1';
 
 $this->breadcrumbs=array(
 	'Message',
 );
 ?>
 <div style="max-width:700px;margin:50px auto 100px">
-<a id="createBtn" class="btn btn-link"><i class="fa fa-pencil"></i> Create new Translate</a>
-<a class="btn btn-link pull-right" target="_blank" href="<?php echo $this->createUrl('message/ReGenerateMessages'); ?>"><i class="fa fa-refresh"></i> Re-Generate Files</a>
+<div style="overflow:hidden">
+	<a id="createBtn" class="btn btn-link"><i class="fa fa-pencil"></i> Create new Translate</a>
+	<a class="btn btn-link pull-right" target="_blank" href="<?php echo $this->createUrl('message/ReGenerateMessages'); ?>"><i class="fa fa-refresh"></i> Re-Generate Files</a>
+</div>
 
-<div id="createPanel" class="panel panel-default hid">
+<div id="createPanel" class="panel panel-default hid" style="overflow:hidden">
   <div class="panel-heading clearfix"><div class="pull-left">Create new Translate</div> <div class="pull-right"><i class="fa fa-spinner fa-spin loading loading-1"></i></div></div>
   <div class="panel-body">
 	<div class="form-horizontal" role="form">
@@ -51,7 +53,7 @@ $this->breadcrumbs=array(
   </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" style="overflow:hidden">
   <div class="panel-heading clearfix"><div class="pull-left">Find a word</div> <div class="pull-right"><i class="fa fa-spinner fa-spin loading loading-2"></i></div></div>
   <div class="panel-body">
   
@@ -82,7 +84,7 @@ $this->breadcrumbs=array(
   </div>
 </div>
 
-<div id="updateTest" class="modal" tabindex="-1" role="dialog" aria-labelledby="updateTest" aria-hidden="true">
+<div id="updateModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="updateModal" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
   </div>
@@ -117,6 +119,43 @@ $(function(){
 				$('.autoselect').click(function() {
 					$(this).select();
 				});
+				
+				$("a.editBtn").on('click',function(ev) {
+					ev.preventDefault();
+					
+					var modal = $(this).data('target');
+					var url = $(this).prop('href');
+
+					$('#updateModal').modal({
+						remote: url,
+						show: true
+					}); 
+				});
+				
+				$('.deleteBtn').on('click', function(){
+					if (confirm("Are you sure you want to delete this translate ?")) {
+						$('.loading.loading-2').show();
+						var id = $(this).closest('tr').attr('id');
+						var row = $(this).closest('tr');
+						row.addClass('deleting');
+						$.ajax({
+							type: 'POST',
+							url: "<?php echo $this->createUrl('message/delete'); ?>",
+							data: {id:id},
+							success: function(data){
+								row.fadeOut('slow');
+								$('.loading.loading-2').hide();
+							},
+							error:function(){
+								row.removeClass('deleting');
+								alert('Deleteing Failed! Please refresh this page');
+								$('.loading.loading-2').hide();
+							}
+						});
+					}
+					return false;
+				});
+				
 			}).error(function(data){
 				$('#results').fadeOut();
 				$('#results tbody').html(data);
@@ -127,32 +166,9 @@ $(function(){
 			$('#results tbody').html('');
 			$('.loading.loading-2').hide();
 		}
+
 	});
-	
-	$('.deleteBtn').on('click', function(){
-		if (confirm("Are you sure you want to delete this translate ?")) {
-			$('.loading.loading-2').show();
-			var id = $(this).closest('tr').attr('id');
-			var row = $(this).closest('tr');
-			row.addClass('deleting');
-			$.ajax({
-				type: 'POST',
-				url: "<?php echo $this->createUrl('message/delete'); ?>",
-				data: {id:id},
-				success: function(data){
-					row.fadeOut('slow');
-					$('.loading.loading-2').hide();
-				},
-				error:function(){
-					row.removeClass('deleting');
-					alert('Deleteing Failed! Please refresh this page');
-					$('.loading.loading-2').hide();
-				}
-			});
-		}
-		return false;
-	});
-	
+
 	$('#createWord').on('click',function(){
 		$('.loading.loading-1').show();
 		$.ajax({
@@ -169,44 +185,34 @@ $(function(){
 		});
 	});
 	
-	$("a[data-target=#updateTest]").on('click',function(ev) {
-		ev.preventDefault();
-		var target = $(this).attr("href");
-
-		// load the url and show modal on success
-		$("#updateTest .modal-content").load(target, function() { 
-			 $("#updateTest").modal("show"); 
-		});
-	});
-	
-$('#updateTest').on('loaded.bs.modal', function (e) {
-	// alert('d');
+$('#updateModal').on('loaded.bs.modal', function(e) {
+// alert('shown');
 	$('#msgAr, #msgEn').on('keypress',function(e){
-			if (e.keyCode == 13) {
-					$('.loading.loading-3').show();
-					var msgEn = $('#msgEn').val();
-					var msgAr = $('#msgAr').val();
-					$.ajax({
-						type : 'POST',
-						data : {msgEn:msgEn,msgAr:msgAr},
-						url: "<?php echo $this->createUrl('message/update'); ?>/?id="+$('#sourceId').val(),
-					}).success(function(data) {
+		if (e.keyCode == 13) {
+				$('.loading.loading-3').show();
+				var msgEn = $('#msgEn').val();
+				var msgAr = $('#msgAr').val();
+				$.ajax({
+					type : 'POST',
+					data : {msgEn:msgEn,msgAr:msgAr},
+					url: "<?php echo $this->createUrl('message/update'); ?>/?id="+$('#sourceId').val(),
+				}).success(function(data) {
+				
+					$('#updateModal').modal('hide');
+					$('.loading.loading-3').hide();
+					var tr_id = $('#tr_id').val();
+					$('#'+tr_id).find('.en').text(msgEn);
+					$('#'+tr_id).find('.ar').text(msgAr);
 					
-						$('#updateTest').modal('hide');
-						$('.loading.loading-3').hide();
-						var tr_id = $('#tr_id').val();
-						$('#'+tr_id).find('.en').text(msgEn);
-						$('#'+tr_id).find('.ar').text(msgAr);
-						
-					}).error(function(xhr, ajaxOptions, thrownError){
-						$('.loading.loading-3').hide();
-						alert(thrownError);
-					});
-					return false;
-			}
+				}).error(function(xhr, ajaxOptions, thrownError){
+					$('.loading.loading-3').hide();
+					alert(thrownError);
+				});
+				return false;
+		}
 	});
 	
-	$('#save').on('click',function(){
+	$('#updateModal #save').on('click',function(){
 		$('.loading.loading-3').show();
 		var msgEn = $('#msgEn').val();
 		var msgAr = $('#msgAr').val();
@@ -216,7 +222,7 @@ $('#updateTest').on('loaded.bs.modal', function (e) {
 			url: "<?php echo $this->createUrl('message/update'); ?>/?id="+$('#sourceId').val(),
 		}).success(function(data) {
 		
-			$('#updateTest').modal('hide');
+			$('#updateModal').modal('hide');
 			$('.loading.loading-3').hide();
 			var tr_id = $('#tr_id').val();
 			$('#'+tr_id).find('.en').text(msgEn);
@@ -227,6 +233,8 @@ $('#updateTest').on('loaded.bs.modal', function (e) {
 			alert(thrownError);
 		});
 	});
+	
+	// alert('sss');
 })
 	
 	
