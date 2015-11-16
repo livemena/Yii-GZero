@@ -1,10 +1,15 @@
 <?php
+
+// App configrations
+
 // application-level parameters that can be accessed
 // using Yii::app()->params['paramName']
 		
 return array(
-	// this is used in contact page
-	'adminEmail'=>'admin@admin.com',
+	'adminEmail'=>'info@livemena.com', // this is used in contact page
+	'fb_app_id'=>null,
+	'google_analytics_id'=>null,
+
 	'facebook'=>array(
 		'client_id'=>'1580261192206957',
 		'client_secret'=>'1e8a3aecf5e66f9cb10f2469d745f395' , 

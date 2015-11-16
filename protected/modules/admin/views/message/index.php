@@ -185,6 +185,10 @@ $(function(){
 		});
 	});
 	
+$('body').on('hidden.bs.modal', '#updateModal', function () {
+  $(this).removeData('bs.modal');
+});
+	
 $('#updateModal').on('loaded.bs.modal', function(e) {
 // alert('shown');
 	$('#msgAr, #msgEn').on('keypress',function(e){

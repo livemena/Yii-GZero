@@ -1,8 +1,135 @@
 Changelog
 =========
 
-1.2.16
+1.3.17
+------
+
+- Imperavi redactor updated to 10.2.5 (samdark)
+
+1.3.16
+------
+
+- Imperavi redactor updated to 10.2.4 (samdark)
+
+1.3.15
+------
+
+- Imperavi redactor updated to 10.2.3 (samdark)
+
+1.3.14
+------
+
+- Updated imperavi redactor plugins to 10.2.3 (SDKiller)
+
+1.3.13
+------
+
+- Imperavi redactor updated to 10.2.2 (samdark)
+
+1.3.12
+------
+
+- Imperavi redactor updated to 10.2 (samdark)
+
+1.3.11
+------
+
+- Imperavi redactor updated to 10.1.3 (samdark) 
+
+1.3.10
+------
+
+- Imperavi redactor updated to 10.1.1 (samdark)
+
+10.1.1
+
+1.3.9
+-----
+
+- Imperavi redactor updated to 10.0.9 (samdark)
+
+1.3.8
+-----
+
+- Imperavi redactor updated to 10.0.7 (samdark)
+
+1.3.7
+-----
+
+- Updated plugins (SDKiller)
+
+1.3.6
+-----
+
+- Imperavi redactor updated to 10.0.6 (samdark)
+
+1.3.5
+-----
+
+- Imperavi redactor updated to 10.0.5 (samdark)
+
+1.3.4
+-----
+
+- Updated counter and video plugins (sdkiller)
+
+1.3.3
+-----
+
+- Imperavi redactor updated to 10.0.3 (samdark)
+
+1.3.2
+-----
+
+- Imperavi redactor updated to 10.0.2 (samdark)
+
+1.3.1
+-----
+
+- Imperavi redactor updated to 10.0.1 (samdark)
+
+1.3.0
 ----
+
+- Imperavi redactor, plugins and languages updated to 10.0.0 (samdark)
+
+1.2.23
+------
+
+- Imperavi redactor updated to 9.2.6 (samdark)
+
+1.2.22
+------
+
+- Imperavi redactor updated to 9.2.5 (samdark)
+
+1.2.21
+------
+
+- Imperavi redactor updated to 9.2.4 (samdark)
+
+1.2.20
+------
+
+- Imperavi redactor updated to 9.2.2 (samdark)
+
+1.2.19
+------
+
+- Imperavi redactor updated to 9.2.1 (samdark)
+
+1.2.18
+------
+
+- Fixed partially committed files (samdark)
+
+1.2.17
+------
+
+- Imperavi redactor, plugins and languages updated to 9.2.0 (samdark)
+
+1.2.16
+------
 
 - Imperavi redactor updated to 9.1.9 (Veaceslav Medvedev)
 - Update plugins (Veaceslav Medvedev)

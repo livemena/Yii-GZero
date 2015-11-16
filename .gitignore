@@ -10,7 +10,6 @@ protected/messages/en/app.php
 protected/messages/ar/app.php
 !protected/runtime/.gitignore
 protected/data/*.db
-themes/classic/views/
 
 # netbeans
 nbproject/
