@@ -79,6 +79,12 @@ return array(
 			'allowAutoLogin'=>true,
 			'class' => 'WebUser',
 		),
+      'authManager' => array(
+        'class' => 'CDbAuthManager',
+        'assignmentTable' => 'tbl_authassignment',
+        'itemChildTable' => 'tbl_authitemchild',
+        'itemTable' => 'tbl_authitem',
+      ),
 		
 		'messages'=>array(
 			// 'class'=>'CDbMessageSource',

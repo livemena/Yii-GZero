@@ -23,7 +23,9 @@
 .hid{
 	display:none
 }
-
+span.required{
+	color:red
+}
 
 
 body,html{
